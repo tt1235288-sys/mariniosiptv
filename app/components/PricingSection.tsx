@@ -28,7 +28,7 @@ export default function PricingSection() {
   const currentPricing = pricing[devices];
 
   // WhatsApp number (replace with your actual WhatsApp number)
-  const WHATSAPP_NUMBER = '1234567890'; // Replace with your number
+  const WHATSAPP_NUMBER = '+447868196544'; // Replace with your number
 
   const handleWhatsAppRedirect = (months: number) => {
     const message = `Hello, I am interested in your service to get a subscription for ${months} months.`;

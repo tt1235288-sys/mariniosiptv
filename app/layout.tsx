@@ -4,6 +4,8 @@ import Script from 'next/script';
 import { Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
+import FloatingWhatsApp from './components/FloatingWhatsApp'; // ADD THIS IMPORT
+
 import Footer from './components/Footer';
 import { CONSTANTS } from '@/lib/seo';
 
@@ -344,6 +346,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+        <FloatingWhatsApp />
       </body>
     </html>
   );
