@@ -56,7 +56,7 @@ export default function Header() {
               <Link href="/" className="flex items-center group">
                 <div className="h-10 flex items-center group-hover:scale-105 transition-transform">
                   <Image
-                    src="/img/iptv-logo.png"
+                    src="/img/iptv-logo.webp"
                     alt={CONSTANTS.BRAND_NAME}
                     width={160}
                     height={40}

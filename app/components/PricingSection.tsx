@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { FadeIn, FadeInStagger, FadeInItem } from './AnimatedSection';
 import { CheckCircle2, Zap, Crown, Star } from 'lucide-react';
-import Link from 'next/link';
 
 export default function PricingSection() {
   const [devices, setDevices] = useState<1 | 2 | 3>(1);
@@ -28,10 +27,13 @@ export default function PricingSection() {
 
   const currentPricing = pricing[devices];
 
-  // Smooth scroll to top after clicking (optional - for better UX)
-  const handlePlanSelect = () => {
-    // You can add any tracking or analytics here
-    console.log('Plan selected');
+  // WhatsApp number (replace with your actual WhatsApp number)
+  const WHATSAPP_NUMBER = '1234567890'; // Replace with your number
+
+  const handleWhatsAppRedirect = (months: number) => {
+    const message = `Hello, I am interested in your service to get a subscription for ${months} months.`;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -115,7 +117,7 @@ export default function PricingSection() {
               ))}
             </ul>
             <button 
-              onClick={handlePlanSelect}
+              onClick={() => handleWhatsAppRedirect(3)}
               className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 font-bold hover:bg-white/10 hover:text-white transition-all text-center uppercase tracking-widest text-xs cursor-pointer"
             >
               Select 3 Months
@@ -166,7 +168,7 @@ export default function PricingSection() {
               ))}
             </ul>
             <button 
-              onClick={handlePlanSelect}
+              onClick={() => handleWhatsAppRedirect(12)}
               className="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-slate-950 font-black hover:from-yellow-400 hover:to-yellow-500 hover:scale-[1.02] transition-all text-center uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(250,204,21,0.3)] cursor-pointer"
             >
               Get 12 Months
@@ -209,7 +211,7 @@ export default function PricingSection() {
               ))}
             </ul>
             <button 
-              onClick={handlePlanSelect}
+              onClick={() => handleWhatsAppRedirect(6)}
               className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 font-bold hover:bg-white/10 hover:text-white transition-all text-center uppercase tracking-widest text-xs cursor-pointer"
             >
               Select 6 Months

@@ -19,7 +19,7 @@ export default function Footer() {
               {/* Full Logo Image (vertical - icon + text combined) */}
               <div className="w-auto h-12 flex items-center group-hover:scale-105 transition-transform">
                 <Image
-                  src="/img/iptv-logo.png"
+                  src="/img/iptv-logo.webp"
                   alt={CONSTANTS.BRAND_NAME}
                   width={180}
                   height={48}

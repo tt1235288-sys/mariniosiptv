@@ -10,7 +10,7 @@ export default function FloatingWhatsApp() {
     { sender: 'support', text: '👋 Hi there! How can we help you today?', time: getCurrentTime() },
   ]);
 
-  const phoneNumber = '1234567890';
+  const phoneNumber = '+447868196544';
 
   // Function to get device local time in HH:mm format
   function getCurrentTime() {
