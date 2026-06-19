@@ -51,7 +51,7 @@ export default function Header() {
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-xl border-b border-white/10 py-2 shadow-2xl shadow-black/50' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - Full vertical logo image */}
+            {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center group">
                 <div className="h-10 flex items-center group-hover:scale-105 transition-transform">
@@ -67,7 +67,7 @@ export default function Header() {
               </Link>
             </div>
             
-            <nav className="hidden md:block">
+            <nav className="hidden md:block" aria-label="Main navigation">
               <ul className="flex items-center gap-8 bg-black/20 backdrop-blur-md px-8 py-3 rounded-full border border-white/5">
                 {navLinks.map((link) => (
                   <li key={link.name}>
@@ -93,7 +93,12 @@ export default function Header() {
             </div>
 
             <div className="md:hidden flex items-center">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2 focus:outline-none z-50 relative">
+              <button 
+                onClick={() => setIsOpen(!isOpen)} 
+                className="text-white p-2 focus:outline-none z-50 relative"
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isOpen}
+              >
                 {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
               </button>
             </div>
@@ -107,6 +112,9 @@ export default function Header() {
           isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
         style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation menu"
       >
         <div className="flex flex-col items-center justify-center h-full w-full px-6">
           <div className="space-y-4 w-full max-w-sm mx-auto">

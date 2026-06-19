@@ -1,34 +1,14 @@
-// app/layout.tsx
+// app/pricing/layout.tsx
 import type { Metadata } from 'next';
-import Script from 'next/script';
-import { Poppins, Montserrat } from 'next/font/google';
-import '../globals.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { CONSTANTS } from '@/lib/seo';
-
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap',
-});
-
-const montserrat = Montserrat({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${CONSTANTS.DOMAIN}`),
   title: {
-    default: `Pricing & Plans | ${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Subscription 2025 | 15,000+ Channels & 4K Streaming`,
+    default: `${CONSTANTS.FOCUS_KEYWORD} Pricing & Plans - Best IPTV Subscription 2026 | 15,000+ Channels & 4K Streaming`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  description: `Choose your ${CONSTANTS.FOCUS_KEYWORD} subscription plan starting at just $7.08/month. Get 15,000+ live channels, 60,000+ VODs, 4K streaming, PPV events, and 7-day money-back guarantee.`,
+  description: `Choose your ${CONSTANTS.FOCUS_KEYWORD} subscription plan starting at just $7.08/month. Get 15,000+ live channels, 60,000+ VODs, 4K streaming, PPV events, and 7-day money-back guarantee. Read our ${CONSTANTS.FOCUS_KEYWORD} Review and ${CONSTANTS.FOCUS_KEYWORD} Guide.`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
   publisher: CONSTANTS.BRAND_NAME,
@@ -52,26 +32,26 @@ export const metadata: Metadata = {
     canonical: `https://${CONSTANTS.DOMAIN}/pricing`,
   },
   openGraph: {
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Pricing & Subscription Plans`,
-    description: `Subscribe to ${CONSTANTS.FOCUS_KEYWORD} starting at $7.08/month. Access 15,000+ live channels, 60,000+ VODs, and 4K streaming.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Pricing & Subscription Plans | Best IPTV Deals 2026`,
+    description: `Subscribe to ${CONSTANTS.FOCUS_KEYWORD} starting at $7.08/month. Access 15,000+ live channels, 60,000+ VODs, and 4K streaming. ${CONSTANTS.FOCUS_KEYWORD} Review and Guide available.`,
     url: `https://${CONSTANTS.DOMAIN}/pricing`,
     siteName: CONSTANTS.BRAND_NAME,
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: `https://${CONSTANTS.DOMAIN}/img/logo.webp`,
+        url: `https://${CONSTANTS.DOMAIN}/img/structer.png`,
         width: 1200,
         height: 630,
-        alt: `${CONSTANTS.FOCUS_KEYWORD} Pricing Plans`,
+        alt: `${CONSTANTS.FOCUS_KEYWORD} Pricing Plans - Best IPTV Subscription`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Subscription Plans`,
-    description: `Starting at $30/3months. 15,000+ channels, 60,000+ VODs, 4K quality.`,
-    images: [`https://${CONSTANTS.DOMAIN}/img/logo.webp`],
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Subscription Plans & Pricing`,
+    description: `Starting at $30/3months. 15,000+ channels, 60,000+ VODs, 4K quality. ${CONSTANTS.FOCUS_KEYWORD} Review.`,
+    images: [`https://${CONSTANTS.DOMAIN}/img/structer.png`],
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
   },
@@ -81,21 +61,25 @@ export const metadata: Metadata = {
   category: 'entertainment',
   keywords: [
     `${CONSTANTS.FOCUS_KEYWORD} pricing`,
+    `${CONSTANTS.FOCUS_KEYWORD} plans`,
+    `${CONSTANTS.FOCUS_KEYWORD} subscription`,
+    `${CONSTANTS.FOCUS_KEYWORD} cost`,
+    `${CONSTANTS.FOCUS_KEYWORD} review`,
+    `${CONSTANTS.FOCUS_KEYWORD} guide`,
+    `${CONSTANTS.FOCUS_KEYWORD} service`,
     'IPTV subscription cost',
     'best IPTV price',
-    'Marinios IPTV plans',
     'cheap IPTV subscription',
     'IPTV 4K pricing',
     'sports IPTV package',
-    CONSTANTS.FOCUS_KEYWORD,
     'IPTV service',
     'best IPTV provider',
     '4K streaming',
     'live TV streaming',
     'sports PPV',
-    'IPTV subscription',
     'premium IPTV',
     'international channels',
+    'IPTV 2026',
   ],
 };
 
@@ -110,7 +94,8 @@ const PricingPageSchema = () => (
         "@context": "https://schema.org",
         "@type": "Product",
         "name": `${CONSTANTS.BRAND_NAME} IPTV Subscription Plans`,
-        "description": `Premium IPTV service with subscription plans starting at $7.08/month. Access 15,000+ live channels and 60,000+ VODs in 4K quality.`,
+        "alternateName": CONSTANTS.FOCUS_KEYWORD,
+        "description": `Premium IPTV service with subscription plans starting at $7.08/month. Access 15,000+ live channels and 60,000+ VODs in 4K quality. ${CONSTANTS.FOCUS_KEYWORD} offers the best value in IPTV entertainment.`,
         "brand": {
           "@type": "Brand",
           "name": CONSTANTS.BRAND_NAME
@@ -131,7 +116,7 @@ const PricingPageSchema = () => (
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/OnlineOnly",
             "url": `https://${CONSTANTS.DOMAIN}/pricing`,
-            "description": "3 months access to 15,000+ live channels and 60,000+ VODs"
+            "description": `3 months ${CONSTANTS.FOCUS_KEYWORD} access to 15,000+ live channels and 60,000+ VODs`
           },
           {
             "@type": "Offer",
@@ -141,7 +126,7 @@ const PricingPageSchema = () => (
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/OnlineOnly",
             "url": `https://${CONSTANTS.DOMAIN}/pricing`,
-            "description": "6 months access to 18,000+ live channels and 80,000+ VODs"
+            "description": `6 months ${CONSTANTS.FOCUS_KEYWORD} access to 18,000+ live channels and 80,000+ VODs`
           },
           {
             "@type": "Offer",
@@ -151,7 +136,7 @@ const PricingPageSchema = () => (
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/OnlineOnly",
             "url": `https://${CONSTANTS.DOMAIN}/pricing`,
-            "description": "12 months access to 25,000+ premium channels and 100,000+ VODs with VIP support"
+            "description": `12 months ${CONSTANTS.FOCUS_KEYWORD} access to 25,000+ premium channels and 100,000+ VODs with VIP support`
           }
         ]
       })
@@ -172,50 +157,58 @@ const PricingFAQSchema = () => (
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What payment methods do you accept?",
+            "name": `What payment methods does ${CONSTANTS.FOCUS_KEYWORD} accept?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We accept all major credit cards including Visa, Mastercard, American Express, and Discover. We also accept PayPal, cryptocurrencies (Bitcoin, Ethereum, USDT), and various regional payment methods."
+              "text": `${CONSTANTS.FOCUS_KEYWORD} accepts all major credit cards including Visa, Mastercard, American Express, and Discover. We also accept PayPal, cryptocurrencies (Bitcoin, Ethereum, USDT), and various regional payment methods.`
             }
           },
           {
             "@type": "Question",
-            "name": "Can I upgrade or downgrade my plan?",
+            "name": `Can I upgrade or downgrade my ${CONSTANTS.FOCUS_KEYWORD} plan?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, you can upgrade or downgrade your plan at any time. Contact our support team and they will assist you with the change immediately."
+              "text": `Yes, you can upgrade or downgrade your ${CONSTANTS.FOCUS_KEYWORD} plan at any time. Contact our support team and they will assist you with the change immediately.`
             }
           },
           {
             "@type": "Question",
-            "name": "Is there a contract or long-term commitment?",
+            "name": `Is there a contract with ${CONSTANTS.FOCUS_KEYWORD}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No, there are no contracts or long-term commitments. All plans are prepaid and you can cancel at any time without penalties or hidden fees."
+              "text": `No, there are no contracts or long-term commitments with ${CONSTANTS.FOCUS_KEYWORD}. All plans are prepaid and you can cancel at any time without penalties or hidden fees.`
             }
           },
           {
             "@type": "Question",
-            "name": "Do you offer refunds if I'm not satisfied?",
+            "name": `Does ${CONSTANTS.FOCUS_KEYWORD} offer refunds?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, we offer a 7-day money-back guarantee on all plans. If you're not completely satisfied, contact our support team within 7 days for a full refund."
+              "text": `Yes, ${CONSTANTS.FOCUS_KEYWORD} offers a 7-day money-back guarantee on all plans. If you're not completely satisfied, contact our support team within 7 days for a full refund.`
             }
           },
           {
             "@type": "Question",
-            "name": "Can I use one subscription on multiple devices?",
+            "name": `Can I use ${CONSTANTS.FOCUS_KEYWORD} on multiple devices?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, depending on your plan. Starter supports 1 device, Value supports 2 devices, and Ultimate supports 3 devices simultaneously."
+              "text": `Yes, depending on your ${CONSTANTS.FOCUS_KEYWORD} plan. Starter supports 1 device, Value supports 2 devices, and Ultimate supports 3 devices simultaneously.`
             }
           },
           {
             "@type": "Question",
-            "name": "What is the difference between the plans?",
+            "name": `What is the difference between ${CONSTANTS.FOCUS_KEYWORD} plans?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The Starter plan includes 15,000+ channels and 60,000+ VODs with 1 connection. The Value plan includes 18,000+ channels and 80,000+ VODs with 2 connections. The Ultimate plan includes 25,000+ premium channels and 100,000+ VODs with 3 connections plus VIP support and free VPN."
+              "text": `The ${CONSTANTS.FOCUS_KEYWORD} Starter plan includes 15,000+ channels and 60,000+ VODs with 1 connection. The Value plan includes 18,000+ channels and 80,000+ VODs with 2 connections. The Ultimate plan includes 25,000+ premium channels and 100,000+ VODs with 3 connections plus VIP support and free VPN.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Where can I find ${CONSTANTS.FOCUS_KEYWORD} reviews?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `You can find ${CONSTANTS.FOCUS_KEYWORD} reviews on our website, social media channels, and Reddit communities dedicated to IPTV streaming services.`
             }
           }
         ]
@@ -237,8 +230,9 @@ const OrganizationSchema = () => (
         "name": CONSTANTS.BRAND_NAME,
         "alternateName": CONSTANTS.FOCUS_KEYWORD,
         "url": `https://${CONSTANTS.DOMAIN}`,
-        "logo": `https://${CONSTANTS.DOMAIN}/img/logo.webp`,
-        "description": `Premium IPTV service with subscription plans starting at $7.08/month.`,
+        "logo": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+        "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+        "description": `Premium IPTV service with subscription plans starting at $7.08/month. ${CONSTANTS.FOCUS_KEYWORD} is the best IPTV provider for 2026.`,
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer support",
@@ -250,6 +244,7 @@ const OrganizationSchema = () => (
           "https://facebook.com/mariniosiptv",
           "https://instagram.com/mariniosiptv",
           "https://t.me/mariniosiptv",
+          "https://reddit.com/r/mariniosiptv",
         ],
       }),
     }}
@@ -267,8 +262,9 @@ const WebsiteSchema = () => (
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": CONSTANTS.BRAND_NAME,
+        "alternateName": CONSTANTS.FOCUS_KEYWORD,
         "url": `https://${CONSTANTS.DOMAIN}`,
-        "description": `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV subscription plans starting at $7.08/month.`,
+        "description": `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV subscription plans starting at $7.08/month. Read our ${CONSTANTS.FOCUS_KEYWORD} Review and ${CONSTANTS.FOCUS_KEYWORD} Guide.`,
         "potentialAction": {
           "@type": "SearchAction",
           "target": `https://${CONSTANTS.DOMAIN}/search?q={search_term_string}`,
@@ -279,55 +275,40 @@ const WebsiteSchema = () => (
   />
 );
 
+// WebPage Schema for better image display
+const WebPageSchema = () => (
+  <script
+    type="application/ld+json"
+    id="webpage-schema"
+    suppressHydrationWarning
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": `${CONSTANTS.FOCUS_KEYWORD} - Pricing & Subscription Plans`,
+        "description": `Choose your ${CONSTANTS.FOCUS_KEYWORD} subscription plan starting at $7.08/month. 15,000+ channels, 60,000+ VODs, 4K quality.`,
+        "url": `https://${CONSTANTS.DOMAIN}/pricing`,
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+          "width": "1200",
+          "height": "630"
+        }
+      })
+    }}
+  />
+);
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="theme-color" content="#0f172a" />
-        <meta name="thumbnail" content={`https://${CONSTANTS.DOMAIN}/img/logo.webp`} />
-        
-        {/* Favicons */}
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon-180x180.png" />
-        <link rel="manifest" href="/img/favicons/site.webmanifest" />
-      </head>
-      <body 
-        className={`${poppins.className} ${montserrat.variable} antialiased min-h-screen bg-slate-950 text-white`} 
-        suppressHydrationWarning
-      >
-        {/* JSON-LD Schemas */}
-        <OrganizationSchema />
-        <WebsiteSchema />
-        <PricingPageSchema />
-        <PricingFAQSchema />
-
-        <Header />
-        {children}
-        <Footer />
-
-        {/* Google Analytics */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
-            `,
-          }}
-        />
-      </body>
-    </html>
+    <>
+      {/* JSON-LD Schemas */}
+      <OrganizationSchema />
+      <WebsiteSchema />
+      <WebPageSchema />
+      <PricingPageSchema />
+      <PricingFAQSchema />
+      {children}
+    </>
   );
 }

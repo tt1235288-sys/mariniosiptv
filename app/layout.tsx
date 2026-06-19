@@ -4,8 +4,7 @@ import Script from 'next/script';
 import { Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
-import FloatingWhatsApp from './components/FloatingWhatsApp'; // ADD THIS IMPORT
-
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
 import { CONSTANTS } from '@/lib/seo';
 
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
     default: `${CONSTANTS.FOCUS_KEYWORD} - Best Premium IPTV Subscription Service 2026 | 15,000+ Channels & 4K Streaming`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  description: `Experience ${CONSTANTS.FOCUS_KEYWORD}: Stream 15,000+ Live Channels & 60,000+ VODs in Crystal Clear 4K quality. Fast activation, Anti-Freeze Technology, and 24/7 Pro Support.`,
+  description: `Experience ${CONSTANTS.FOCUS_KEYWORD}: Stream 15,000+ Live Channels & 60,000+ VODs in Crystal Clear 4K quality. Fast activation, Anti-Freeze Technology, and 24/7 Pro Support. Read our ${CONSTANTS.FOCUS_KEYWORD} Review and find the best ${CONSTANTS.FOCUS_KEYWORD} Service for your needs.`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
   publisher: CONSTANTS.BRAND_NAME,
@@ -54,15 +53,15 @@ export const metadata: Metadata = {
     canonical: `https://${CONSTANTS.DOMAIN}/`,
   },
   openGraph: {
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Best Premium IPTV Subscription Service 2026`,
-    description: `Stream 15,000+ Live Channels & 60,000+ VODs in 4K quality. Instant activation, anti-freeze technology, 24/7 support.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Best Premium IPTV Subscription Service 2026 | ${CONSTANTS.FOCUS_KEYWORD} Review & Guide`,
+    description: `Stream 15,000+ Live Channels & 60,000+ VODs in 4K quality. Instant activation, anti-freeze technology, 24/7 support. Read our ${CONSTANTS.FOCUS_KEYWORD} Review and ${CONSTANTS.FOCUS_KEYWORD} Guide.`,
     url: `https://${CONSTANTS.DOMAIN}/`,
     siteName: CONSTANTS.BRAND_NAME,
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: `https://${CONSTANTS.DOMAIN}/img/logo.webp`,
+        url: `https://${CONSTANTS.DOMAIN}/img/structer.png`,
         width: 1200,
         height: 630,
         alt: `${CONSTANTS.FOCUS_KEYWORD} - Premium IPTV Service`,
@@ -72,8 +71,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${CONSTANTS.FOCUS_KEYWORD} - Best Premium IPTV Subscription Service 2026`,
-    description: `15,000+ channels, 60,000+ VODs, 4K quality. Instant activation.`,
-    images: [`https://${CONSTANTS.DOMAIN}/img/logo.webp`],
+    description: `15,000+ channels, 60,000+ VODs, 4K quality. Instant activation. ${CONSTANTS.FOCUS_KEYWORD} Review and Guide.`,
+    images: [`https://${CONSTANTS.DOMAIN}/img/structer.png`],
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
   },
@@ -83,6 +82,11 @@ export const metadata: Metadata = {
   category: 'entertainment',
   keywords: [
     CONSTANTS.FOCUS_KEYWORD,
+    'Marinios IPTV',
+    'Marinios IPTV service',
+    'Marinios IPTV review',
+    'Marinios IPTV guide',
+    'Marinios Reddit',
     'IPTV service',
     'best IPTV provider',
     '4K streaming',
@@ -91,7 +95,6 @@ export const metadata: Metadata = {
     'IPTV subscription',
     'premium IPTV',
     'international channels',
-    'Marinios IPTV',
     'IPTV 2026',
     'streaming service',
     'cord cutting',
@@ -113,9 +116,9 @@ const OrganizationSchema = () => (
         "name": CONSTANTS.BRAND_NAME,
         "alternateName": CONSTANTS.FOCUS_KEYWORD,
         "url": `https://${CONSTANTS.DOMAIN}`,
-        "logo": `https://${CONSTANTS.DOMAIN}/img/logo.webp`,
-        "image": `https://${CONSTANTS.DOMAIN}/img/logo.webp`,
-        "description": `Premium IPTV subscription service with 15,000+ live channels and 60,000+ VODs in 4K quality.`,
+        "logo": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+        "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+        "description": `Premium IPTV subscription service with 15,000+ live channels and 60,000+ VODs in 4K quality. ${CONSTANTS.FOCUS_KEYWORD} is the best IPTV provider for 2026.`,
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer support",
@@ -126,7 +129,8 @@ const OrganizationSchema = () => (
           "https://twitter.com/mariniosiptv",
           "https://facebook.com/mariniosiptv",
           "https://instagram.com/mariniosiptv",
-          "https://t.me/mariniosiptv"
+          "https://t.me/mariniosiptv",
+          "https://reddit.com/r/mariniosiptv"
         ]
       })
     }}
@@ -144,8 +148,9 @@ const WebsiteSchema = () => (
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": CONSTANTS.BRAND_NAME,
+        "alternateName": CONSTANTS.FOCUS_KEYWORD,
         "url": `https://${CONSTANTS.DOMAIN}`,
-        "description": `Premium IPTV subscription service with ${CONSTANTS.FOCUS_KEYWORD}`,
+        "description": `Premium IPTV subscription service with ${CONSTANTS.FOCUS_KEYWORD}. Read our ${CONSTANTS.FOCUS_KEYWORD} Review and ${CONSTANTS.FOCUS_KEYWORD} Guide.`,
         "potentialAction": {
           "@type": "SearchAction",
           "target": `https://${CONSTANTS.DOMAIN}/search?q={search_term_string}`,
@@ -167,9 +172,9 @@ const ProductSchema = () => (
         "@context": "https://schema.org",
         "@type": "Product",
         "name": `${CONSTANTS.BRAND_NAME} Premium Subscription`,
-        "logo": `https://${CONSTANTS.DOMAIN}/img/logo.webp`,
-        "image": `https://${CONSTANTS.DOMAIN}/img/logo.webp`,
-        "description": `Premium IPTV service with 15,000+ live channels, 60,000+ VODs, and 4K streaming quality.`,
+        "logo": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+        "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+        "description": `Premium IPTV service with 15,000+ live channels, 60,000+ VODs, and 4K streaming quality. ${CONSTANTS.FOCUS_KEYWORD} offers the best value in IPTV entertainment.`,
         "brand": { 
           "@type": "Brand", 
           "name": CONSTANTS.BRAND_NAME 
@@ -226,12 +231,13 @@ const ServiceSchema = () => (
         "@context": "https://schema.org",
         "@type": "Service",
         "name": `${CONSTANTS.BRAND_NAME} IPTV Subscription`,
+        "alternateName": CONSTANTS.FOCUS_KEYWORD,
         "serviceType": "IPTV Subscription",
         "provider": {
           "@type": "Organization",
           "name": CONSTANTS.BRAND_NAME
         },
-        "description": "Premium IPTV service with 15,000+ live channels, 60,000+ VODs, and 4K streaming quality.",
+        "description": `Premium IPTV service with 15,000+ live channels, 60,000+ VODs, and 4K streaming quality. ${CONSTANTS.FOCUS_KEYWORD} Review shows why we're the best IPTV provider.`,
         "areaServed": "Worldwide",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
@@ -271,6 +277,63 @@ const ServiceSchema = () => (
   />
 );
 
+// FAQ Schema
+const FAQSchema = () => (
+  <script
+    type="application/ld+json"
+    id="faq-schema"
+    suppressHydrationWarning
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Marinios IPTV?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Marinios IPTV is a premium IPTV subscription service offering 15,000+ live channels and 60,000+ VODs in 4K quality with anti-freeze technology."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Marinios IPTV the best IPTV service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Based on Marinios IPTV Review ratings, it's one of the highest-rated IPTV providers with 4.9/5 stars from 5000+ reviews."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What devices support Marinios IPTV?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Marinios IPTV works on all major devices including Smart TVs, Android, iOS, Firestick, MAG boxes, and PC/Mac."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I find Marinios IPTV reviews on Reddit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can find Marinios IPTV reviews and discussions on Reddit communities dedicated to IPTV streaming services."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Marinios IPTV offer a free trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Marinios IPTV offers a 7-day money-back guarantee, allowing you to test the service risk-free."
+            }
+          }
+        ]
+      })
+    }}
+  />
+);
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark scroll-smooth">
@@ -280,9 +343,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" content="#0f172a" />
-        <meta name="thumbnail" content={`https://${CONSTANTS.DOMAIN}/img/logo.webp`} />
+        <meta name="thumbnail" content={`https://${CONSTANTS.DOMAIN}/img/structer.png`} />
         
-        {/* Favicon Links - ADD THESE */}
+        {/* Favicon Links */}
         <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="48x48" href="/img/favicons/favicon-48x48.png" />
@@ -325,6 +388,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WebsiteSchema />
         <ProductSchema />
         <ServiceSchema />
+        <FAQSchema />
 
         <Header />
         {children}

@@ -74,7 +74,7 @@ export default function GlobalServerMap() {
   }
 
   return (
-    <section className="relative w-full overflow-hidden bg-black py-16 sm:py-20 lg:py-28 border-y border-white/10">
+    <section className="relative w-full overflow-hidden bg-black py-16 sm:py-20 lg:py-28 border-y border-white/10" aria-label="Global server coverage map">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(250,204,21,0.12),_transparent_45%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_black,_rgba(0,0,0,0.82),_black)]" />
@@ -113,7 +113,6 @@ export default function GlobalServerMap() {
           <div className="absolute -left-20 top-10 h-48 w-48 rounded-full bg-yellow-400/10 blur-[80px]" />
           <div className="absolute -right-20 bottom-10 h-48 w-48 rounded-full bg-yellow-500/10 blur-[80px]" />
 
-          {/* Fixed: Added suppressHydrationWarning */}
           <div className="relative h-[360px] w-full overflow-hidden rounded-2xl bg-slate-950/80 sm:h-[470px] lg:h-[560px]" suppressHydrationWarning>
             <ComposableMap
               projection="geoEqualEarth"
@@ -174,7 +173,7 @@ export default function GlobalServerMap() {
                 }
               </Geographies>
 
-              {/* Animated connection lines - Added suppressHydrationWarning */}
+              {/* Animated connection lines */}
               {serverMarkers.map((marker, idx) => (
                 <Line
                   key={`line-${marker.name}`}

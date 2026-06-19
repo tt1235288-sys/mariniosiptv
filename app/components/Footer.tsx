@@ -199,6 +199,7 @@ export default function Footer() {
                 width={45}
                 height={30}
                 className="object-contain opacity-90 hover:opacity-100 transition-opacity"
+                loading="lazy"
               />
             </div>
           ))}

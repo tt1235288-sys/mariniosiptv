@@ -103,12 +103,14 @@ export default function PricingSection() {
             <ul className="w-full space-y-3 flex-grow relative mb-8">
               {[
                 `${devices} Device${devices > 1 ? 's' : ''} Connection`,
-                'HD, FHD & 4K Quality',
-                '15,000+ Live Channels',
-                '60,000+ VODs (Movies)',
-                'Standard EPG Guide',
-                'Basic Anti-Freeze Tech',
-                'Standard 24/7 Support'
+                'Uncompressed Ultra HD & 4K',
+                '25,000+ Premium Channels',
+                '100,000+ VODs (Daily Update)',
+                'Premium Sports & PPV Pass',
+                'Full EPG & 7-Day Catch-up',
+                'Advanced Anti-Freeze VIP',
+                'VPN Included Free',
+                'Direct WhatsApp VIP Support'
               ].map((feature) => (
                 <li key={feature} className="flex items-center gap-3 text-white/60 text-sm">
                   <CheckCircle2 className="w-4 h-4 text-white/30 flex-shrink-0" />
@@ -197,12 +199,14 @@ export default function PricingSection() {
             <ul className="w-full space-y-3 flex-grow relative mb-8">
               {[
                 `${devices} Device${devices > 1 ? 's' : ''} Connection`,
-                'HD, FHD & 4K Quality',
-                '18,000+ Live Channels',
-                '80,000+ VODs (Movies)',
-                'Full EPG Guide',
-                'Pro Anti-Freeze Tech',
-                'Priority 24/7 Support'
+                'Uncompressed Ultra HD & 4K',
+                '25,000+ Premium Channels',
+                '100,000+ VODs (Daily Update)',
+                'Premium Sports & PPV Pass',
+                'Full EPG & 7-Day Catch-up',
+                'Advanced Anti-Freeze VIP',
+                'VPN Included Free',
+                'Direct WhatsApp VIP Support'
               ].map((feature) => (
                 <li key={feature} className="flex items-center gap-3 text-white/60 text-sm">
                   <CheckCircle2 className="w-4 h-4 text-white/30 flex-shrink-0" />

@@ -150,9 +150,9 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full"></div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Latest Movies
-            </h3>
+            </h4>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
             Enjoy thousands of movies from around the world, available anytime on any device.
@@ -166,9 +166,9 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full"></div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Popular TV Series
-            </h3>
+            </h4>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
             Never miss an episode with complete seasons, new releases, and fan-favorite shows.
@@ -182,9 +182,9 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full"></div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Live Sports Events
-            </h3>
+            </h4>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
             Enjoy premium sports channels, live events, and PPV fights from anywhere.

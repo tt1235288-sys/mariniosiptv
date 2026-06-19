@@ -14,7 +14,7 @@ import { FadeIn } from '../components/AnimatedSection';
 import Link from 'next/link';
 import FAQ from '../components/FAQ';
 
-// Device data
+// Device data (same as before - keeping it concise)
 const devices = [
   { id: 'firestick', name: 'Firestick / Android', icon: MonitorSmartphone, popular: true, steps: 6 },
   { id: 'smarttv', name: 'Smart TVs', icon: Tv, popular: false, steps: 6 },
@@ -22,7 +22,7 @@ const devices = [
   { id: 'pc', name: 'PC / Mac', icon: Laptop, popular: false, steps: 6 },
 ];
 
-// Step data for each device with valuable content
+// Step data for each device (keeping the same detailed content)
 const stepData = {
   firestick: {
     title: 'Firestick & Android Box',
@@ -242,7 +242,7 @@ const stepData = {
   }
 };
 
-// Step Component with scroll animation - No emojis
+// Step Component with scroll animation (keeping the same)
 function StepItem({ step, index, isLast }: { step: any; index: number; isLast: boolean }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -279,16 +279,13 @@ function StepItem({ step, index, isLast }: { step: any; index: number; isLast: b
               animate={{ opacity: isInView ? 1 : 0 }}
               transition={{ delay: index * 0.15 + 0.3 }}
             >
-              {/* Dotted line background */}
               <div className="absolute inset-0 bg-[radial-gradient(circle,_#facc15_1px,_transparent_1px)] bg-[length:4px_8px] bg-repeat-y opacity-20" />
-              {/* Solid line that fills on scroll */}
               <motion.div 
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 bg-gradient-to-b from-yellow-400 to-yellow-600"
                 initial={{ height: 0 }}
                 animate={{ height: isInView ? '100%' : 0 }}
                 transition={{ duration: 0.8, delay: index * 0.15 + 0.2 }}
               />
-              {/* Bouncing dot on line */}
               {isInView && (
                 <motion.div 
                   className="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-yellow-400 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.6)]"
@@ -338,7 +335,7 @@ function StepItem({ step, index, isLast }: { step: any; index: number; isLast: b
               {step.description}
             </p>
             
-            {/* Tip Box - appears when step comes into view - No emojis */}
+            {/* Tip Box */}
             {isInView && (
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -368,7 +365,41 @@ function StepItem({ step, index, isLast }: { step: any; index: number; isLast: b
 
 export default function SetupPage() {
   const [activeDevice, setActiveDevice] = useState('firestick');
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const currentData = stepData[activeDevice as keyof typeof stepData];
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  // Auto-open video popup on page load
+  useEffect(() => {
+    setIsMounted(true);
+    
+    // Auto-open video popup after 1.5 seconds
+    const timer = setTimeout(() => {
+      setIsVideoOpen(true);
+    }, 1500);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handle video close with pause
+  const closeVideo = () => {
+    setIsVideoOpen(false);
+    if (iframeRef.current) {
+      iframeRef.current.src = '';
+    }
+  };
+
+  // Handle video open
+  const openVideo = () => {
+    setIsVideoOpen(true);
+    // Small delay to ensure DOM is ready before setting src
+    setTimeout(() => {
+      if (iframeRef.current) {
+        iframeRef.current.src = 'https://www.youtube.com/embed/9pZOoS-1NHg?autoplay=1&rel=0';
+      }
+    }, 100);
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-950">
@@ -381,6 +412,9 @@ export default function SetupPage() {
           <img
             src="/img/bg-1.webp"
             alt={`${CONSTANTS.FOCUS_KEYWORD} device setup guide`}
+            width="1920"
+            height="1080"
+            loading="eager"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
@@ -423,7 +457,6 @@ export default function SetupPage() {
               <span className="flex items-center gap-2"><Headphones className="w-3.5 h-3.5 text-yellow-400/60" /> 24/7 Support</span>
               <span className="flex items-center gap-2"><Users className="w-3.5 h-3.5 text-yellow-400/60" /> 20,000+ Users</span>
             </div>
-
           </FadeIn>
         </div>
       </section>
@@ -538,97 +571,84 @@ export default function SetupPage() {
         </motion.div>
       </section>
 
-{/* Support Section */}
-<section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-    
-    {/* Video Tutorial with Popup */}
-    <div className="bg-gradient-to-br from-slate-900/50 to-slate-950/50 border border-white/10 rounded-2xl p-8 text-center hover:border-yellow-400/30 transition-all group">
-      <div className="w-16 h-16 rounded-xl bg-yellow-400/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-400/20 transition-colors">
-        <PlayCircle className="w-8 h-8 text-yellow-400" />
-      </div>
-      <h3 className="text-xl font-bold text-white mb-2">Video Tutorial</h3>
-      <p className="text-white/50 text-sm mb-4">Watch our step-by-step video guide for visual learners</p>
-      <button 
-        onClick={() => {
-          const modal = document.getElementById('videoModal');
-          const iframe = document.getElementById('youtubeIframe') as HTMLIFrameElement;
-          if (modal && iframe) {
-            modal.style.display = 'flex';
-            iframe.src = 'https://www.youtube.com/embed/9pZOoS-1NHg?autoplay=1&rel=0';
-          }
-        }}
-        className="inline-flex items-center gap-2 text-yellow-400 font-medium text-sm hover:gap-3 transition-all cursor-pointer"
-      >
-        Watch Now <ArrowRight className="w-4 h-4" />
-      </button>
-    </div>
+      {/* Support Section with Video Tutorial */}
+      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* Video Tutorial */}
+          <div className="bg-gradient-to-br from-slate-900/50 to-slate-950/50 border border-white/10 rounded-2xl p-8 text-center hover:border-yellow-400/30 transition-all group">
+            <div className="w-16 h-16 rounded-xl bg-yellow-400/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-400/20 transition-colors">
+              <PlayCircle className="w-8 h-8 text-yellow-400" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Video Tutorial</h3>
+            <p className="text-white/50 text-sm mb-4">Watch our step-by-step video guide for visual learners</p>
+            <button 
+              onClick={openVideo}
+              className="inline-flex items-center gap-2 text-yellow-400 font-medium text-sm hover:gap-3 transition-all cursor-pointer"
+            >
+              Watch Now <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
 
-    {/* WhatsApp Support */}
-    <div className="bg-gradient-to-br from-slate-900/50 to-slate-950/50 border border-white/10 rounded-2xl p-8 text-center hover:border-yellow-400/30 transition-all group">
-      <div className="w-16 h-16 rounded-xl bg-green-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/20 transition-colors">
-        <MessageCircle className="w-8 h-8 text-green-500" />
-      </div>
-      <h3 className="text-xl font-bold text-white mb-2">24/7 WhatsApp Support</h3>
-      <p className="text-white/50 text-sm mb-4">Get instant help from our support team on WhatsApp</p>
-      <a 
-        href="https://wa.me/212600000000?text=Hello%20Marinios%20IPTV%2C%20I%20need%20help%20with%20setup"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-green-500 font-medium text-sm hover:gap-3 transition-all cursor-pointer"
-      >
-        Chat on WhatsApp <ArrowRight className="w-4 h-4" />
-      </a>
-    </div>
-  </div>
-</section>
+          {/* WhatsApp Support */}
+          <div className="bg-gradient-to-br from-slate-900/50 to-slate-950/50 border border-white/10 rounded-2xl p-8 text-center hover:border-yellow-400/30 transition-all group">
+            <div className="w-16 h-16 rounded-xl bg-green-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/20 transition-colors">
+              <MessageCircle className="w-8 h-8 text-green-500" />
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">24/7 WhatsApp Support</h3>
+            <p className="text-white/50 text-sm mb-4">Get instant help from our support team on WhatsApp</p>
+            <a 
+              href="https://wa.me/212600000000?text=Hello%20Marinios%20IPTV%2C%20I%20need%20help%20with%20setup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-green-500 font-medium text-sm hover:gap-3 transition-all cursor-pointer"
+            >
+              Chat on WhatsApp <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
 
-{/* Video Modal - Add this right after the support section */}
-<div 
-  id="videoModal" 
-  className="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-md"
-  onClick={(e) => {
-    if (e.target === e.currentTarget) {
-      const modal = document.getElementById('videoModal');
-      const iframe = document.getElementById('youtubeIframe') as HTMLIFrameElement;
-      if (modal && iframe) {
-        modal.style.display = 'none';
-        iframe.src = '';
-      }
-    }
-  }}
->
-  <div className="relative w-full max-w-4xl mx-4">
-    <button 
-      onClick={() => {
-        const modal = document.getElementById('videoModal');
-        const iframe = document.getElementById('youtubeIframe') as HTMLIFrameElement;
-        if (modal && iframe) {
-          modal.style.display = 'none';
-          iframe.src = '';
-        }
-      }}
-      className="absolute -top-12 right-0 text-white/60 hover:text-yellow-400 transition-colors cursor-pointer flex items-center gap-2 text-sm"
-    >
-      <X className="w-5 h-5" /> Close
-    </button>
-    <div className="relative pb-[56.25%] h-0 rounded-2xl overflow-hidden shadow-2xl border border-yellow-400/30">
-        <iframe
-        id="youtubeIframe"
-        className="absolute top-0 left-0 w-full h-full"
-        src="https://www.youtube.com/embed/9pZOoS-1NHg?autoplay=1&rel=0"
-        title="YouTube video player - Marinios IPTV Setup Guide"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        />
-    </div>
-    <div className="mt-4 text-center">
-      <p className="text-white/50 text-sm">How to setup Marinios IPTV on your device - Complete Guide</p>
-    </div>
-  </div>
-</div>
+      {/* Video Modal - Fixed with proper auto-play and close functionality */}
+      {isVideoOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              closeVideo();
+            }
+          }}
+        >
+          <div className="relative w-full max-w-4xl mx-4">
+            {/* Close button */}
+            <button 
+              onClick={closeVideo}
+              className="absolute -top-12 right-0 text-white/60 hover:text-yellow-400 transition-colors cursor-pointer flex items-center gap-2 text-sm z-10"
+            >
+              <X className="w-5 h-5" /> Close Video
+            </button>
+            
+            {/* Video container */}
+            <div className="relative pb-[56.25%] h-0 rounded-2xl overflow-hidden shadow-2xl border border-yellow-400/30 bg-black">
+              <iframe
+                ref={iframeRef}
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/9pZOoS-1NHg?autoplay=1&rel=0&modestbranding=1"
+                title="Marinios IPTV Setup Guide - Complete Tutorial"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            
+            {/* Video description */}
+            <div className="mt-4 text-center">
+              <p className="text-white/50 text-sm">How to setup {CONSTANTS.FOCUS_KEYWORD} on your device - Complete Guide</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* FAQ Section */}
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-24">
