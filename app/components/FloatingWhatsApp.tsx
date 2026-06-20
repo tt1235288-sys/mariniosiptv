@@ -8,6 +8,7 @@ export default function FloatingWhatsApp() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [showBubble, setShowBubble] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [chatHistory, setChatHistory] = useState([
     { sender: 'support', text: 'Hi there! How can we help you today?', time: getCurrentTime() },
   ]);
@@ -25,6 +26,18 @@ export default function FloatingWhatsApp() {
     return `${hours}:${minutes}`;
   }
 
+  // Listen for mobile menu toggle events
+  useEffect(() => {
+    const handleMenuToggle = (e: CustomEvent) => {
+      setIsMobileMenuOpen(e.detail.isOpen);
+    };
+
+    window.addEventListener('mobileMenuToggle' as any, handleMenuToggle);
+    return () => {
+      window.removeEventListener('mobileMenuToggle' as any, handleMenuToggle);
+    };
+  }, []);
+
   // Auto-hide bubble after 4 seconds, then show again after 6 seconds
   useEffect(() => {
     const showBubbleCycle = () => {
@@ -36,14 +49,14 @@ export default function FloatingWhatsApp() {
         
         // Show again after 6 seconds
         setTimeout(() => {
-          if (!open) {
+          if (!open && !isMobileMenuOpen) {
             showBubbleCycle();
           }
         }, 6000);
       }, 4000);
     };
 
-    if (!open) {
+    if (!open && !isMobileMenuOpen) {
       showBubbleCycle();
     }
 
@@ -52,7 +65,7 @@ export default function FloatingWhatsApp() {
         clearTimeout(bubbleTimeoutRef.current);
       }
     };
-  }, [open]);
+  }, [open, isMobileMenuOpen]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -76,6 +89,13 @@ export default function FloatingWhatsApp() {
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
+
+  // Close WhatsApp when mobile menu opens
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setOpen(false);
+    }
+  }, [isMobileMenuOpen]);
 
   const sendToWhatsapp = () => {
     if (!message.trim()) return;
@@ -122,6 +142,11 @@ export default function FloatingWhatsApp() {
       />
     </div>
   );
+
+  // Don't render anything if mobile menu is open
+  if (isMobileMenuOpen) {
+    return null;
+  }
 
   return (
     <>
@@ -215,7 +240,7 @@ export default function FloatingWhatsApp() {
             <div ref={chatEndRef} />
           </div>
 
-          {/* Input */}
+          {/* Input - Fixed: Send button is now visible on mobile */}
           <div className="p-3 bg-white border-t flex gap-2 items-center flex-shrink-0">
             <input
               ref={inputRef}
@@ -224,7 +249,7 @@ export default function FloatingWhatsApp() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={handleKeyPress}
-              className="flex-1 rounded-full px-4 py-2.5 sm:py-3 border border-slate-200 outline-none bg-white text-gray-600 text-sm sm:text-base placeholder:text-gray-400 focus:ring-2 focus:ring-green-400 transition"
+              className="flex-1 rounded-full px-4 py-2.5 sm:py-3 border border-slate-200 outline-none bg-white text-gray-600 text-sm sm:text-base placeholder:text-gray-400 focus:ring-2 focus:ring-green-400 transition min-w-0"
             />
             <button
               onClick={sendToWhatsapp}
