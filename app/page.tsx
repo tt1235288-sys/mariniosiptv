@@ -1,18 +1,110 @@
+'use client';
+
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { CONSTANTS, generateSEOMetadata } from '@/lib/seo';
-import { PlayCircle, ShieldCheck, Map, MonitorPlay, Zap, Download, CreditCard, CheckCircle2, Star, ChevronDown, MonitorSmartphone, Tv2, Globe, Cpu, ArrowRight, CheckCircle, Gift, Infinity as InfinityIcon, Headphones, Award, Clock, Lock, ThumbsUp, Users, Server, Film, Radio, Sparkles, Heart, HelpCircle, Shield, Trophy, Calendar, Wifi, Database, TrendingUp, Layers, Smartphone, Tv, Volume2, Activity, Cloud, Layout, Grid, BarChart, Package, Medal, Settings, LifeBuoy } from 'lucide-react';
-import { channels, categories } from '@/lib/channels';
-import { blogPosts } from '@/lib/blog';
+import { CONSTANTS } from '@/lib/seo';
+// app/page.tsx - Fix the import statement
+
+import { 
+  PlayCircle, 
+  ShieldCheck, 
+  MonitorPlay, 
+  Zap, 
+  Download, 
+  CreditCard, 
+  CheckCircle2, 
+  Star, 
+  MonitorSmartphone, 
+  Tv2, 
+  Globe, 
+  Cpu, 
+  ArrowRight, 
+  Headphones, 
+  Award, 
+  Lock, 
+  ThumbsUp, 
+  Users, 
+  Server, 
+  Film, 
+  Trophy, 
+  Calendar, 
+  Wifi, 
+  Database, 
+  TrendingUp, 
+  Tv, 
+  Volume2, 
+  Activity, 
+  BarChart, 
+  Medal, 
+  Settings, 
+  LifeBuoy,
+  Shield  // ✅ ADD THIS - it was missing
+} from 'lucide-react';
 import { FadeIn, FadeInStagger, FadeInItem } from './components/AnimatedSection';
-import PricingSection from './components/PricingSection';
 import AnimatedCounter from './components/AnimatedCounter';
-import MovieSlider from './components/MovieSlider';
 import Image from 'next/image';
-import PartnerSlider from './components/PartnerSlider';
-import FAQ from './components/FAQ';
-import GlobalServerMap from './components/GlobalServerMap';
+import { useState, useEffect } from 'react';
+
+// Import blog posts directly (since we're in a client component, we need to fetch them)
+// We'll use useEffect to load them, or we can import them directly
+import { blogPosts } from '@/lib/blog';
+
+// ✅ Lazy load heavy components with loading states - REMOVED ssr: false
+const PricingSection = dynamic(() => import('./components/PricingSection'), {
+  loading: () => (
+    <div className="py-20 text-center">
+      <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" />
+    </div>
+  ),
+});
+
+const MovieSlider = dynamic(() => import('./components/MovieSlider'), {
+  loading: () => (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {[...Array(4)].map((_, i) => (
+        <div key={i} className="aspect-[2/3] bg-slate-800 animate-pulse rounded-xl" />
+      ))}
+    </div>
+  ),
+});
+
+const PartnerSlider = dynamic(() => import('./components/PartnerSlider'), {
+  loading: () => (
+    <div className="flex gap-8 py-8 overflow-hidden">
+      {[...Array(6)].map((_, i) => (
+        <div key={i} className="w-24 h-24 bg-slate-800 animate-pulse rounded-full flex-shrink-0" />
+      ))}
+    </div>
+  ),
+});
+
+const GlobalServerMap = dynamic(() => import('./components/GlobalServerMap'), {
+  loading: () => (
+    <div className="h-[400px] bg-slate-800 animate-pulse rounded-2xl flex items-center justify-center">
+      <div className="text-white/50">Loading map...</div>
+    </div>
+  ),
+});
+
+const FAQ = dynamic(() => import('./components/FAQ'), {
+  loading: () => (
+    <div className="py-20 text-center">
+      <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" />
+    </div>
+  ),
+});
 
 export default function Home() {
+  // For client-side only rendering of components that use window/document
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Only render components that need client-side features after mount
+  const showClientComponents = isMounted;
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 overflow-hidden">
       {/* Hero Section with Blur Background Image */}
@@ -24,13 +116,15 @@ export default function Home() {
             width={1920}
             height={1080}
             priority
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
             className="w-full h-full object-cover"
             sizes="100vw"
-            quality={85}
+            quality={80}
           />
-          <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/80 to-slate-950"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/15 via-transparent to-transparent pointer-events-none"></div>
+          <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/80 to-slate-950" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/15 via-transparent to-transparent pointer-events-none" />
         </div>
         
         <FadeIn className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
@@ -62,11 +156,22 @@ export default function Home() {
         </FadeIn>
       </section>
 
-      <PartnerSlider />
+      {/* Lazy loaded components - will only render on client */}
+      {showClientComponents ? (
+        <PartnerSlider />
+      ) : (
+        <div className="py-8">
+          <div className="flex gap-8 py-8 overflow-hidden">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="w-24 h-24 bg-slate-800 animate-pulse rounded-full flex-shrink-0" />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* 3-Step Setup - Glassmorphism Style */}
       <section className="py-32 bg-gradient-to-b from-slate-900 to-slate-950 border-y border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-yellow-400/10 via-transparent to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-yellow-400/10 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn>
             <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-20">
@@ -76,7 +181,7 @@ export default function Home() {
             </div>
           </FadeIn>
           <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            <div className="hidden md:block absolute top-[40%] left-[16%] right-[16%] h-1 border-t-2 border-dashed border-white/20 -translate-y-1/2"></div>
+            <div className="hidden md:block absolute top-[40%] left-[16%] right-[16%] h-1 border-t-2 border-dashed border-white/20 -translate-y-1/2" />
             
             <FadeInItem className="relative flex flex-col items-center text-center z-10 group">
               <div className="w-24 h-24 rounded-[2rem] bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-white/10 flex items-center justify-center mb-8 group-hover:border-yellow-400/50 group-hover:-translate-y-2 transition-all duration-300 shadow-xl relative backdrop-blur-sm">
@@ -88,7 +193,7 @@ export default function Home() {
             </FadeInItem>
 
             <FadeInItem className="relative flex flex-col items-center text-center z-10 group">
-              <div className="absolute inset-0 bg-yellow-400/10 blur-3xl rounded-[3rem] group-hover:bg-yellow-400/20 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-yellow-400/10 blur-3xl rounded-[3rem] group-hover:bg-yellow-400/20 transition-all duration-500" />
               <div className="w-28 h-28 rounded-[2.5rem] bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-yellow-400 shadow-[0_0_30px_rgba(250,204,21,0.2)] flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 transition-transform duration-500 backdrop-blur-sm">
                 <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">2</div>
                 <Download className="w-12 h-12 text-yellow-400 relative z-10" />
@@ -111,7 +216,7 @@ export default function Home() {
 
       {/* 5. Animated Statistics Trust Section */}
       <section className="py-24 bg-slate-900 rounded-[3rem] mx-4 sm:mx-8 mb-24 border border-white/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-400/5 via-transparent to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-400/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn className="text-center mb-12">
             <h3 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight"><span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> By The Numbers</h3>
@@ -144,18 +249,32 @@ export default function Home() {
 
       {/* Media Grid Section */}
       <section id="channels" className="py-24 max-w-[100vw] overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none" />
         <FadeIn className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col justify-between items-start mb-12 gap-6 relative z-10 w-full">
           <div>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight"><span className="text-yellow-400">PREMIUM</span> CONTENT LIBRARY</h2>
             <p className="text-white/60 text-lg">Explore thousands of live channels, blockbuster movies, hit series, and exclusive sports events included with your {CONSTANTS.FOCUS_KEYWORD} subscription.</p>
           </div>
         </FadeIn>
-        <MovieSlider />
+        {showClientComponents ? (
+          <MovieSlider />
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="aspect-[2/3] bg-slate-800 animate-pulse rounded-xl" />
+            ))}
+          </div>
+        )}
       </section>
 
-      {/* Pricing Section */}
-      <PricingSection />
+      {/* Lazy loaded Pricing Section */}
+      {showClientComponents ? (
+        <PricingSection />
+      ) : (
+        <div className="py-20 text-center">
+          <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" />
+        </div>
+      )}
 
       {/* Trust Badges - Glassmorphism */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -201,12 +320,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GlobalMap Section */}
-      <GlobalServerMap />
+      {/* Lazy loaded Global Map */}
+      {showClientComponents ? (
+        <GlobalServerMap />
+      ) : (
+        <div className="h-[400px] bg-slate-800 animate-pulse rounded-2xl flex items-center justify-center">
+          <div className="text-white/50">Loading map...</div>
+        </div>
+      )}
 
       {/* Benefits Section - Pattern Background */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0z' fill='none'/%3E%3Ccircle cx='15' cy='15' r='1' fill='%23facc15' fill-opacity='0.3'/%3E%3C/svg%3E")` }}></div>
+        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0z' fill='none'/%3E%3Ccircle cx='15' cy='15' r='1' fill='%23facc15' fill-opacity='0.3'/%3E%3C/svg%3E")` }} />
         <FadeIn className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Why <span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> Is The Best IPTV Choice</h2>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">Thousands of customers have switched to our IPTV service. Here's why {CONSTANTS.FOCUS_KEYWORD} outperforms traditional cable and other providers.</p>
@@ -283,6 +408,8 @@ export default function Home() {
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/35 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full border border-yellow-400/30 bg-black/60 px-4 py-2 text-xs font-black uppercase tracking-widest text-yellow-400 backdrop-blur-md">
@@ -399,6 +526,8 @@ export default function Home() {
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full border border-red-500/30 bg-red-600/20 px-4 py-2 text-xs font-black uppercase tracking-widest text-red-400 backdrop-blur-md">
@@ -427,7 +556,7 @@ export default function Home() {
 
       {/* Modern Comparison Table - Redesigned */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 via-transparent to-yellow-400/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 via-transparent to-yellow-400/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-yellow-400/10 px-4 py-2 rounded-full border border-yellow-400/20 mb-6">
@@ -557,9 +686,9 @@ export default function Home() {
         </FadeInStagger>
       </section>
 
-      {/* Device Support - Pattern Background - CHANGED TO H3 */}
+      {/* Device Support - Pattern Background */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full relative">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Crect x='18' y='18' width='4' height='4' fill='%23facc15'/%3E%3C/svg%3E")` }}></div>
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Crect x='18' y='18' width='4' height='4' fill='%23facc15'/%3E%3C/svg%3E")` }} />
         <FadeIn className="relative z-10">
           <h3 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Works On All Your Devices</h3>
           <p className="text-white/60 text-lg max-w-3xl mx-auto mb-16">{CONSTANTS.FOCUS_KEYWORD} is compatible with almost every device. Install our recommended apps and start watching instantly.</p>
@@ -584,12 +713,18 @@ export default function Home() {
         </FadeInStagger>
       </section>
 
-      {/* FAQ Section */}
-      <FAQ />
+      {/* Lazy loaded FAQ */}
+      {showClientComponents ? (
+        <FAQ />
+      ) : (
+        <div className="py-20 text-center">
+          <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" />
+        </div>
+      )}
 
-      {/* Blog Section - Pattern Background - CHANGED TO H3 */}
+      {/* Blog Section - Pattern Background */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
-        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }}></div>
+        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
         <FadeIn className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 relative z-10">
           <div>
             <h3 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Latest <span className="text-yellow-400">News & Guides</span></h3>
@@ -611,8 +746,10 @@ export default function Home() {
                    loading="lazy"
                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                    sizes="(max-width: 768px) 100vw, 33vw"
+                   placeholder="blur"
+                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
                  />
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
                  <div className="absolute bottom-6 left-6">
                    <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-xs font-black uppercase tracking-widest rounded-lg mb-3 inline-block">
                      {post.author}
@@ -645,6 +782,8 @@ export default function Home() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover opacity-90"
               sizes="100vw"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
             />
 
             {/* Image Overlays */}

@@ -1,5 +1,4 @@
-// app/layout.tsx
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
@@ -7,6 +6,7 @@ import Header from './components/Header';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
 import { CONSTANTS } from '@/lib/seo';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
@@ -76,8 +76,50 @@ export const metadata: Metadata = {
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
   },
+  // FIXED: Added icons property
+  icons: {
+    icon: [
+      { url: '/img/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/img/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/img/favicons/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/img/favicons/favicon-64x64.png', sizes: '64x64', type: 'image/png' },
+      { url: '/img/favicons/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/img/favicons/favicon-128x128.png', sizes: '128x128', type: 'image/png' },
+      { url: '/img/favicons/favicon-256x256.png', sizes: '256x256', type: 'image/png' },
+      { url: '/img/favicons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/img/favicons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/img/favicons/favicon.ico',
+    apple: [
+      { url: '/img/favicons/apple-touch-icon-57x57.png', sizes: '57x57', type: 'image/png' },
+      { url: '/img/favicons/apple-touch-icon-72x72.png', sizes: '72x72', type: 'image/png' },
+      { url: '/img/favicons/apple-touch-icon-114x114.png', sizes: '114x114', type: 'image/png' },
+      { url: '/img/favicons/apple-touch-icon-120x120.png', sizes: '120x120', type: 'image/png' },
+      { url: '/img/favicons/apple-touch-icon-144x144.png', sizes: '144x144', type: 'image/png' },
+      { url: '/img/favicons/apple-touch-icon-152x152.png', sizes: '152x152', type: 'image/png' },
+      { url: '/img/favicons/apple-touch-icon-180x180.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/img/favicons/safari-pinned-tab.svg',
+        color: '#facc15',
+      },
+    ],
+  },
+  manifest: '/img/favicons/site.webmanifest',
+  appleWebApp: {
+    capable: true,
+    title: CONSTANTS.BRAND_NAME,
+    statusBarStyle: 'black-translucent',
+  },
+  other: {
+    'msapplication-TileColor': '#0f172a',
+    'msapplication-TileImage': '/img/favicons/mstile-144x144.png',
+    'msapplication-config': '/img/favicons/browserconfig.xml',
+  },
   verification: {
-    google: '',
+    google: 'G-6NR51QZXKL',
   },
   category: 'entertainment',
   keywords: [
@@ -96,6 +138,13 @@ export const metadata: Metadata = {
     'live channels',
     'movies on demand'
   ],
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#0f172a',
 };
 
 // Organization Schema
@@ -386,41 +435,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" content="#0f172a" />
         <meta name="thumbnail" content={`https://${CONSTANTS.DOMAIN}/img/structer.png`} />
-        
-        {/* Favicon Links */}
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="48x48" href="/img/favicons/favicon-48x48.png" />
-        <link rel="icon" type="image/png" sizes="64x64" href="/img/favicons/favicon-64x64.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicons/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="128x128" href="/img/favicons/favicon-128x128.png" />
-        <link rel="icon" type="image/png" sizes="256x256" href="/img/favicons/favicon-256x256.png" />
-        <link rel="icon" type="image/x-icon" href="/img/favicons/favicon.ico" />
-        
-        {/* Apple Touch Icons */}
-        <link rel="apple-touch-icon" sizes="57x57" href="/img/favicons/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/img/favicons/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/img/favicons/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/img/favicons/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/img/favicons/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/img/favicons/apple-touch-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon-180x180.png" />
-        
-        {/* Android Chrome Icons */}
-        <link rel="icon" type="image/png" sizes="48x48" href="/img/favicons/android-chrome-48x48.png" />
-        <link rel="icon" type="image/png" sizes="72x72" href="/img/favicons/android-chrome-72x72.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicons/android-chrome-96x96.png" />
-        <link rel="icon" type="image/png" sizes="144x144" href="/img/favicons/android-chrome-144x144.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/img/favicons/android-chrome-192x192.png" />
-        <link rel="icon" type="image/png" sizes="256x256" href="/img/favicons/android-chrome-256x256.png" />
-        <link rel="icon" type="image/png" sizes="384x384" href="/img/favicons/android-chrome-384x384.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/img/favicons/android-chrome-512x512.png" />
-        
-        {/* Safari Pinned Tab */}
-        <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#facc15" />
-        
-        {/* Manifest */}
-        <link rel="manifest" href="/img/favicons/site.webmanifest" />
       </head>
       <body 
         className={`${poppins.className} ${montserrat.variable} antialiased min-h-screen bg-slate-950 text-white`} 
@@ -439,22 +453,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
 
-        <Script
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtag/js?id=G-6NR51QZXKL"
-        />
-        <Script
-          id="google-analytics"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-6NR51QZXKL');
-            `,
-          }}
-        />
+        {/* Google Analytics - Using @next/third-parties/google */}
+        <GoogleAnalytics gaId="G-6NR51QZXKL" />
+        
         <FloatingWhatsApp />
       </body>
     </html>
