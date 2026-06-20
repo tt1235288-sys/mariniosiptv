@@ -8,7 +8,6 @@ export default function FloatingWhatsApp() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [showBubble, setShowBubble] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [chatHistory, setChatHistory] = useState([
     { sender: 'support', text: 'Hi there! How can we help you today?', time: getCurrentTime() },
   ]);
@@ -26,44 +25,19 @@ export default function FloatingWhatsApp() {
     return `${hours}:${minutes}`;
   }
 
-  // ✅ Listen for mobile menu toggle events from Header
+  // Handle the automatic show/hide bubble intervals
   useEffect(() => {
-    const handleMenuToggle = (e: Event) => {
-      const customEvent = e as CustomEvent;
-      const menuState = customEvent.detail.isOpen;
-      setIsMobileMenuOpen(menuState);
-      
-      if (menuState) {
-        setOpen(false);
-        setShowBubble(false);
-      }
-    };
-
-    window.addEventListener('mobileMenuToggle', handleMenuToggle);
-    return () => {
-      window.removeEventListener('mobileMenuToggle', handleMenuToggle);
-    };
-  }, []);
-
-  // ✅ Fixed Bubble loop logic to properly respect isMobileMenuOpen
-  useEffect(() => {
-    // Completely clear hooks if either menu is open
-    if (open || isMobileMenuOpen) {
+    if (open) {
       setShowBubble(false);
-      if (bubbleTimeoutRef.current) clearTimeout(bubbleTimeoutRef.current);
-      if (nextCycleTimeoutRef.current) clearTimeout(nextCycleTimeoutRef.current);
       return;
     }
 
     const showBubbleCycle = () => {
-      if (isMobileMenuOpen || open) return;
       setShowBubble(true);
       
-      // Hide after 4 seconds
       bubbleTimeoutRef.current = setTimeout(() => {
         setShowBubble(false);
         
-        // Show again after 6 seconds
         nextCycleTimeoutRef.current = setTimeout(() => {
           showBubbleCycle();
         }, 6000);
@@ -76,7 +50,7 @@ export default function FloatingWhatsApp() {
       if (bubbleTimeoutRef.current) clearTimeout(bubbleTimeoutRef.current);
       if (nextCycleTimeoutRef.current) clearTimeout(nextCycleTimeoutRef.current);
     };
-  }, [open, isMobileMenuOpen]);
+  }, [open]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -140,16 +114,11 @@ export default function FloatingWhatsApp() {
     </div>
   );
 
-  // ✅ 100% Fail-safe early exit when mobile menu is open
-  if (isMobileMenuOpen) {
-    return null;
-  }
-
   return (
-    <>
+    <div className="whatsapp-global-wrapper">
       {/* Auto Help Bubble */}
       {!open && showBubble && (
-        <div className="fixed bottom-28 right-6 z-[30] animate-fade-in">
+        <div className="fixed bottom-28 right-6 z-[30] animate-fade-in whatsapp-element">
           <div className="bg-gradient-to-r from-green-500 to-green-600 shadow-lg rounded-2xl px-4 py-2.5 text-sm font-medium text-white relative max-w-[200px] whitespace-nowrap">
             Need help? Chat with us!
             <div className="absolute -bottom-2 right-6 w-4 h-4 bg-gradient-to-r from-green-500 to-green-600 rotate-45" />
@@ -163,7 +132,7 @@ export default function FloatingWhatsApp() {
           setOpen(!open);
           setShowBubble(false);
         }}
-        className="fixed bottom-6 right-6 z-[35] group"
+        className="fixed bottom-6 right-6 z-[35] group whatsapp-element"
         aria-label="Chat with us on WhatsApp"
       >
         <div className="relative">
@@ -178,7 +147,7 @@ export default function FloatingWhatsApp() {
 
       {/* Chat Window */}
       {open && (
-        <div className="fixed bottom-24 right-4 md:right-6 w-[340px] sm:w-[380px] max-w-[calc(100vw-32px)] rounded-3xl overflow-hidden shadow-2xl z-[34] bg-white border border-slate-200 flex flex-col max-h-[80vh] md:max-h-[500px]">
+        <div className="fixed bottom-24 right-4 md:right-6 w-[340px] sm:w-[380px] max-w-[calc(100vw-32px)] rounded-3xl overflow-hidden shadow-2xl z-[34] bg-white border border-slate-200 flex flex-col max-h-[80vh] md:max-h-[500px] whatsapp-element">
           {/* Header */}
           <div className="bg-gradient-to-r from-green-500 to-green-600 p-4 flex items-center justify-between text-white flex-shrink-0">
             <div className="flex items-center gap-3 min-w-0">
@@ -257,7 +226,15 @@ export default function FloatingWhatsApp() {
         </div>
       )}
 
+      {/* ✅ GLOBAL CSS OVERRIDE: If the body has .mobile-menu-open, vanish the widgets instantly */}
       <style jsx global>{`
+        body.mobile-menu-open .whatsapp-element {
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          pointer-events: none !important;
+        }
+
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(10px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
@@ -269,6 +246,6 @@ export default function FloatingWhatsApp() {
         .animate-fade-in { animation: fade-in 0.3s ease-out; }
         .animate-message-in { animation: message-in 0.2s ease-out; }
       `}</style>
-    </>
+    </div>
   );
 }

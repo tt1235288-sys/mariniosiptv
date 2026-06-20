@@ -20,25 +20,26 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open & dispatch event
+  // ✅ Force state directly onto the body element to bypass JS event delays
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('mobile-menu-open');
     } else {
       document.body.style.overflow = 'unset';
+      document.body.classList.remove('mobile-menu-open');
     }
-
-    // ✅ Fire custom event directly linked to isOpen state state
-    window.dispatchEvent(
-      new CustomEvent('mobileMenuToggle', { 
-        detail: { isOpen: isOpen } 
-      })
-    );
 
     return () => {
       document.body.style.overflow = 'unset';
+      document.body.classList.remove('mobile-menu-open');
     };
   }, [isOpen]);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   const navLinks = [
     { name: 'Home', href: '/' },
