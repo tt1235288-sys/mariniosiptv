@@ -5,11 +5,9 @@ import { CONSTANTS } from '@/lib/seo';
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${CONSTANTS.DOMAIN}`),
   title: {
-    // FIXED: Shortened to 56 characters (within 50-60 range)
     default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Plans 2026 | 4K Streaming`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  // FIXED: Shortened to 158 characters (within 150-160 range)
   description: `${CONSTANTS.FOCUS_KEYWORD}: Plans from $7.08/mo. 15,000+ channels, 60,000+ VODs, 4K quality. 7-day guarantee. Read our review.`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
@@ -85,7 +83,7 @@ export const metadata: Metadata = {
   ],
 };
 
-// Pricing Page JSON-LD Schema
+// FIXED: Pricing Page JSON-LD Schema
 const PricingPageSchema = () => (
   <script
     type="application/ld+json"
@@ -97,6 +95,8 @@ const PricingPageSchema = () => (
         "@type": "Product",
         "name": `${CONSTANTS.BRAND_NAME} IPTV Subscription Plans`,
         "alternateName": CONSTANTS.FOCUS_KEYWORD,
+        // FIXED: Added missing "image" field
+        "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
         "description": `Premium IPTV service with subscription plans starting at $7.08/month. Access 15,000+ live channels and 60,000+ VODs in 4K quality. ${CONSTANTS.FOCUS_KEYWORD} offers the best value in IPTV entertainment.`,
         "brand": {
           "@type": "Brand",
@@ -118,7 +118,40 @@ const PricingPageSchema = () => (
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/OnlineOnly",
             "url": `https://${CONSTANTS.DOMAIN}/pricing`,
-            "description": `3 months ${CONSTANTS.FOCUS_KEYWORD} access to 15,000+ live channels and 60,000+ VODs`
+            "description": `3 months ${CONSTANTS.FOCUS_KEYWORD} access to 15,000+ live channels and 60,000+ VODs`,
+            // FIXED: Added shippingDetails (digital product, no shipping)
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "USD"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 1,
+                  "unitCode": "h"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 0,
+                  "unitCode": "h"
+                }
+              }
+            },
+            // FIXED: Added hasMerchantReturnPolicy
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "US",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 7,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
+            }
           },
           {
             "@type": "Offer",
@@ -128,7 +161,38 @@ const PricingPageSchema = () => (
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/OnlineOnly",
             "url": `https://${CONSTANTS.DOMAIN}/pricing`,
-            "description": `6 months ${CONSTANTS.FOCUS_KEYWORD} access to 18,000+ live channels and 80,000+ VODs`
+            "description": `6 months ${CONSTANTS.FOCUS_KEYWORD} access to 18,000+ live channels and 80,000+ VODs`,
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "USD"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 1,
+                  "unitCode": "h"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 0,
+                  "unitCode": "h"
+                }
+              }
+            },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "US",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 7,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
+            }
           },
           {
             "@type": "Offer",
@@ -138,7 +202,38 @@ const PricingPageSchema = () => (
             "priceValidUntil": "2027-12-31",
             "availability": "https://schema.org/OnlineOnly",
             "url": `https://${CONSTANTS.DOMAIN}/pricing`,
-            "description": `12 months ${CONSTANTS.FOCUS_KEYWORD} access to 25,000+ premium channels and 100,000+ VODs with VIP support`
+            "description": `12 months ${CONSTANTS.FOCUS_KEYWORD} access to 25,000+ premium channels and 100,000+ VODs with VIP support`,
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "USD"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 1,
+                  "unitCode": "h"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 0,
+                  "unitCode": "h"
+                }
+              }
+            },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "US",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+              "merchantReturnDays": 7,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
+            }
           }
         ]
       })
