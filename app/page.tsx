@@ -43,7 +43,7 @@ export default function Home() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">IPTV</span> PROVIDER
           </h1>
           <p className="text-lg md:text-2xl text-white/80 max-w-3xl mb-6 font-medium drop-shadow-md leading-relaxed">
-            Welcome to <strong className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</strong> - The most reliable premium IPTV provider with 15,000+ live channels, 60,000+ VODs, and crystal-clear 4K streaming.
+            Welcome to <strong className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</strong> - The most reliable premium IPTV provider with 15,000+ live channels, 60,000+ VODs, and crystal-clear 4K streaming. Experience the best IPTV subscription for sports, movies, and entertainment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
             <Link href="/pricing" className="w-full sm:w-auto px-8 py-4 rounded-full bg-yellow-400 text-slate-950 font-black text-lg hover:bg-yellow-300 hover:scale-105 transition-all shadow-[0_0_30px_rgba(250,204,21,0.4)]">
@@ -72,7 +72,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-20">
                <span className="text-yellow-400 font-bold uppercase tracking-widest text-sm mb-4">Quick Start Guide</span>
                <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">START STREAMING IN <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">3 EASY STEPS</span></h2>
-               <p className="text-white/60 text-lg mt-6 max-w-2xl mx-auto">Getting started takes just minutes. Follow our simple three-step process and begin watching immediately.</p>
+               <p className="text-white/60 text-lg mt-6 max-w-2xl mx-auto">Getting started with {CONSTANTS.FOCUS_KEYWORD} takes just minutes. Follow our simple three-step process and begin watching immediately.</p>
             </div>
           </FadeIn>
           <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -84,7 +84,7 @@ export default function Home() {
                 <CreditCard className="w-10 h-10 text-white/50 group-hover:text-yellow-400 transition-colors" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Choose Your Plan</h3>
-              <p className="text-white/60 text-lg leading-relaxed max-w-xs">Select the package that fits your entertainment needs. All plans include instant email activation.</p>
+              <p className="text-white/60 text-lg leading-relaxed max-w-xs">Select the package that fits your entertainment needs with {CONSTANTS.FOCUS_KEYWORD}. All plans include instant email activation.</p>
             </FadeInItem>
 
             <FadeInItem className="relative flex flex-col items-center text-center z-10 group">
@@ -94,7 +94,7 @@ export default function Home() {
                 <Download className="w-12 h-12 text-yellow-400 relative z-10" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Install on Any Device</h3>
-              <p className="text-white/60 text-lg leading-relaxed max-w-xs">Works on Smart TVs, Firestick, Android, iOS, and more. Follow our simple setup guides.</p>
+              <p className="text-white/60 text-lg leading-relaxed max-w-xs">{CONSTANTS.FOCUS_KEYWORD} works on Smart TVs, Firestick, Android, iOS, and more. Follow our simple setup guides.</p>
             </FadeInItem>
 
             <FadeInItem className="relative flex flex-col items-center text-center z-10 group">
@@ -103,7 +103,7 @@ export default function Home() {
                 <Tv2 className="w-10 h-10 text-white/50 group-hover:text-yellow-400 transition-colors" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Enjoy Premium Content</h3>
-              <p className="text-white/60 text-lg leading-relaxed max-w-xs">Start watching 15,000+ live channels and 60,000+ VODs instantly.</p>
+              <p className="text-white/60 text-lg leading-relaxed max-w-xs">Start watching 15,000+ live channels and 60,000+ VODs instantly with {CONSTANTS.FOCUS_KEYWORD}.</p>
             </FadeInItem>
           </FadeInStagger>
         </div>
@@ -115,7 +115,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn className="text-center mb-12">
             <h3 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight"><span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> By The Numbers</h3>
-            <p className="text-white/60 mt-4">Real statistics that prove why we're the industry leader in IPTV entertainment</p>
+            <p className="text-white/60 mt-4">Real statistics that prove why {CONSTANTS.FOCUS_KEYWORD} is the industry leader in IPTV entertainment</p>
           </FadeIn>
           <FadeInStagger className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
             <FadeInItem className="flex flex-col items-center">
@@ -148,7 +148,7 @@ export default function Home() {
         <FadeIn className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col justify-between items-start mb-12 gap-6 relative z-10 w-full">
           <div>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight"><span className="text-yellow-400">PREMIUM</span> CONTENT LIBRARY</h2>
-            <p className="text-white/60 text-lg">Explore thousands of live channels, blockbuster movies, hit series, and exclusive sports events included with your subscription.</p>
+            <p className="text-white/60 text-lg">Explore thousands of live channels, blockbuster movies, hit series, and exclusive sports events included with your {CONSTANTS.FOCUS_KEYWORD} subscription.</p>
           </div>
         </FadeIn>
         <MovieSlider />
@@ -167,7 +167,7 @@ export default function Home() {
               </div>
               <div>
                 <h4 className="font-black text-white text-xl">Secure Payments</h4>
-                <p className="text-white/50 text-sm">100% encrypted checkout</p>
+                <p className="text-white/50 text-sm">100% encrypted checkout with {CONSTANTS.FOCUS_KEYWORD}</p>
               </div>
             </FadeInItem>
             <FadeInItem className="flex items-center gap-4">
@@ -176,7 +176,7 @@ export default function Home() {
               </div>
               <div>
                 <h4 className="font-black text-white text-xl">7-Day Money-Back</h4>
-                <p className="text-white/50 text-sm">Risk-free trial period</p>
+                <p className="text-white/50 text-sm">Risk-free trial period with {CONSTANTS.FOCUS_KEYWORD}</p>
               </div>
             </FadeInItem>
             <FadeInItem className="flex items-center gap-4">
@@ -185,7 +185,7 @@ export default function Home() {
               </div>
               <div>
                 <h4 className="font-black text-white text-xl">24/7 Support</h4>
-                <p className="text-white/50 text-sm">Live chat & email</p>
+                <p className="text-white/50 text-sm">Live chat & email for {CONSTANTS.FOCUS_KEYWORD} customers</p>
               </div>
             </FadeInItem>
             <FadeInItem className="flex items-center gap-4">
@@ -194,7 +194,7 @@ export default function Home() {
               </div>
               <div>
                 <h4 className="font-black text-white text-xl">#1 Rated IPTV</h4>
-                <p className="text-white/50 text-sm">Trusted by thousands</p>
+                <p className="text-white/50 text-sm">{CONSTANTS.FOCUS_KEYWORD} trusted by thousands</p>
               </div>
             </FadeInItem>
           </FadeInStagger>
@@ -208,16 +208,16 @@ export default function Home() {
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0z' fill='none'/%3E%3Ccircle cx='15' cy='15' r='1' fill='%23facc15' fill-opacity='0.3'/%3E%3C/svg%3E")` }}></div>
         <FadeIn className="text-center mb-16 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Why <span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> Is The Best Choice</h2>
-          <p className="text-white/60 text-lg max-w-3xl mx-auto">Thousands of customers have switched to our IPTV service. Here's why we outperform traditional cable and other providers.</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Why <span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> Is The Best IPTV Choice</h2>
+          <p className="text-white/60 text-lg max-w-3xl mx-auto">Thousands of customers have switched to our IPTV service. Here's why {CONSTANTS.FOCUS_KEYWORD} outperforms traditional cable and other providers.</p>
         </FadeIn>
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {[
             { icon: Database, title: "Massive Content Library", desc: `${CONSTANTS.FOCUS_KEYWORD} offers 15,000+ live channels including sports, news, entertainment, kids, and international programming plus 60,000+ movies and series on demand.` },
-            { icon: Activity, title: "Anti-Freeze Technology", desc: "Our proprietary streaming technology eliminates buffering and freezing. Watch your favorite content without interruptions, even during peak hours." },
+            { icon: Activity, title: "Anti-Freeze Technology", desc: "Our proprietary streaming technology eliminates buffering and freezing with {CONSTANTS.FOCUS_KEYWORD}. Watch your favorite content without interruptions, even during peak hours." },
             { icon: Server, title: "Global Server Network", desc: `With servers across 100+ countries, ${CONSTANTS.FOCUS_KEYWORD} delivers low-latency streaming no matter where you are.` },
-            { icon: Trophy, title: "Premium Sports Coverage", desc: "Get all PPV events, football leagues, UFC, boxing, NBA, NFL, NHL, and more. Never miss a game." },
-            { icon: Calendar, title: "24/7 EPG Guide", desc: "Our Electronic Program Guide keeps you informed about what's playing now and next across all channels." },
+            { icon: Trophy, title: "Premium Sports Coverage", desc: `Get all PPV events, football leagues, UFC, boxing, NBA, NFL, NHL, and more with ${CONSTANTS.FOCUS_KEYWORD}. Never miss a game.` },
+            { icon: Calendar, title: "24/7 EPG Guide", desc: `Our Electronic Program Guide keeps you informed about what's playing now and next across all ${CONSTANTS.FOCUS_KEYWORD} channels.` },
             { icon: Users, title: "Multi-Screen Support", desc: `Watch ${CONSTANTS.FOCUS_KEYWORD} on multiple devices simultaneously. Perfect for families with different viewing preferences.` }
           ].map((item, idx) => {
             const Icon = item.icon;
@@ -238,7 +238,7 @@ export default function Home() {
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Channel <span className="text-yellow-400">Categories</span></h2>
-          <p className="text-white/60 text-lg max-w-3xl mx-auto">Our comprehensive channel lineup covers every genre and interest.</p>
+          <p className="text-white/60 text-lg max-w-3xl mx-auto">Our comprehensive {CONSTANTS.FOCUS_KEYWORD} channel lineup covers every genre and interest.</p>
         </FadeIn>
         <FadeInStagger className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
@@ -296,7 +296,7 @@ export default function Home() {
                     <div>
                       <p className="text-lg font-black uppercase text-white">4K Ultra HD</p>
                       <p className="text-xs font-medium text-white/55">
-                        Movies, series, and live TV in smooth quality.
+                        Movies, series, and live TV in smooth quality with {CONSTANTS.FOCUS_KEYWORD}.
                       </p>
                     </div>
                   </div>
@@ -341,7 +341,7 @@ export default function Home() {
                 href="/pricing"
                 className="mt-8 inline-flex rounded-full bg-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-xl transition hover:scale-105 hover:bg-yellow-300"
               >
-                Start Your Trial
+                Start Your {CONSTANTS.FOCUS_KEYWORD} Trial
               </Link>
             </FadeIn>
           </div>
@@ -365,7 +365,7 @@ export default function Home() {
               </p>
 
               <p className="mt-4 text-base leading-relaxed text-white/65 sm:text-lg">
-                Whether you watch daily matches or special PPV events, our service is built to deliver fast channel loading, stable playback, and high-quality streams for the moments that matter most.
+                Whether you watch daily matches or special PPV events, {CONSTANTS.FOCUS_KEYWORD} is built to deliver fast channel loading, stable playback, and high-quality streams for the moments that matter most.
               </p>
 
               <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -435,7 +435,7 @@ export default function Home() {
               <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">Comparison</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">{CONSTANTS.FOCUS_KEYWORD} vs Traditional Cable</h2>
-            <p className="text-white/60 text-lg max-w-3xl mx-auto">See why thousands are cutting the cord and switching to the smarter, more affordable IPTV solution.</p>
+            <p className="text-white/60 text-lg max-w-3xl mx-auto">See why thousands are cutting the cord and switching to {CONSTANTS.FOCUS_KEYWORD}, the smarter, more affordable IPTV solution.</p>
           </FadeIn>
 
           {/* Desktop Table View */}
@@ -533,13 +533,13 @@ export default function Home() {
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Trusted by <span className="text-yellow-400">20,000+</span> Customers</h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">Join thousands of satisfied subscribers who have transformed their TV experience.</p>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">Join thousands of satisfied subscribers who have transformed their TV experience with {CONSTANTS.FOCUS_KEYWORD}.</p>
         </FadeIn>
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { name: "Michael Thompson", rating: 5, text: `I've tried several IPTV services, but ${CONSTANTS.FOCUS_KEYWORD} is by far the best. The 4K quality is incredible, and I never experience buffering.`, role: "Sports Fan" },
             { name: "Sarah Johnson", rating: 5, text: `Finally cut the cord with my cable company. ${CONSTANTS.FOCUS_KEYWORD} has all the channels my family watches plus thousands more.`, role: "Mother of 3" },
-            { name: "David Chen", rating: 5, text: `The international channel selection is amazing. Best IPTV provider I've found.`, role: "Expat" }
+            { name: "David Chen", rating: 5, text: `The international channel selection is amazing. ${CONSTANTS.FOCUS_KEYWORD} is the best IPTV provider I've found.`, role: "Expat" }
           ].map((testimonial, idx) => (
             <FadeInItem key={idx} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-yellow-400/30 transition-all">
               <div className="flex gap-1 mb-4">
@@ -562,7 +562,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Crect x='18' y='18' width='4' height='4' fill='%23facc15'/%3E%3C/svg%3E")` }}></div>
         <FadeIn className="relative z-10">
           <h3 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Works On All Your Devices</h3>
-          <p className="text-white/60 text-lg max-w-3xl mx-auto mb-16">Compatible with almost every device. Install our recommended apps and start watching instantly.</p>
+          <p className="text-white/60 text-lg max-w-3xl mx-auto mb-16">{CONSTANTS.FOCUS_KEYWORD} is compatible with almost every device. Install our recommended apps and start watching instantly.</p>
         </FadeIn>
         <FadeInStagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 relative z-10">
           {[
@@ -593,7 +593,7 @@ export default function Home() {
         <FadeIn className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 relative z-10">
           <div>
             <h3 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Latest <span className="text-yellow-400">News & Guides</span></h3>
-            <p className="text-white/60 text-lg">Stay updated with our latest features, channel updates, and streaming tutorials.</p>
+            <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
           </div>
           <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2">
             View All Posts <ArrowRight className="w-4 h-4" />
@@ -708,7 +708,7 @@ export default function Home() {
                   href="/pricing"
                   className="inline-flex w-full items-center justify-center rounded-full bg-yellow-400 px-10 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-[0_0_30px_rgba(250,204,21,0.35)] transition-all hover:scale-105 hover:bg-yellow-300 sm:w-auto"
                 >
-                  View Plans
+                  View {CONSTANTS.FOCUS_KEYWORD} Plans
                 </Link>
 
                 <Link
