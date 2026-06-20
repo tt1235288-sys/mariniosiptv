@@ -100,8 +100,8 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero Section - FIXED: More spacing and responsive padding */}
-      <section className="relative min-h-[50vh] md:min-h-[55vh] lg:min-h-[60vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Section - FIXED: min-h-fit dynamically adapts so long wrapped titles are safe */}
+      <section className="relative min-h-fit md:min-h-[55vh] lg:min-h-[60vh] flex items-center justify-center overflow-hidden">
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -114,8 +114,8 @@ export default async function BlogPostPage({ params }: Props) {
             className="w-full h-full object-cover scale-105"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/20" />
         </div>
         
         {/* Square Pattern Overlay */}
@@ -133,7 +133,8 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Glow Effect */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] bg-yellow-400/10 blur-[120px] md:blur-[150px] rounded-full pointer-events-none z-0" />
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pt-24 md:pt-32 lg:pt-40 pb-12 md:pb-16">
+        {/* FIXED: Increased mobile padding-top to pt-32 to fully push title out from underneath the navigation layer */}
+        <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center relative z-10 pt-32 sm:pt-36 md:pt-40 lg:pt-48 pb-12 md:pb-16">
           
           {/* Category Badge */}
           {post.category && (
@@ -145,12 +146,12 @@ export default async function BlogPostPage({ params }: Props) {
           )}
           
           {/* Title */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight mb-3 md:mb-4 lg:mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
             {post.title}
           </h1>
           
           {/* Description */}
-          <p className="text-base sm:text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed mb-4 md:mb-6">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed mb-6">
             {post.description}
           </p>
           
@@ -172,7 +173,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Breadcrumb Navigation - FIXED: More top padding */}
+      {/* Breadcrumb Navigation */}
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-8 md:mt-10">
         <Link href="/blog" className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors font-semibold text-sm group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to all articles
@@ -275,7 +276,7 @@ export default async function BlogPostPage({ params }: Props) {
             <span className="flex items-center gap-1.5 md:gap-2"><Headphones className="w-3 h-3 md:w-3.5 md:h-3.5 text-yellow-400/50" /> 24/7 Support</span>
           </div>
           <p className="text-center text-white/30 text-[10px] md:text-xs mt-4 md:mt-6">
-            © {new Date().getFullYear()} {CONSTANTS.BRAND_NAME}. All rights reserved.
+            © 2026 {CONSTANTS.BRAND_NAME}. All rights reserved.
           </p>
         </div>
       </div>

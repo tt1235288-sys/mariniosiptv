@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
@@ -23,17 +24,17 @@ export default function Header() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      // ✅ Dispatch event when menu opens
-      window.dispatchEvent(new CustomEvent('mobileMenuToggle', { 
-        detail: { isOpen: true } 
-      }));
     } else {
       document.body.style.overflow = 'unset';
-      // ✅ Dispatch event when menu closes
-      window.dispatchEvent(new CustomEvent('mobileMenuToggle', { 
-        detail: { isOpen: false } 
-      }));
     }
+
+    // ✅ Fire custom event directly linked to isOpen state state
+    window.dispatchEvent(
+      new CustomEvent('mobileMenuToggle', { 
+        detail: { isOpen: isOpen } 
+      })
+    );
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -46,7 +47,6 @@ export default function Header() {
     { name: 'Blog', href: '/blog' },
   ];
 
-  // Check if link is active
   const isActive = (href: string) => {
     if (href === '/') {
       return pathname === href;
