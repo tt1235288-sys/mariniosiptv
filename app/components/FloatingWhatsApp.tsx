@@ -26,10 +26,14 @@ export default function FloatingWhatsApp() {
     return `${hours}:${minutes}`;
   }
 
-  // Listen for mobile menu toggle events
+  // ✅ Listen for mobile menu toggle events from Header
   useEffect(() => {
     const handleMenuToggle = (e: CustomEvent) => {
       setIsMobileMenuOpen(e.detail.isOpen);
+      // ✅ Close WhatsApp chat when menu opens
+      if (e.detail.isOpen) {
+        setOpen(false);
+      }
     };
 
     window.addEventListener('mobileMenuToggle' as any, handleMenuToggle);
@@ -90,13 +94,6 @@ export default function FloatingWhatsApp() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Close WhatsApp when mobile menu opens
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      setOpen(false);
-    }
-  }, [isMobileMenuOpen]);
-
   const sendToWhatsapp = () => {
     if (!message.trim()) return;
 
@@ -143,7 +140,7 @@ export default function FloatingWhatsApp() {
     </div>
   );
 
-  // Don't render anything if mobile menu is open
+  // ✅ Don't render anything if mobile menu is open
   if (isMobileMenuOpen) {
     return null;
   }

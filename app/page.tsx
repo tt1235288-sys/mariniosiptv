@@ -722,50 +722,63 @@ export default function Home() {
         </div>
       )}
 
-      {/* Blog Section - Pattern Background */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
-        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
-        <FadeIn className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 relative z-10">
-          <div>
-            <h3 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Latest <span className="text-yellow-400">News & Guides</span></h3>
-            <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
-          </div>
-          <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2">
-            View All Posts <ArrowRight className="w-4 h-4" />
-          </Link>
-        </FadeIn>
-        <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-          {blogPosts.slice(0, 3).map((post) => (
-             <FadeInItem key={post.id} className="group cursor-pointer">
-               <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg">
-                 <Image 
-                   src={post.image} 
-                   alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD} Blog Article`} 
-                   width={800}
-                   height={450}
-                   loading="lazy"
-                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                   sizes="(max-width: 768px) 100vw, 33vw"
-                   placeholder="blur"
-                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-                 <div className="absolute bottom-6 left-6">
-                   <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-xs font-black uppercase tracking-widest rounded-lg mb-3 inline-block">
-                     {post.author}
-                   </span>
-                 </div>
-               </div>
-               <h4 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors uppercase tracking-tight line-clamp-2">{post.title}</h4>
-               <p className="text-white/60 mb-4 line-clamp-2 leading-relaxed">{post.excerpt}</p>
-               <span className="text-sm font-bold text-yellow-400 uppercase tracking-widest flex items-center gap-2">
-                 Read Article <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-               </span>
-             </FadeInItem>
-          ))}
-        </FadeInStagger>
-      </section>
-
+        {/* Blog Section - Pattern Background */}
+        <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
+          <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
+          
+          <FadeIn className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 relative z-10">
+            <div>
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">
+                Latest <span className="text-yellow-400">News & Guides</span>
+              </h2>
+              <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
+            </div>
+            <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group">
+              <span>View All Posts</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </FadeIn>
+          
+          <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+            {blogPosts.slice(0, 3).map((post) => (
+              <FadeInItem key={post.id} className="group cursor-pointer">
+                <Link href={`/blog/${post.slug}`} className="block">
+                  <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300">
+                    <Image 
+                      src={post.image} 
+                      alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD} Blog Article`} 
+                      width={800}
+                      height={450}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+                    <div className="absolute bottom-6 left-6">
+                      <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
+                        {post.author}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all">
+                    Read Article
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              </FadeInItem>
+            ))}
+          </FadeInStagger>
+        </section>
+        
       {/* Final CTA Section - Fixed Background Image */}
       <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(250,204,21,0.08),_transparent_45%)]" />
