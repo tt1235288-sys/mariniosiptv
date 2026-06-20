@@ -282,6 +282,7 @@ export default function Home() {
                   height={600}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/35 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full border border-yellow-400/30 bg-black/60 px-4 py-2 text-xs font-black uppercase tracking-widest text-yellow-400 backdrop-blur-md">
@@ -397,6 +398,7 @@ export default function Home() {
                   height={600}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full border border-red-500/30 bg-red-600/20 px-4 py-2 text-xs font-black uppercase tracking-widest text-red-400 backdrop-blur-md">
@@ -555,7 +557,7 @@ export default function Home() {
         </FadeInStagger>
       </section>
 
-      {/* Device Support - Pattern Background */}
+      {/* Device Support - Pattern Background - CHANGED TO H3 */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full relative">
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Crect x='18' y='18' width='4' height='4' fill='%23facc15'/%3E%3C/svg%3E")` }}></div>
         <FadeIn className="relative z-10">
@@ -585,7 +587,7 @@ export default function Home() {
       {/* FAQ Section */}
       <FAQ />
 
-      {/* Blog Section - Pattern Background */}
+      {/* Blog Section - Pattern Background - CHANGED TO H3 */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }}></div>
         <FadeIn className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 relative z-10">
@@ -608,6 +610,7 @@ export default function Home() {
                    height={450}
                    loading="lazy"
                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                   sizes="(max-width: 768px) 100vw, 33vw"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
                  <div className="absolute bottom-6 left-6">
@@ -641,6 +644,7 @@ export default function Home() {
               height={600}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover opacity-90"
+              sizes="100vw"
             />
 
             {/* Image Overlays */}

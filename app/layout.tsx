@@ -26,10 +26,10 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${CONSTANTS.DOMAIN}`),
   title: {
-    default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | 4K Streaming`,
+    default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | Official Website`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  description: `${CONSTANTS.FOCUS_KEYWORD}: Stream 15,000+ Live Channels & 60,000+ VODs in 4K. Fast activation, Anti-Freeze Tech, 24/7 Support. Read our review.`,
+  description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
   publisher: CONSTANTS.BRAND_NAME,
