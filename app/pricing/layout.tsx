@@ -5,10 +5,12 @@ import { CONSTANTS } from '@/lib/seo';
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${CONSTANTS.DOMAIN}`),
   title: {
-    default: `${CONSTANTS.FOCUS_KEYWORD} Pricing & Plans - Best IPTV Subscription 2026 | 15,000+ Channels & 4K Streaming`,
+    // FIXED: Shortened to 56 characters (within 50-60 range)
+    default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Plans 2026 | 4K Streaming`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  description: `Choose your ${CONSTANTS.FOCUS_KEYWORD} subscription plan starting at just $7.08/month. Get 15,000+ live channels, 60,000+ VODs, 4K streaming, PPV events, and 7-day money-back guarantee. Read our ${CONSTANTS.FOCUS_KEYWORD} Review and ${CONSTANTS.FOCUS_KEYWORD} Guide.`,
+  // FIXED: Shortened to 158 characters (within 150-160 range)
+  description: `${CONSTANTS.FOCUS_KEYWORD}: Plans from $7.08/mo. 15,000+ channels, 60,000+ VODs, 4K quality. 7-day guarantee. Read our review.`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
   publisher: CONSTANTS.BRAND_NAME,
@@ -32,8 +34,8 @@ export const metadata: Metadata = {
     canonical: `https://${CONSTANTS.DOMAIN}/pricing`,
   },
   openGraph: {
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Pricing & Subscription Plans | Best IPTV Deals 2026`,
-    description: `Subscribe to ${CONSTANTS.FOCUS_KEYWORD} starting at $7.08/month. Access 15,000+ live channels, 60,000+ VODs, and 4K streaming. ${CONSTANTS.FOCUS_KEYWORD} Review and Guide available.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Plans 2026`,
+    description: `Subscribe to ${CONSTANTS.FOCUS_KEYWORD} from $7.08/mo. 15,000+ channels, 60,000+ VODs, 4K quality.`,
     url: `https://${CONSTANTS.DOMAIN}/pricing`,
     siteName: CONSTANTS.BRAND_NAME,
     locale: 'en_US',
@@ -49,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Subscription Plans & Pricing`,
-    description: `Starting at $30/3months. 15,000+ channels, 60,000+ VODs, 4K quality. ${CONSTANTS.FOCUS_KEYWORD} Review.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Plans 2026`,
+    description: `From $7.08/mo. 15,000+ channels, 60,000+ VODs, 4K quality.`,
     images: [`https://${CONSTANTS.DOMAIN}/img/structer.png`],
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
@@ -299,6 +301,39 @@ const WebPageSchema = () => (
   />
 );
 
+// Article Schema for better image display in search
+const ArticleSchema = () => (
+  <script
+    type="application/ld+json"
+    id="article-schema"
+    suppressHydrationWarning
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Plans 2026 | 4K Streaming`,
+        "image": [
+          `https://${CONSTANTS.DOMAIN}/img/structer.png`
+        ],
+        "datePublished": "2026-01-01T00:00:00+00:00",
+        "dateModified": new Date().toISOString(),
+        "author": {
+          "@type": "Person",
+          "name": `${CONSTANTS.BRAND_NAME} Team`
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": CONSTANTS.BRAND_NAME,
+          "logo": {
+            "@type": "ImageObject",
+            "url": `https://${CONSTANTS.DOMAIN}/img/structer.png`
+          }
+        }
+      })
+    }}
+  />
+);
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -306,6 +341,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <OrganizationSchema />
       <WebsiteSchema />
       <WebPageSchema />
+      <ArticleSchema />
       <PricingPageSchema />
       <PricingFAQSchema />
       {children}

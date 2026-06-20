@@ -56,12 +56,12 @@ export default function GlobalServerMap() {
               <Wifi className="h-4 w-4" />
               Worldwide IPTV Network
             </div>
-            <h2 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h3 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Global Coverage In
               <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
                 100+ Countries
               </span>
-            </h2>
+            </h3>
           </div>
           <div className="relative mx-auto w-full overflow-hidden rounded-3xl border border-yellow-400/20 bg-white/[0.03] p-1 shadow-[0_0_80px_rgba(250,204,21,0.08)] backdrop-blur-xl sm:p-1 lg:rounded-[2.5rem] lg:p-3">
             <div className="relative h-[360px] w-full overflow-hidden rounded-2xl bg-slate-950/80 sm:h-[470px] lg:h-[560px] flex items-center justify-center">
@@ -95,15 +95,15 @@ export default function GlobalServerMap() {
             Worldwide IPTV Network
           </div>
 
-          <h2 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+          <h3 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
             Global Coverage In
             <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">
               100+ Countries
             </span>
-          </h2>
+          </h3>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/55 sm:text-base md:text-lg">
-            Enjoy stable IPTV streaming with premium worldwide servers built for live TV,
+            Enjoy stable {CONSTANTS.FOCUS_KEYWORD} streaming with premium worldwide servers built for live TV,
             movies, sports, and series without buffering.
           </p>
         </div>

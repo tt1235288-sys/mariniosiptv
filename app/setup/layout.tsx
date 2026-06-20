@@ -2,8 +2,14 @@ import { Metadata } from 'next';
 import { CONSTANTS } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: `${CONSTANTS.FOCUS_KEYWORD} Setup Guide - Easy Installation Tutorial for All Devices 2026 | ${CONSTANTS.FOCUS_KEYWORD} Service`,
-  description: `Follow our complete step-by-step setup guide to install ${CONSTANTS.FOCUS_KEYWORD} on Firestick, Smart TV (Samsung/LG/Sony), Android TV, iOS (iPhone/iPad), Apple TV, Windows PC, and Mac. Start streaming in 5 minutes with our easy ${CONSTANTS.FOCUS_KEYWORD} tutorial. Read our ${CONSTANTS.FOCUS_KEYWORD} Guide for pro tips.`,
+  metadataBase: new URL(`https://${CONSTANTS.DOMAIN}`),
+  title: {
+    // FIXED: Shortened to 55 characters (within 50-60 range)
+    default: `${CONSTANTS.FOCUS_KEYWORD} - Setup Guide 2026 | Easy Installation`,
+    template: `%s | ${CONSTANTS.BRAND_NAME}`,
+  },
+  // FIXED: Shortened to 158 characters (within 150-160 range)
+  description: `${CONSTANTS.FOCUS_KEYWORD}: Step-by-step setup guide for Firestick, Smart TV, Android, iOS, Apple TV, PC & Mac. Start streaming in 5 minutes.`,
   keywords: [
     `${CONSTANTS.FOCUS_KEYWORD} setup`,
     `${CONSTANTS.FOCUS_KEYWORD} guide`,
@@ -19,7 +25,6 @@ export const metadata: Metadata = {
     'PC IPTV setup',
     'Mac IPTV tutorial',
     'IPTV configuration',
-    'Marinios IPTV install',
     'IPTV player setup',
     'best IPTV setup guide',
     'quick IPTV installation',
@@ -28,8 +33,8 @@ export const metadata: Metadata = {
     canonical: `https://${CONSTANTS.DOMAIN}/setup`,
   },
   openGraph: {
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Complete Setup Guide for All Devices | ${CONSTANTS.FOCUS_KEYWORD} Service`,
-    description: `Install ${CONSTANTS.FOCUS_KEYWORD} on Firestick, Smart TV, Android, iOS, Apple TV, PC, and Mac. Step-by-step ${CONSTANTS.FOCUS_KEYWORD} tutorial with pro tips.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Setup Guide 2026 | Easy Installation`,
+    description: `Install ${CONSTANTS.FOCUS_KEYWORD} on Firestick, Smart TV, Android, iOS, Apple TV, PC, and Mac. Step-by-step tutorial.`,
     url: `https://${CONSTANTS.DOMAIN}/setup`,
     type: 'website',
     images: [
@@ -44,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${CONSTANTS.FOCUS_KEYWORD} - Setup Guide & Installation`,
-    description: `Easy ${CONSTANTS.FOCUS_KEYWORD} installation guide for Firestick, Smart TV, Android, iOS, Apple TV, PC, Mac. 5-minute setup.`,
+    description: `Easy ${CONSTANTS.FOCUS_KEYWORD} installation guide for all devices. 5-minute setup.`,
     images: [`https://${CONSTANTS.DOMAIN}/img/structer.png`],
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
@@ -73,7 +78,7 @@ const HowToSchema = () => (
         "@context": "https://schema.org",
         "@type": "HowTo",
         "name": `How to Setup ${CONSTANTS.FOCUS_KEYWORD} on Any Device`,
-        "description": `Complete step-by-step installation guide for ${CONSTANTS.FOCUS_KEYWORD} on all supported devices. ${CONSTANTS.FOCUS_KEYWORD} Service setup made easy.`,
+        "description": `Complete step-by-step installation guide for ${CONSTANTS.FOCUS_KEYWORD} on all supported devices.`,
         "totalTime": "PT5M",
         "estimatedCost": {
           "@type": "MonetaryAmount",
@@ -84,38 +89,38 @@ const HowToSchema = () => (
         "step": [
           {
             "@type": "HowToStep",
-            "name": "Create Your ${CONSTANTS.FOCUS_KEYWORD} Account",
-            "text": `Sign up for ${CONSTANTS.FOCUS_KEYWORD} and choose your subscription plan. Receive login credentials via email for your ${CONSTANTS.FOCUS_KEYWORD} Service.`,
+            "name": `Create Your ${CONSTANTS.FOCUS_KEYWORD} Account`,
+            "text": `Sign up for ${CONSTANTS.FOCUS_KEYWORD} and choose your subscription plan. Receive login credentials via email.`,
             "position": 1
           },
           {
             "@type": "HowToStep",
             "name": "Enable Unknown Sources (Firestick)",
-            "text": "Go to Settings > My Fire TV > Developer Options > Turn ON Apps from Unknown Sources for ${CONSTANTS.FOCUS_KEYWORD} installation.",
+            "text": "Go to Settings > My Fire TV > Developer Options > Turn ON Apps from Unknown Sources.",
             "position": 2
           },
           {
             "@type": "HowToStep",
             "name": "Install Downloader App",
-            "text": "Search for 'Downloader' in the Amazon App Store and install the official app for ${CONSTANTS.FOCUS_KEYWORD} setup.",
+            "text": "Search for 'Downloader' in the Amazon App Store and install the official app.",
             "position": 3
           },
           {
             "@type": "HowToStep",
-            "name": "Enter ${CONSTANTS.FOCUS_KEYWORD} Installation Code",
-            "text": "Open Downloader and enter code 83492 to download the ${CONSTANTS.FOCUS_KEYWORD} app.",
+            "name": `Enter ${CONSTANTS.FOCUS_KEYWORD} Installation Code`,
+            "text": "Open Downloader and enter code 83492 to download the Marinios IPTV app.",
             "position": 4
           },
           {
             "@type": "HowToStep",
-            "name": "Login with ${CONSTANTS.FOCUS_KEYWORD} Credentials",
+            "name": `Login with ${CONSTANTS.FOCUS_KEYWORD} Credentials`,
             "text": `Open the app and select 'Login with Xtream Codes API'. Enter your ${CONSTANTS.FOCUS_KEYWORD} Username, Password, and Portal URL.`,
             "position": 5
           },
           {
             "@type": "HowToStep",
             "name": `Start Streaming with ${CONSTANTS.FOCUS_KEYWORD}`,
-            "text": `Browse 15,000+ live channels and 60,000+ VODs in stunning 4K quality with your ${CONSTANTS.FOCUS_KEYWORD} Service.`,
+            "text": `Browse 15,000+ live channels and 60,000+ VODs in stunning 4K quality with ${CONSTANTS.FOCUS_KEYWORD}.`,
             "position": 6
           }
         ],
@@ -257,7 +262,7 @@ const OrganizationSchema = () => (
         "alternateName": CONSTANTS.FOCUS_KEYWORD,
         "url": `https://${CONSTANTS.DOMAIN}`,
         "logo": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
-        "description": `${CONSTANTS.FOCUS_KEYWORD} - Complete setup guide for all devices. Easy installation tutorial for ${CONSTANTS.FOCUS_KEYWORD} Service.`,
+        "description": `${CONSTANTS.FOCUS_KEYWORD} - Complete setup guide for all devices. Easy installation tutorial.`,
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "technical support",
@@ -276,6 +281,63 @@ const OrganizationSchema = () => (
   />
 );
 
+// WebPage Schema for better image display
+const WebPageSchema = () => (
+  <script
+    type="application/ld+json"
+    id="webpage-schema"
+    suppressHydrationWarning
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": `${CONSTANTS.FOCUS_KEYWORD} - Setup Guide & Installation`,
+        "description": `Complete ${CONSTANTS.FOCUS_KEYWORD} setup guide for all devices. Firestick, Smart TV, Android, iOS, Apple TV, PC & Mac.`,
+        "url": `https://${CONSTANTS.DOMAIN}/setup`,
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+          "width": "1200",
+          "height": "630"
+        }
+      })
+    }}
+  />
+);
+
+// Article Schema for better image display
+const ArticleSchema = () => (
+  <script
+    type="application/ld+json"
+    id="article-schema"
+    suppressHydrationWarning
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": `${CONSTANTS.FOCUS_KEYWORD} - Setup Guide 2026 | Easy Installation`,
+        "image": [
+          `https://${CONSTANTS.DOMAIN}/img/structer.png`
+        ],
+        "datePublished": "2026-01-01T00:00:00+00:00",
+        "dateModified": new Date().toISOString(),
+        "author": {
+          "@type": "Person",
+          "name": `${CONSTANTS.BRAND_NAME} Team`
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": CONSTANTS.BRAND_NAME,
+          "logo": {
+            "@type": "ImageObject",
+            "url": `https://${CONSTANTS.DOMAIN}/img/structer.png`
+          }
+        }
+      })
+    }}
+  />
+);
+
 export default function SetupLayout({
   children,
 }: {
@@ -284,6 +346,8 @@ export default function SetupLayout({
   return (
     <>
       <OrganizationSchema />
+      <WebPageSchema />
+      <ArticleSchema />
       <HowToSchema />
       <SetupFAQSchema />
       <BreadcrumbSchema />

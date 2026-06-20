@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { CONSTANTS } from '@/lib/seo';
 import { 
@@ -14,7 +14,7 @@ import { FadeIn } from '../components/AnimatedSection';
 import Link from 'next/link';
 import FAQ from '../components/FAQ';
 
-// Device data (same as before - keeping it concise)
+// Device data
 const devices = [
   { id: 'firestick', name: 'Firestick / Android', icon: MonitorSmartphone, popular: true, steps: 6 },
   { id: 'smarttv', name: 'Smart TVs', icon: Tv, popular: false, steps: 6 },
@@ -22,7 +22,7 @@ const devices = [
   { id: 'pc', name: 'PC / Mac', icon: Laptop, popular: false, steps: 6 },
 ];
 
-// Step data for each device (keeping the same detailed content)
+// Step data for each device
 const stepData = {
   firestick: {
     title: 'Firestick & Android Box',
@@ -242,7 +242,7 @@ const stepData = {
   }
 };
 
-// Step Component with scroll animation (keeping the same)
+// Step Component with scroll animation
 function StepItem({ step, index, isLast }: { step: any; index: number; isLast: boolean }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -370,6 +370,9 @@ export default function SetupPage() {
   const currentData = stepData[activeDevice as keyof typeof stepData];
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  // Memoize device data for performance
+  const deviceKeys = useMemo(() => Object.keys(stepData), []);
+
   // Auto-open video popup on page load
   useEffect(() => {
     setIsMounted(true);
@@ -411,7 +414,7 @@ export default function SetupPage() {
         <div className="absolute inset-0 z-0">
           <img
             src="/img/bg-1.webp"
-            alt={`${CONSTANTS.FOCUS_KEYWORD} device setup guide`}
+            alt={`${CONSTANTS.FOCUS_KEYWORD} device setup guide - Easy Installation Tutorial`}
             width="1920"
             height="1080"
             loading="eager"
@@ -449,7 +452,7 @@ export default function SetupPage() {
               </span>
             </h1>
             <p className="text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed">
-              Follow the steps below to quickly set up your account by {CONSTANTS.FOCUS_KEYWORD} and start streaming without delays.
+              Follow the steps below to quickly set up your {CONSTANTS.FOCUS_KEYWORD} account and start streaming without delays.
             </p>
             <div className="flex flex-wrap justify-center gap-6 mt-8 text-white/40 text-sm">
               <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5 text-yellow-400/60" /> Secure Setup</span>
@@ -471,7 +474,7 @@ export default function SetupPage() {
             </span>
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Select your platform below for step-by-step instructions
+            Select your platform below for step-by-step {CONSTANTS.FOCUS_KEYWORD} setup instructions
           </p>
         </FadeIn>
         
@@ -523,7 +526,7 @@ export default function SetupPage() {
             </span>
           </h2>
           <p className="text-white/50 text-sm">
-            Scroll down to discover each step • Each step comes to life as you scroll
+            Follow these {CONSTANTS.FOCUS_KEYWORD} setup steps • Each step comes to life as you scroll
           </p>
         </div>
 
@@ -548,7 +551,7 @@ export default function SetupPage() {
           viewport={{ once: true }}
         >
           <CheckCircle2 className="w-14 h-14 text-yellow-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-white mb-3">Setup Complete!</h3>
+          <h3 className="text-2xl font-bold text-white mb-3">{CONSTANTS.FOCUS_KEYWORD} Setup Complete!</h3>
           <p className="text-white/60 text-base max-w-md mx-auto mb-6">
             You've successfully completed all steps. Start enjoying premium entertainment with access to 15,000+ live channels and 60,000+ VODs.
           </p>
@@ -581,7 +584,7 @@ export default function SetupPage() {
               <PlayCircle className="w-8 h-8 text-yellow-400" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Video Tutorial</h3>
-            <p className="text-white/50 text-sm mb-4">Watch our step-by-step video guide for visual learners</p>
+            <p className="text-white/50 text-sm mb-4">Watch our step-by-step {CONSTANTS.FOCUS_KEYWORD} video guide for visual learners</p>
             <button 
               onClick={openVideo}
               className="inline-flex items-center gap-2 text-yellow-400 font-medium text-sm hover:gap-3 transition-all cursor-pointer"
@@ -596,7 +599,7 @@ export default function SetupPage() {
               <MessageCircle className="w-8 h-8 text-green-500" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">24/7 WhatsApp Support</h3>
-            <p className="text-white/50 text-sm mb-4">Get instant help from our support team on WhatsApp</p>
+            <p className="text-white/50 text-sm mb-4">Get instant {CONSTANTS.FOCUS_KEYWORD} setup help from our support team</p>
             <a 
               href="https://wa.me/212600000000?text=Hello%20Marinios%20IPTV%2C%20I%20need%20help%20with%20setup"
               target="_blank"
@@ -634,7 +637,7 @@ export default function SetupPage() {
                 ref={iframeRef}
                 className="absolute top-0 left-0 w-full h-full"
                 src="https://www.youtube.com/embed/9pZOoS-1NHg?autoplay=1&rel=0&modestbranding=1"
-                title="Marinios IPTV Setup Guide - Complete Tutorial"
+                title={`${CONSTANTS.FOCUS_KEYWORD} Setup Guide - Complete Tutorial`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"

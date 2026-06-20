@@ -116,14 +116,14 @@ export default function PricingPage() {
         
         <FadeInStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: Tv, title: "15,000+ Live Channels", desc: "Sports, news, entertainment, and international channels from 100+ countries with {CONSTANTS.FOCUS_KEYWORD}." },
-            { icon: Film, title: "60,000+ VOD Library", desc: "Movies, TV series, and documentaries updated daily on {CONSTANTS.FOCUS_KEYWORD}." },
-            { icon: MonitorPlay, title: "4K Ultra HD Quality", desc: "Crystal clear streaming on compatible channels and devices with {CONSTANTS.FOCUS_KEYWORD}." },
-            { icon: Wifi, title: "Anti-Freeze Technology", desc: "Buffer-free playback with advanced streaming optimization from {CONSTANTS.FOCUS_KEYWORD}." },
-            { icon: Calendar, title: "Full EPG Guide", desc: "7-day electronic program guide for all channels with {CONSTANTS.FOCUS_KEYWORD}." },
-            { icon: Trophy, title: "PPV Events Included", desc: "All major sports PPV events at no extra cost with {CONSTANTS.FOCUS_KEYWORD}." },
-            { icon: Globe, title: "Global Coverage", desc: "Servers in 100+ countries for low-latency {CONSTANTS.FOCUS_KEYWORD} streaming." },
-            { icon: Server, title: "99.9% Uptime", desc: "Enterprise-grade infrastructure with redundant servers for {CONSTANTS.FOCUS_KEYWORD}." },
+            { icon: Tv, title: "15,000+ Live Channels", desc: `Sports, news, entertainment, and international channels from 100+ countries with ${CONSTANTS.FOCUS_KEYWORD}.` },
+            { icon: Film, title: "60,000+ VOD Library", desc: `Movies, TV series, and documentaries updated daily on ${CONSTANTS.FOCUS_KEYWORD}.` },
+            { icon: MonitorPlay, title: "4K Ultra HD Quality", desc: `Crystal clear streaming on compatible channels and devices with ${CONSTANTS.FOCUS_KEYWORD}.` },
+            { icon: Wifi, title: "Anti-Freeze Technology", desc: `Buffer-free playback with advanced streaming optimization from ${CONSTANTS.FOCUS_KEYWORD}.` },
+            { icon: Calendar, title: "Full EPG Guide", desc: `7-day electronic program guide for all channels with ${CONSTANTS.FOCUS_KEYWORD}.` },
+            { icon: Trophy, title: "PPV Events Included", desc: `All major sports PPV events at no extra cost with ${CONSTANTS.FOCUS_KEYWORD}.` },
+            { icon: Globe, title: "Global Coverage", desc: `Servers in 100+ countries for low-latency ${CONSTANTS.FOCUS_KEYWORD} streaming.` },
+            { icon: Server, title: "99.9% Uptime", desc: `Enterprise-grade infrastructure with redundant servers for ${CONSTANTS.FOCUS_KEYWORD}.` },
           ].map((feature, idx) => {
             const Icon = feature.icon;
             return (

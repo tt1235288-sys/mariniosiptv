@@ -3,6 +3,7 @@
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { CONSTANTS } from '@/lib/seo';
+import { useMemo } from 'react';
 
 export default function PartnerSlider() {
   // Generate partner images from 01 to 12
@@ -12,12 +13,14 @@ export default function PartnerSlider() {
     return {
       name: `Partner ${partnerNumber}`,
       imagePath: `/img/partners/mariniosiptv-icons-${partnerNumberPad}`,
-      altText: `${CONSTANTS.FOCUS_KEYWORD} - Certified Partner Logo ${partnerNumber} | Premium IPTV Service`
+      altText: `${CONSTANTS.FOCUS_KEYWORD} - Certified Partner Logo ${partnerNumber} | Premium IPTV Service`,
+      width: 128,
+      height: 128,
     };
   });
 
   // Duplicate for seamless loop (3x for smoother infinite scroll)
-  const sliderItems = [...partners, ...partners, ...partners];
+  const sliderItems = useMemo(() => [...partners, ...partners, ...partners], [partners]);
 
   return (
     <div className="w-full overflow-hidden relative py-12 bg-black/50 border-y border-white/5">
@@ -52,7 +55,8 @@ export default function PartnerSlider() {
                 src={`${partner.imagePath}.png`}
                 alt={partner.altText}
                 title={`${CONSTANTS.FOCUS_KEYWORD} - ${partner.name}`}
-                fill
+                width={partner.width || 128}
+                height={partner.height || 128}
                 className="object-contain"
                 sizes="(max-width: 768px) 96px, 128px"
                 loading="lazy"

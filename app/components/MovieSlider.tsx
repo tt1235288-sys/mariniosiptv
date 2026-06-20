@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { CONSTANTS } from '@/lib/seo';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 // Movies from /img/sliders/movies/mariniosiptv-movies-01 to 16
 const movies = Array.from({ length: 16 }).map((_, i) => {
@@ -12,6 +12,8 @@ const movies = Array.from({ length: 16 }).map((_, i) => {
     id: `movie-${i}`,
     imagePath: `/img/sliders/movies/mariniosiptv-movies-${number}`,
     altText: `${CONSTANTS.FOCUS_KEYWORD} premium movie ${i + 1} streaming in 4K ultra HD quality`,
+    width: 192,
+    height: 288,
   };
 });
 
@@ -22,6 +24,8 @@ const series = Array.from({ length: 16 }).map((_, i) => {
     id: `series-${i}`,
     imagePath: `/img/sliders/series/mariniosiptv-serie-${number}`,
     altText: `${CONSTANTS.FOCUS_KEYWORD} popular TV series ${i + 1} binge watch in HD`,
+    width: 192,
+    height: 288,
   };
 });
 
@@ -32,6 +36,8 @@ const sports = Array.from({ length: 15 }).map((_, i) => {
     id: `sport-${i}`,
     imagePath: `/img/sliders/sports/mariniosiptv-sports-${number}`,
     altText: `${CONSTANTS.FOCUS_KEYWORD} live sports event ${i + 1} watch in 4K quality`,
+    width: 192,
+    height: 288,
   };
 });
 
@@ -56,7 +62,7 @@ const InfiniteSlider = ({ items, direction = 'left', speed = 50, category }: {
   const [failedImages, setFailedImages] = useState<{ [key: string]: boolean }>({});
   
   // Triple the items for seamless infinite loop
-  const infiniteItems = [...items, ...items, ...items];
+  const infiniteItems = useMemo(() => [...items, ...items, ...items], [items]);
   const duration = (items.length * speed) / 10;
   
   // Handle image error - try jpg fallback
@@ -102,7 +108,8 @@ const InfiniteSlider = ({ items, direction = 'left', speed = 50, category }: {
                   <Image
                     src={`${item.imagePath}.webp`}
                     alt={item.altText}
-                    fill
+                    width={item.width || 192}
+                    height={item.height || 288}
                     sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 176px, 192px"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
@@ -150,12 +157,12 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full"></div>
-            <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <h5 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Latest Movies
-            </h4>
+            </h5>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
-            Enjoy thousands of movies from around the world, available anytime on any device.
+            Enjoy thousands of movies from around the world with {CONSTANTS.FOCUS_KEYWORD}, available anytime on any device.
           </p>
         </div>
         <InfiniteSlider items={movies} direction="left" speed={45} category="Movie" />
@@ -166,12 +173,12 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full"></div>
-            <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <h5 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Popular TV Series
-            </h4>
+            </h5>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
-            Never miss an episode with complete seasons, new releases, and fan-favorite shows.
+            Never miss an episode with complete seasons, new releases, and fan-favorite shows on {CONSTANTS.FOCUS_KEYWORD}.
           </p>
         </div>
         <InfiniteSlider items={series} direction="right" speed={40} category="Series" />
@@ -182,12 +189,12 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full"></div>
-            <h4 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <h5 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Live Sports Events
-            </h4>
+            </h5>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
-            Enjoy premium sports channels, live events, and PPV fights from anywhere.
+            Enjoy premium sports channels, live events, and PPV fights from anywhere with {CONSTANTS.FOCUS_KEYWORD}.
           </p>
         </div>
         <InfiniteSlider items={sports} direction="left" speed={50} category="Sports" />

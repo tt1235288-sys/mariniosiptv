@@ -2,18 +2,52 @@ import { blogPosts } from '@/lib/blog';
 import { CONSTANTS, generateSEOMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Calendar, User, Tag, Clock, Share2, BookOpen, Eye, Heart, MessageCircle, ArrowRight, Sparkles, Award, Zap, ShieldCheck, Headphones } from 'lucide-react';
 
 type Props = { params: Promise<{ slug: string }> };
+
+// Generate static params for all blog posts
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const resolvedParams = await params;
   const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
   if (!post) return generateSEOMetadata('Post Not Found');
   
+  // FIXED: Shorten title to 55-60 characters
+  const shortTitle = post.title.length > 55 ? post.title.substring(0, 52) + '...' : post.title;
+  
   return {
-    ...generateSEOMetadata(post.title, post.description),
+    title: `${shortTitle} | ${CONSTANTS.FOCUS_KEYWORD} Blog`,
+    description: post.description || post.excerpt || `Read the full ${CONSTANTS.FOCUS_KEYWORD} guide.`,
     keywords: post.keywords.join(', '),
+    openGraph: {
+      title: `${shortTitle} | ${CONSTANTS.FOCUS_KEYWORD} Blog`,
+      description: post.description || post.excerpt || `Read the full ${CONSTANTS.FOCUS_KEYWORD} guide.`,
+      url: `https://${CONSTANTS.DOMAIN}/blog/${post.slug}`,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+      images: [
+        {
+          url: post.image || `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${shortTitle} | ${CONSTANTS.FOCUS_KEYWORD}`,
+      description: post.description || post.excerpt || `Read the full ${CONSTANTS.FOCUS_KEYWORD} guide.`,
+      images: [post.image || `https://${CONSTANTS.DOMAIN}/img/structer.png`],
+    },
   };
 }
 
@@ -48,7 +82,7 @@ export default async function BlogPostPage({ params }: Props) {
       name: CONSTANTS.BRAND_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `https://${CONSTANTS.DOMAIN}/logo.png`,
+        url: `https://${CONSTANTS.DOMAIN}/img/structer.png`,
       },
     },
     mainEntityOfPage: {
@@ -60,15 +94,25 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article className="flex flex-col min-h-screen bg-slate-950">
       
-      {/* Hero Section with Background */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* Hero Section with Background - FIXED: Optimized image */}
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         
-        {/* Background Image */}
+        {/* Background Image - FIXED: Proper Next.js Image with dimensions */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src={post.image}
-            alt={post.title}
+            alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD} Blog Article`}
+            width={1920}
+            height={1080}
+            priority
             className="w-full h-full object-cover scale-105"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
@@ -89,79 +133,78 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Glow Effect */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-400/10 blur-[150px] rounded-full pointer-events-none z-0" />
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16 md:py-20">
           
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
             {post.title}
           </h1>
           
           {/* Description */}
-          <p className="text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed mb-6 md:mb-8">
             {post.description}
           </p>
           
           {/* Meta Info */}
-          <div className="flex flex-wrap justify-center gap-6 text-white/50 text-sm">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-white/50 text-xs md:text-sm">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-yellow-400" />
+              <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
               <span>{post.date}</span>
             </div>
             <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-yellow-400" />
+              <User className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
               <span>{post.author}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-yellow-400" />
+              <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
               <span>{readTime} min read</span>
             </div>
           </div>
-
         </div>
       </section>
 
       {/* Breadcrumb Navigation */}
-      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-8">
+      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-6 md:mt-8">
         <Link href="/blog" className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors font-semibold text-sm group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to all articles
         </Link>
       </div>
 
       {/* Content Container */}
-      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 
-        {/* Article Content */}
+        {/* Article Content - FIXED: Optimized prose styles */}
         <div 
-          className="prose prose-invert prose-lg max-w-none
-            [&>h1]:text-4xl [&>h1]:font-black [&>h1]:text-white [&>h1]:mb-6 [&>h1]:tracking-tight
-            [&>h2]:text-3xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-5 [&>h2]:mt-12 [&>h2]:tracking-tight
-            [&>h3]:text-2xl [&>h3]:font-bold [&>h3]:text-white [&>h3]:mb-4 [&>h3]:mt-8
-            [&>h4]:text-xl [&>h4]:font-bold [&>h4]:text-yellow-400 [&>h4]:mb-3 [&>h4]:mt-6
-            [&>p]:text-white/70 [&>p]:text-lg [&>p]:leading-relaxed [&>p]:mb-6
-            [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:mb-6 [&>ul]:text-white/70
-            [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:mb-6 [&>ol]:text-white/70
-            [&>li]:mb-2 [&>li]:text-white/70
+          className="prose prose-invert prose-base md:prose-lg max-w-none
+            [&>h1]:text-3xl [&>h1]:md:text-4xl [&>h1]:font-black [&>h1]:text-white [&>h1]:mb-4 [&>h1]:md:mb-6 [&>h1]:tracking-tight
+            [&>h2]:text-2xl [&>h2]:md:text-3xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-4 [&>h2]:md:mb-5 [&>h2]:mt-8 [&>h2]:md:mt-12 [&>h2]:tracking-tight
+            [&>h3]:text-xl [&>h3]:md:text-2xl [&>h3]:font-bold [&>h3]:text-white [&>h3]:mb-3 [&>h3]:md:mb-4 [&>h3]:mt-6 [&>h3]:md:mt-8
+            [&>h4]:text-lg [&>h4]:md:text-xl [&>h4]:font-bold [&>h4]:text-yellow-400 [&>h4]:mb-2 [&>h4]:md:mb-3 [&>h4]:mt-4 [&>h4]:md:mt-6
+            [&>p]:text-white/70 [&>p]:text-base [&>p]:md:text-lg [&>p]:leading-relaxed [&>p]:mb-4 [&>p]:md:mb-6
+            [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:md:pl-6 [&>ul]:mb-4 [&>ul]:md:mb-6 [&>ul]:text-white/70
+            [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:md:pl-6 [&>ol]:mb-4 [&>ol]:md:mb-6 [&>ol]:text-white/70
+            [&>li]:mb-1.5 [&>li]:md:mb-2 [&>li]:text-white/70
             [&>a]:text-yellow-400 [&>a]:hover:text-yellow-300 [&>a]:transition-colors
-            [&>blockquote]:border-l-4 [&>blockquote]:border-yellow-400 [&>blockquote]:pl-6 [&>blockquote]:py-2 [&>blockquote]:my-6 [&>blockquote]:text-white/60 [&>blockquote]:italic
-            [&>code]:bg-white/10 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded-lg [&>code]:text-yellow-400 [&>code]:text-sm
-            [&>pre]:bg-slate-900 [&>pre]:p-6 [&>pre]:rounded-2xl [&>pre]:overflow-x-auto [&>pre]:border [&>pre]:border-white/10
-            [&>img]:rounded-2xl [&>img]:my-8 [&>img]:border [&>img]:border-white/10
-            [&>hr]:border-white/10 [&>hr]:my-12
+            [&>blockquote]:border-l-4 [&>blockquote]:border-yellow-400 [&>blockquote]:pl-4 [&>blockquote]:md:pl-6 [&>blockquote]:py-2 [&>blockquote]:my-4 [&>blockquote]:md:my-6 [&>blockquote]:text-white/60 [&>blockquote]:italic
+            [&>code]:bg-white/10 [&>code]:px-2 [&>code]:py-1 [&>code]:rounded-lg [&>code]:text-yellow-400 [&>code]:text-xs [&>code]:md:text-sm
+            [&>pre]:bg-slate-900 [&>pre]:p-4 [&>pre]:md:p-6 [&>pre]:rounded-2xl [&>pre]:overflow-x-auto [&>pre]:border [&>pre]:border-white/10
+            [&>img]:rounded-2xl [&>img]:my-6 [&>img]:md:my-8 [&>img]:border [&>img]:border-white/10 [&>img]:w-full [&>img]:h-auto
+            [&>hr]:border-white/10 [&>hr]:my-8 [&>hr]:md:my-12
           "
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         {/* Tags Section */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <div className="flex items-center gap-2 mb-4">
-            <Tag className="w-5 h-5 text-yellow-400" />
-            <h4 className="text-white font-bold text-lg">Topics</h4>
+        <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10">
+          <div className="flex items-center gap-2 mb-3 md:mb-4">
+            <Tag className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
+            <h4 className="text-white font-bold text-base md:text-lg">Topics</h4>
           </div>
-          <div className="flex flex-wrap gap-3">
-            {post.keywords.map(keyword => (
+          <div className="flex flex-wrap gap-2 md:gap-3">
+            {post.keywords.slice(0, 8).map(keyword => (
               <span 
                 key={keyword} 
-                className="px-4 py-2 bg-white/5 text-white/60 text-sm font-medium rounded-full border border-white/10 hover:border-yellow-400/30 hover:text-yellow-400 transition-all cursor-pointer"
+                className="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 text-white/60 text-xs md:text-sm font-medium rounded-full border border-white/10 hover:border-yellow-400/30 hover:text-yellow-400 transition-all cursor-pointer"
               >
                 {keyword}
               </span>
@@ -170,15 +213,15 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Author Bio Section */}
-        <div className="mt-12 p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-slate-950 font-black text-3xl uppercase flex-shrink-0 shadow-lg">
+        <div className="mt-8 md:mt-12 p-6 md:p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/50 to-slate-950/50 backdrop-blur-sm">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 md:gap-6 text-center sm:text-left">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-slate-950 font-black text-2xl md:text-3xl uppercase flex-shrink-0 shadow-lg">
               {post.author[0]}
             </div>
             <div>
-              <h4 className="text-white font-black text-2xl mb-1">{post.author}</h4>
-              <p className="text-yellow-400 text-sm uppercase tracking-widest font-bold mb-3">Content Editor at {CONSTANTS.BRAND_NAME}</p>
-              <p className="text-white/60 leading-relaxed">
+              <h4 className="text-white font-black text-xl md:text-2xl mb-1">{post.author}</h4>
+              <p className="text-yellow-400 text-xs md:text-sm uppercase tracking-widest font-bold mb-2 md:mb-3">Content Editor at {CONSTANTS.BRAND_NAME}</p>
+              <p className="text-white/60 text-sm md:text-base leading-relaxed">
                 Dedicated to bringing you the best insights, tutorials, and updates about IPTV technology, 
                 streaming optimization, and entertainment content. Passionate about helping users get the 
                 most out of their viewing experience.
@@ -188,41 +231,41 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Related Posts / CTA Section */}
-        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-yellow-400/10 via-transparent to-yellow-400/10 border border-yellow-400/20 text-center">
-          <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-4 py-2 rounded-full border border-yellow-400/30 mb-4">
-            <Sparkles className="w-4 h-4 text-yellow-400" />
-            <span className="text-yellow-400 font-bold text-xs uppercase tracking-wider">Continue Reading</span>
+        <div className="mt-12 md:mt-16 p-6 md:p-8 rounded-2xl bg-gradient-to-r from-yellow-400/10 via-transparent to-yellow-400/10 border border-yellow-400/20 text-center">
+          <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-yellow-400/30 mb-3 md:mb-4">
+            <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
+            <span className="text-yellow-400 font-bold text-[10px] md:text-xs uppercase tracking-wider">Continue Reading</span>
           </div>
-          <h3 className="text-2xl font-black text-white mb-3">Enjoyed this article?</h3>
-          <p className="text-white/60 max-w-md mx-auto mb-6">
+          <h3 className="text-xl md:text-2xl font-black text-white mb-2 md:mb-3">Enjoyed this article?</h3>
+          <p className="text-white/60 text-sm md:text-base max-w-md mx-auto mb-4 md:mb-6">
             Explore more guides and tutorials to enhance your {CONSTANTS.FOCUS_KEYWORD} experience.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
             <Link 
               href="/blog" 
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-yellow-400 text-slate-950 font-bold hover:bg-yellow-300 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-yellow-400 text-slate-950 font-bold text-sm md:text-base hover:bg-yellow-300 transition-all"
             >
-              View All Articles <ArrowRight className="w-4 h-4" />
+              View All Articles <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </Link>
             <Link 
               href="/pricing" 
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full bg-white/10 border border-white/20 text-white font-bold text-sm md:text-base hover:bg-white/20 transition-all"
             >
-              View Plans <ArrowRight className="w-4 h-4" />
+              View Plans <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </Link>
           </div>
         </div>
       </div>
 
       {/* Trust Footer */}
-      <div className="border-t border-white/5 mt-12 py-8">
+      <div className="border-t border-white/5 mt-8 md:mt-12 py-6 md:py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-8 text-white/30 text-xs uppercase tracking-wider">
-            <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-yellow-400/50" /> 4K Quality</span>
-            <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-yellow-400/50" /> 99.9% Uptime</span>
-            <span className="flex items-center gap-2"><Headphones className="w-3.5 h-3.5 text-yellow-400/50" /> 24/7 Support</span>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-white/30 text-[10px] md:text-xs uppercase tracking-wider">
+            <span className="flex items-center gap-1.5 md:gap-2"><Zap className="w-3 h-3 md:w-3.5 md:h-3.5 text-yellow-400/50" /> 4K Quality</span>
+            <span className="flex items-center gap-1.5 md:gap-2"><ShieldCheck className="w-3 h-3 md:w-3.5 md:h-3.5 text-yellow-400/50" /> 99.9% Uptime</span>
+            <span className="flex items-center gap-1.5 md:gap-2"><Headphones className="w-3 h-3 md:w-3.5 md:h-3.5 text-yellow-400/50" /> 24/7 Support</span>
           </div>
-          <p className="text-center text-white/30 text-xs mt-6">
+          <p className="text-center text-white/30 text-[10px] md:text-xs mt-4 md:mt-6">
             © {new Date().getFullYear()} {CONSTANTS.BRAND_NAME}. All rights reserved.
           </p>
         </div>
