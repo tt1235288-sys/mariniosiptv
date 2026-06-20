@@ -26,11 +26,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${CONSTANTS.DOMAIN}`),
   title: {
-    // FIXED: Shortened to 58 characters (within 50-60 range)
     default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | 4K Streaming`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  // FIXED: Shortened to 158 characters (within 150-160 range)
   description: `${CONSTANTS.FOCUS_KEYWORD}: Stream 15,000+ Live Channels & 60,000+ VODs in 4K. Fast activation, Anti-Freeze Tech, 24/7 Support. Read our review.`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
@@ -55,8 +53,8 @@ export const metadata: Metadata = {
     canonical: `https://${CONSTANTS.DOMAIN}/`,
   },
   openGraph: {
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | 4K Streaming`,
-    description: `Stream 15,000+ Live Channels & 60,000+ VODs in 4K. Fast activation, anti-freeze tech, 24/7 support.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | Official Website`,
+    description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
     url: `https://${CONSTANTS.DOMAIN}/`,
     siteName: CONSTANTS.BRAND_NAME,
     locale: 'en_US',
@@ -73,7 +71,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026`,
-    description: `15,000+ channels, 60,000+ VODs, 4K quality. Instant activation.`,
+    description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
     images: [`https://${CONSTANTS.DOMAIN}/img/structer.png`],
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
@@ -115,7 +113,7 @@ const OrganizationSchema = () => (
         "url": `https://${CONSTANTS.DOMAIN}`,
         "logo": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
         "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
-        "description": `Premium IPTV service with 15,000+ live channels and 60,000+ VODs in 4K quality.`,
+        "description": `PremiStream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer support",
@@ -146,7 +144,7 @@ const WebsiteSchema = () => (
         "name": CONSTANTS.BRAND_NAME,
         "alternateName": CONSTANTS.FOCUS_KEYWORD,
         "url": `https://${CONSTANTS.DOMAIN}`,
-        "description": `Premium IPTV subscription service with ${CONSTANTS.FOCUS_KEYWORD}.`,
+        "description": `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
         "potentialAction": {
           "@type": "SearchAction",
           "target": `https://${CONSTANTS.DOMAIN}/search?q={search_term_string}`,
@@ -169,7 +167,7 @@ const ProductSchema = () => (
         "@type": "Product",
         "name": `${CONSTANTS.BRAND_NAME} Premium Subscription`,
         "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
-        "description": `Premium IPTV service with 15,000+ live channels, 60,000+ VODs, and 4K streaming quality.`,
+        "description": `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
         "brand": { 
           "@type": "Brand", 
           "name": CONSTANTS.BRAND_NAME 
@@ -232,7 +230,7 @@ const ServiceSchema = () => (
           "@type": "Organization",
           "name": CONSTANTS.BRAND_NAME
         },
-        "description": `Premium IPTV service with 15,000+ live channels, 60,000+ VODs, and 4K streaming quality.`,
+        "description": `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
         "areaServed": "Worldwide",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
@@ -442,12 +440,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
 
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-6NR51QZXKL"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

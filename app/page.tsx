@@ -7,6 +7,7 @@ import { FadeIn, FadeInStagger, FadeInItem } from './components/AnimatedSection'
 import PricingSection from './components/PricingSection';
 import AnimatedCounter from './components/AnimatedCounter';
 import MovieSlider from './components/MovieSlider';
+import Image from 'next/image';
 import PartnerSlider from './components/PartnerSlider';
 import FAQ from './components/FAQ';
 import GlobalServerMap from './components/GlobalServerMap';
@@ -17,13 +18,15 @@ export default function Home() {
       {/* Hero Section with Blur Background Image */}
       <section className="relative px-6 pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center min-h-[90vh]">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/img/background.webp" 
-            alt={`${CONSTANTS.FOCUS_KEYWORD} Premium Streaming Background`} 
-            width="1920"
-            height="1080"
-            loading="eager"
-            className="w-full h-full object-cover" 
+          <Image
+            src="/img/background.webp"
+            alt={`${CONSTANTS.FOCUS_KEYWORD} Premium Streaming Background`}
+            width={1920}
+            height={1080}
+            priority
+            className="w-full h-full object-cover"
+            sizes="100vw"
+            quality={85}
           />
           <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px]"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/80 to-slate-950"></div>
@@ -272,11 +275,11 @@ export default function Home() {
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="relative order-1 overflow-hidden rounded-3xl border border-yellow-400/20 bg-white/[0.03] p-3 shadow-[0_0_60px_rgba(250,204,21,0.08)] lg:rounded-[2.5rem]">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-video lg:aspect-[5/4]">
-                <img
+                <Image
                   src="/img/image-1.webp"
                   alt={`${CONSTANTS.FOCUS_KEYWORD} 4K IPTV streaming quality with movies and live channels`}
-                  width="800"
-                  height="600"
+                  width={800}
+                  height={600}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                 />
@@ -387,11 +390,11 @@ export default function Home() {
 
             <div className="relative order-1 overflow-hidden rounded-3xl border border-yellow-400/20 bg-white/[0.03] p-3 shadow-[0_0_60px_rgba(250,204,21,0.08)] lg:order-2 lg:rounded-[2.5rem]">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-video lg:aspect-[5/4]">
-                <img
+                <Image
                   src="/img/bg-1.webp"
                   alt={`${CONSTANTS.FOCUS_KEYWORD} live sports IPTV streaming and PPV events`}
-                  width="800"
-                  height="600"
+                  width={800}
+                  height={600}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                 />
@@ -598,11 +601,11 @@ export default function Home() {
           {blogPosts.slice(0, 3).map((post) => (
              <FadeInItem key={post.id} className="group cursor-pointer">
                <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg">
-                 <img 
+                 <Image 
                    src={post.image} 
-                   alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD}`} 
-                   width="800"
-                   height="450"
+                   alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD} Blog Article`} 
+                   width={800}
+                   height={450}
                    loading="lazy"
                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                  />
@@ -631,11 +634,11 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-[2rem] border border-yellow-400/20 bg-black shadow-[0_0_80px_rgba(250,204,21,0.08)] lg:rounded-[3rem]">
             
             {/* Background Image */}
-            <img
+            <Image
               src="/img/bg-2.webp"
               alt={`${CONSTANTS.FOCUS_KEYWORD} premium IPTV streaming service`}
-              width="1400"
-              height="600"
+              width={1400}
+              height={600}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover opacity-90"
             />

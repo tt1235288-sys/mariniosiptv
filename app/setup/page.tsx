@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { CONSTANTS } from '@/lib/seo';
+import Image from 'next/image';
 import { 
   MonitorSmartphone, Tv, Apple, Laptop, Sparkles, Lock, Zap, ThumbsUp, Users, 
   CheckCircle2, PlayCircle, ArrowRight, MessageCircle, Clock, Headphones, 
@@ -22,7 +23,7 @@ const devices = [
   { id: 'pc', name: 'PC / Mac', icon: Laptop, popular: false, steps: 6 },
 ];
 
-// Step data for each device
+// Step data for each device (kept as is - content is fine)
 const stepData = {
   firestick: {
     title: 'Firestick & Android Box',
@@ -412,13 +413,15 @@ export default function SetupPage() {
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="/img/bg-1.webp"
             alt={`${CONSTANTS.FOCUS_KEYWORD} device setup guide - Easy Installation Tutorial`}
-            width="1920"
-            height="1080"
-            loading="eager"
+            width={1920}
+            height={1080}
+            priority
             className="w-full h-full object-cover"
+            sizes="100vw"
+            quality={85}
           />
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent" />

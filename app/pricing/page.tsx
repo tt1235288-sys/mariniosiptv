@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import PricingSection from '../components/PricingSection';
 import { ShieldCheck, Zap, ChevronDown, CreditCard, ArrowRight, Award, Globe, Server, Trophy, Tv, Film, MonitorPlay, Wifi, Calendar, Lock, ThumbsUp, Users, LifeBuoy, Sparkles, Headphones } from 'lucide-react';
 import { FadeIn, FadeInStagger, FadeInItem } from '../components/AnimatedSection';
@@ -42,15 +43,17 @@ export default function PricingPage() {
       {/* Hero Section - Full Screen Only */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
         
-        {/* Background Image */}
+        {/* Background Image - FIXED: Using Next.js Image */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="/img/bg-2.webp"
             alt={`${CONSTANTS.FOCUS_KEYWORD} premium IPTV pricing plans - Best ${CONSTANTS.FOCUS_KEYWORD} Subscription Deals`}
-            width="1920"
-            height="1080"
-            loading="eager"
+            width={1920}
+            height={1080}
+            priority
             className="w-full h-full object-cover"
+            sizes="100vw"
+            quality={85}
           />
           <div className="absolute inset-0 bg-black/50" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent" />
