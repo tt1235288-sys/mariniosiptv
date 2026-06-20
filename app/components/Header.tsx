@@ -19,12 +19,20 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent body scroll when mobile menu is open & dispatch event
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      // ✅ Dispatch event when menu opens
+      window.dispatchEvent(new CustomEvent('mobileMenuToggle', { 
+        detail: { isOpen: true } 
+      }));
     } else {
       document.body.style.overflow = 'unset';
+      // ✅ Dispatch event when menu closes
+      window.dispatchEvent(new CustomEvent('mobileMenuToggle', { 
+        detail: { isOpen: false } 
+      }));
     }
     return () => {
       document.body.style.overflow = 'unset';

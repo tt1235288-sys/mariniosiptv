@@ -28,11 +28,13 @@ export default function FloatingWhatsApp() {
 
   // ✅ Listen for mobile menu toggle events from Header
   useEffect(() => {
-    const handleMenuToggle = (e: CustomEvent) => {
-      setIsMobileMenuOpen(e.detail.isOpen);
+    const handleMenuToggle = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setIsMobileMenuOpen(customEvent.detail.isOpen);
       // ✅ Close WhatsApp chat when menu opens
-      if (e.detail.isOpen) {
+      if (customEvent.detail.isOpen) {
         setOpen(false);
+        setShowBubble(false);
       }
     };
 
@@ -140,7 +142,7 @@ export default function FloatingWhatsApp() {
     </div>
   );
 
-  // ✅ Don't render anything if mobile menu is open
+  // ✅ Completely hide when mobile menu is open
   if (isMobileMenuOpen) {
     return null;
   }

@@ -100,10 +100,10 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero Section with Background - FIXED: Optimized image */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Section - FIXED: More spacing and responsive padding */}
+      <section className="relative min-h-[50vh] md:min-h-[55vh] lg:min-h-[60vh] flex items-center justify-center overflow-hidden">
         
-        {/* Background Image - FIXED: Proper Next.js Image with dimensions */}
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src={post.image}
@@ -114,8 +114,8 @@ export default async function BlogPostPage({ params }: Props) {
             className="w-full h-full object-cover scale-105"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
         </div>
         
         {/* Square Pattern Overlay */}
@@ -131,31 +131,40 @@ export default async function BlogPostPage({ params }: Props) {
         />
         
         {/* Glow Effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-400/10 blur-[150px] rounded-full pointer-events-none z-0" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] bg-yellow-400/10 blur-[120px] md:blur-[150px] rounded-full pointer-events-none z-0" />
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16 md:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pt-24 md:pt-32 lg:pt-40 pb-12 md:pb-16">
+          
+          {/* Category Badge */}
+          {post.category && (
+            <div className="inline-block mb-4 md:mb-6">
+              <span className="px-3 py-1.5 bg-yellow-400/20 text-yellow-400 text-xs font-black uppercase tracking-widest rounded-full border border-yellow-400/30">
+                {post.category}
+              </span>
+            </div>
+          )}
           
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight mb-3 md:mb-4 lg:mb-6 leading-tight">
             {post.title}
           </h1>
           
           {/* Description */}
-          <p className="text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed mb-6 md:mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed mb-4 md:mb-6">
             {post.description}
           </p>
           
           {/* Meta Info */}
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-white/50 text-xs md:text-sm">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-6 text-white/50 text-xs sm:text-sm">
+            <div className="flex items-center gap-1.5 md:gap-2">
               <Calendar className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
               <span>{post.date}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 md:gap-2">
               <User className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
               <span>{post.author}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 md:gap-2">
               <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
               <span>{readTime} min read</span>
             </div>
@@ -163,8 +172,8 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Breadcrumb Navigation */}
-      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-6 md:mt-8">
+      {/* Breadcrumb Navigation - FIXED: More top padding */}
+      <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-8 md:mt-10">
         <Link href="/blog" className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors font-semibold text-sm group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to all articles
         </Link>
@@ -173,14 +182,14 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Content Container */}
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 
-        {/* Article Content - FIXED: Optimized prose styles */}
+        {/* Article Content */}
         <div 
           className="prose prose-invert prose-base md:prose-lg max-w-none
-            [&>h1]:text-3xl [&>h1]:md:text-4xl [&>h1]:font-black [&>h1]:text-white [&>h1]:mb-4 [&>h1]:md:mb-6 [&>h1]:tracking-tight
-            [&>h2]:text-2xl [&>h2]:md:text-3xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-4 [&>h2]:md:mb-5 [&>h2]:mt-8 [&>h2]:md:mt-12 [&>h2]:tracking-tight
-            [&>h3]:text-xl [&>h3]:md:text-2xl [&>h3]:font-bold [&>h3]:text-white [&>h3]:mb-3 [&>h3]:md:mb-4 [&>h3]:mt-6 [&>h3]:md:mt-8
-            [&>h4]:text-lg [&>h4]:md:text-xl [&>h4]:font-bold [&>h4]:text-yellow-400 [&>h4]:mb-2 [&>h4]:md:mb-3 [&>h4]:mt-4 [&>h4]:md:mt-6
-            [&>p]:text-white/70 [&>p]:text-base [&>p]:md:text-lg [&>p]:leading-relaxed [&>p]:mb-4 [&>p]:md:mb-6
+            [&>h1]:text-2xl [&>h1]:md:text-3xl [&>h1]:lg:text-4xl [&>h1]:font-black [&>h1]:text-white [&>h1]:mb-4 [&>h1]:md:mb-6 [&>h1]:tracking-tight
+            [&>h2]:text-xl [&>h2]:md:text-2xl [&>h2]:lg:text-3xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:mb-4 [&>h2]:md:mb-5 [&>h2]:mt-8 [&>h2]:md:mt-12 [&>h2]:tracking-tight
+            [&>h3]:text-lg [&>h3]:md:text-xl [&>h3]:lg:text-2xl [&>h3]:font-bold [&>h3]:text-white [&>h3]:mb-3 [&>h3]:md:mb-4 [&>h3]:mt-6 [&>h3]:md:mt-8
+            [&>h4]:text-base [&>h4]:md:text-lg [&>h4]:lg:text-xl [&>h4]:font-bold [&>h4]:text-yellow-400 [&>h4]:mb-2 [&>h4]:md:mb-3 [&>h4]:mt-4 [&>h4]:md:mt-6
+            [&>p]:text-white/70 [&>p]:text-sm [&>p]:md:text-base [&>p]:lg:text-lg [&>p]:leading-relaxed [&>p]:mb-4 [&>p]:md:mb-6
             [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:md:pl-6 [&>ul]:mb-4 [&>ul]:md:mb-6 [&>ul]:text-white/70
             [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:md:pl-6 [&>ol]:mb-4 [&>ol]:md:mb-6 [&>ol]:text-white/70
             [&>li]:mb-1.5 [&>li]:md:mb-2 [&>li]:text-white/70
