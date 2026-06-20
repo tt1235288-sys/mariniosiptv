@@ -19,7 +19,6 @@ export async function generateMetadata({ params }: Props) {
   const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
   if (!post) return generateSEOMetadata('Post Not Found');
   
-  // FIXED: Shorten title to 55-60 characters
   const shortTitle = post.title.length > 55 ? post.title.substring(0, 52) + '...' : post.title;
   
   return {
@@ -63,6 +62,9 @@ export default async function BlogPostPage({ params }: Props) {
   const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length;
   const readTime = Math.max(3, Math.ceil(wordCount / 200));
 
+  // Safe fallback badge using your keywords array to avoid missing fields crash
+  const displayCategory = post.keywords && post.keywords.length > 0 ? post.keywords[0] : 'IPTV Guide';
+
   // JSON-LD Schema Structure
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -100,7 +102,7 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero Section - FIXED: min-h-fit dynamically adapts so long wrapped titles are safe */}
+      {/* Hero Section */}
       <section className="relative min-h-fit md:min-h-[55vh] lg:min-h-[60vh] flex items-center justify-center overflow-hidden">
         
         {/* Background Image */}
@@ -133,17 +135,15 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Glow Effect */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] bg-yellow-400/10 blur-[120px] md:blur-[150px] rounded-full pointer-events-none z-0" />
         
-        {/* FIXED: Increased mobile padding-top to pt-32 to fully push title out from underneath the navigation layer */}
+        {/* Header safe alignment spacer container */}
         <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center relative z-10 pt-32 sm:pt-36 md:pt-40 lg:pt-48 pb-12 md:pb-16">
           
-          {/* Category Badge */}
-          {post.category && (
-            <div className="inline-block mb-4 md:mb-6">
-              <span className="px-3 py-1.5 bg-yellow-400/20 text-yellow-400 text-xs font-black uppercase tracking-widest rounded-full border border-yellow-400/30">
-                {post.category}
-              </span>
-            </div>
-          )}
+          {/* Category Badge - FIXED: Safely reads the derived string fallback */}
+          <div className="inline-block mb-4 md:mb-6">
+            <span className="px-3 py-1.5 bg-yellow-400/20 text-yellow-400 text-xs font-black uppercase tracking-widest rounded-full border border-yellow-400/30">
+              {displayCategory}
+            </span>
+          </div>
           
           {/* Title */}
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight mb-4 md:mb-6 leading-tight">
