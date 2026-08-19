@@ -79,19 +79,15 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 overflow-hidden">
       
-      {/* Hero Section */}
-<<<<<<< HEAD
-      <section className="relative px-6 pt-32 pb-24 md:pt-35 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center min-h-[90vh]">
-=======
+      {/* Hero Section - FIXED: Removed duplicate section tag */}
       <section className="relative px-6 pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center min-h-[90vh]">
->>>>>>> b4e9a061496737c44f1ffaf98b09674b1dc5fb6e
         <div className="absolute inset-0 z-0">
           <Image
             src="/img/background.webp"
             alt={`${CONSTANTS.FOCUS_KEYWORD} Premium Streaming Background`}
             fill
             priority
-            fetchPriority="high" // ✅ Critical performance fix for LCP
+            fetchPriority="high"
             className="object-cover"
             sizes="100vw"
             quality={85}
@@ -102,17 +98,10 @@ export default function Home() {
         </div>
         
         <FadeIn className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
-<<<<<<< HEAD
-          {/* <div className="inline-flex items-center gap-2 bg-yellow-400/10 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-400/20 mb-6">
-            <Award className="w-4 h-4 text-yellow-400" />
-            <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">#1 Rated IPTV Service 2026</span>
-          </div> */}
-=======
           <div className="inline-flex items-center gap-2 bg-yellow-400/10 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-400/20 mb-6">
             <Award className="w-4 h-4 text-yellow-400" />
             <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">#1 Rated IPTV Service 2026</span>
           </div>
->>>>>>> b4e9a061496737c44f1ffaf98b09674b1dc5fb6e
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-white mb-6 drop-shadow-2xl">
             {CONSTANTS.FOCUS_KEYWORD} - BEST <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">IPTV</span> PROVIDER
@@ -220,7 +209,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Media Grid Section - ✅ Syntax error fixed completely */}
+      {/* Media Grid Section */}
       <section id="channels" className="py-24 max-w-[100vw] overflow-hidden relative min-h-[400px]">
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none" />
         <FadeIn className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col justify-between items-start mb-12 gap-6 relative z-10 w-full">
@@ -373,7 +362,7 @@ export default function Home() {
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oAGAMBAAIRAxEAPwCwAA//Z"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/35 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full border border-yellow-400/30 bg-black/60 px-4 py-2 text-xs font-black uppercase tracking-widest text-yellow-400 backdrop-blur-md">
@@ -523,7 +512,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile Card View (Fully Restored Layout Strings) */}
+          {/* Mobile Card View */}
           <div className="md:hidden space-y-6">
             {[
               { feature: "Monthly Cost", us: "Starting at $15/month", cable: "$80-$150/month" },
@@ -634,7 +623,7 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                     sizes="(max-width: 768px) 100vw, 33vw"
                     placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oAGAMBAAIRAxEAPwCwAA//Z"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-6 left-6">
@@ -666,7 +655,7 @@ export default function Home() {
               className="absolute inset-0 h-full w-full object-cover opacity-90"
               sizes="100vw"
               placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oAGAMBAAIRAxEAPwCwAA//Z"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
             />
             <div className="absolute inset-0 bg-black/25" />
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/90" />
