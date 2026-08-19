@@ -1,6 +1,5 @@
 export const blogPosts = [
-<<<<<<< HEAD
- 
+
 
   {
   "id": "12",
@@ -2099,8 +2098,6 @@ export const blogPosts = [
   date: '2026-08-10',
   image: '/img/blog/article-4/cover.jpg',
 },
-=======
->>>>>>> b4e9a061496737c44f1ffaf98b09674b1dc5fb6e
 
 {
   id: '3',
