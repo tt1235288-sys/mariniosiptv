@@ -80,7 +80,11 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-slate-950 overflow-hidden">
       
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="relative px-6 pt-32 pb-24 md:pt-35 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center min-h-[90vh]">
+=======
+      <section className="relative px-6 pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center min-h-[90vh]">
+>>>>>>> b4e9a061496737c44f1ffaf98b09674b1dc5fb6e
         <div className="absolute inset-0 z-0">
           <Image
             src="/img/background.webp"
@@ -98,10 +102,17 @@ export default function Home() {
         </div>
         
         <FadeIn className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
+<<<<<<< HEAD
           {/* <div className="inline-flex items-center gap-2 bg-yellow-400/10 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-400/20 mb-6">
             <Award className="w-4 h-4 text-yellow-400" />
             <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">#1 Rated IPTV Service 2026</span>
           </div> */}
+=======
+          <div className="inline-flex items-center gap-2 bg-yellow-400/10 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-400/20 mb-6">
+            <Award className="w-4 h-4 text-yellow-400" />
+            <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">#1 Rated IPTV Service 2026</span>
+          </div>
+>>>>>>> b4e9a061496737c44f1ffaf98b09674b1dc5fb6e
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-white mb-6 drop-shadow-2xl">
             {CONSTANTS.FOCUS_KEYWORD} - BEST <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">IPTV</span> PROVIDER
