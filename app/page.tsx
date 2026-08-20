@@ -44,14 +44,12 @@ import Image from 'next/image';
 import { Suspense } from 'react';
 import { blogPosts } from '@/lib/blog';
 
-// ✅ Lazy load heavy components with ssr: false
+// ✅ Lazy load heavy components - SSR enabled for SEO
 const PricingSection = dynamic(() => import('./components/PricingSection'), {
-  ssr: false,
   loading: () => <div className="min-h-[600px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>,
 });
 
 const MovieSlider = dynamic(() => import('./components/MovieSlider'), {
-  ssr: false,
   loading: () => (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto px-4">
       {[...Array(4)].map((_, i) => <div key={i} className="aspect-[2/3] bg-slate-900 rounded-xl animate-pulse" />)}
@@ -60,17 +58,14 @@ const MovieSlider = dynamic(() => import('./components/MovieSlider'), {
 });
 
 const PartnerSlider = dynamic(() => import('./components/PartnerSlider'), {
-  ssr: false,
   loading: () => <div className="h-32 bg-transparent max-w-7xl mx-auto" />,
 });
 
 const GlobalServerMap = dynamic(() => import('./components/GlobalServerMap'), {
-  ssr: false,
   loading: () => <div className="h-[400px] bg-slate-900 rounded-2xl animate-pulse max-w-7xl mx-auto" />,
 });
 
 const FAQ = dynamic(() => import('./components/FAQ'), {
-  ssr: false,
   loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>,
 });
 
@@ -78,7 +73,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 overflow-hidden">
       
-      {/* Hero Section - FIXED: Removed duplicate section tag */}
+      {/* Hero Section */}
       <section className="relative px-6 pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden flex flex-col items-center justify-center text-center min-h-[90vh]">
         <div className="absolute inset-0 z-0">
           <Image
@@ -102,8 +97,8 @@ export default function Home() {
             <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">#1 Rated IPTV Service 2026</span>
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-white mb-6 drop-shadow-2xl">
-            {CONSTANTS.FOCUS_KEYWORD} - BEST <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">IPTV</span> PROVIDER
+            {CONSTANTS.FOCUS_KEYWORD} - Best <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">IPTV</span> Provider
           </h1>
           <p className="text-lg md:text-2xl text-white/80 max-w-3xl mb-6 font-medium drop-shadow-md leading-relaxed">
             Welcome to <strong className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</strong> - The most reliable premium IPTV provider with 15,000+ live channels, 60,000+ VODs, and crystal-clear 4K streaming. Experience the best IPTV subscription for sports, movies, and entertainment.
@@ -125,7 +120,7 @@ export default function Home() {
         </FadeIn>
       </section>
 
-      {/* Partner Slider Section Wrapper */}
+      {/* Partner Slider Section */}
       <Suspense fallback={<div className="h-32 bg-transparent max-w-7xl mx-auto" />}>
         <PartnerSlider />
       </Suspense>
@@ -175,7 +170,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Animated Statistics Trust Section */}
+      {/* Statistics Section */}
       <section className="py-24 bg-slate-900 rounded-[3rem] mx-4 sm:mx-8 mb-24 border border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-400/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -192,11 +187,11 @@ export default function Home() {
             <FadeInItem className="flex flex-col items-center">
               <span className="text-5xl md:text-7xl font-black text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"><AnimatedCounter value={15} suffix="K+" /></span>
               <span className="text-sm text-yellow-400 font-bold uppercase tracking-widest mt-2">Live Channels</span>
-              <p className="text-white/40 text-xs mt-1">Global & Local</p>
+              <p className="text-white/40 text-xs mt-1">Global &amp; Local</p>
             </FadeInItem>
             <FadeInItem className="flex flex-col items-center">
               <span className="text-5xl md:text-7xl font-black text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"><AnimatedCounter value={60} suffix="K+" /></span>
-              <span className="text-sm text-yellow-400 font-bold uppercase tracking-widest mt-2">Movies & Series</span>
+              <span className="text-sm text-yellow-400 font-bold uppercase tracking-widest mt-2">Movies &amp; Series</span>
               <p className="text-white/40 text-xs mt-1">Updated Daily</p>
             </FadeInItem>
             <FadeInItem className="flex flex-col items-center">
@@ -261,7 +256,7 @@ export default function Home() {
               </div>
               <div>
                 <div className="font-black text-white text-xl">24/7 Support</div>
-                <p className="text-white/50 text-sm">Live chat & email for {CONSTANTS.FOCUS_KEYWORD} customers</p>
+                <p className="text-white/50 text-sm">Live chat &amp; email for {CONSTANTS.FOCUS_KEYWORD} customers</p>
               </div>
             </FadeInItem>
             <FadeInItem className="flex items-center gap-4">
@@ -292,7 +287,7 @@ export default function Home() {
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {[
             { icon: Database, title: "Massive Content Library", desc: `${CONSTANTS.FOCUS_KEYWORD} offers 15,000+ live channels including sports, news, entertainment, kids, and international programming plus 60,000+ movies and series on demand.` },
-            { icon: Activity, title: "Anti-Freeze Technology", desc: "Our proprietary streaming technology eliminates buffering and freezing with {CONSTANTS.FOCUS_KEYWORD}. Watch your favorite content without interruptions, even during peak hours." },
+            { icon: Activity, title: "Anti-Freeze Technology", desc: `Our proprietary streaming technology eliminates buffering and freezing with ${CONSTANTS.FOCUS_KEYWORD}. Watch your favorite content without interruptions, even during peak hours.` },
             { icon: Server, title: "Global Server Network", desc: `With servers across 100+ countries, ${CONSTANTS.FOCUS_KEYWORD} delivers low-latency streaming no matter where you are.` },
             { icon: Trophy, title: "Premium Sports Coverage", desc: `Get all PPV events, football leagues, UFC, boxing, NBA, NFL, NHL, and more with ${CONSTANTS.FOCUS_KEYWORD}. Never miss a game.` },
             { icon: Calendar, title: "24/7 EPG Guide", desc: `Our Electronic Program Guide keeps you informed about what's playing now and next across all ${CONSTANTS.FOCUS_KEYWORD} channels.` },
@@ -410,7 +405,7 @@ export default function Home() {
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <FadeIn className="order-2 lg:order-1">
               <span className="mb-4 inline-flex rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-yellow-400">
-                Live Sports & PPV Events
+                Live Sports &amp; PPV Events
               </span>
               <h3 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
                 Never Miss The <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Biggest Live Events</span>
@@ -464,7 +459,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Modern Comparison Table */}
+      {/* Comparison Table */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 via-transparent to-yellow-400/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -481,9 +476,9 @@ export default function Home() {
           <div className="hidden md:block overflow-x-auto">
             <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
               <div className="grid grid-cols-3 gap-0">
-                <div className="p-6 border-b border-r border-white/10 bg-white/5"><h3 className="text-xl font-bold text-white">Feature</h3></div>
-                <div className="p-6 border-b border-r border-white/10 bg-gradient-to-r from-yellow-400/10 to-transparent"><h3 className="text-xl font-bold text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</h3></div>
-                <div className="p-6 border-b border-white/10"><h3 className="text-xl font-bold text-white/40">Traditional Cable</h3></div>
+                <div className="p-6 border-b border-r border-white/10 bg-white/5"><div className="text-xl font-bold text-white">Feature</div></div>
+                <div className="p-6 border-b border-r border-white/10 bg-gradient-to-r from-yellow-400/10 to-transparent"><div className="text-xl font-bold text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</div></div>
+                <div className="p-6 border-b border-white/10"><div className="text-xl font-bold text-white/40">Traditional Cable</div></div>
                 
                 {[
                   { feature: "Monthly Cost", us: "Starting at $15/month", cable: "$80-$150 per month", highlight: true },
@@ -589,7 +584,7 @@ export default function Home() {
         </FadeInStagger>
       </section>
 
-      {/* FAQ Wrapper */}
+      {/* FAQ Section */}
       <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>}>
         <FAQ />
       </Suspense>
@@ -600,7 +595,7 @@ export default function Home() {
         
         <FadeIn className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 relative z-10">
           <div>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Latest <span className="text-yellow-400">News & Guides</span></h2>
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Latest <span className="text-yellow-400">News &amp; Guides</span></h2>
             <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
           </div>
           <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group">
