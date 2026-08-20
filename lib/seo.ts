@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 const DOMAIN = 'mariniosiptv.vip';
 const FOCUS_KEYWORD = 'Marinios IPTV';
-const BRAND_NAME = 'MariniosIPTV';
+const BRAND_NAME = 'Marinios IPTV';
 
 export const generateSEOMetadata = (pageName: string, description?: string): Metadata => {
   return {

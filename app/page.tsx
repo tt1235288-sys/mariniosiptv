@@ -41,15 +41,17 @@ import {
 import { FadeIn, FadeInStagger, FadeInItem } from './components/AnimatedSection';
 import AnimatedCounter from './components/AnimatedCounter';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { Suspense } from 'react';
 import { blogPosts } from '@/lib/blog';
 
-// ✅ Lazy load heavy components with matching aspect ratio/height wrappers to stop layout shifts (CLS)
+// ✅ Lazy load heavy components with ssr: false
 const PricingSection = dynamic(() => import('./components/PricingSection'), {
+  ssr: false,
   loading: () => <div className="min-h-[600px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>,
 });
 
 const MovieSlider = dynamic(() => import('./components/MovieSlider'), {
+  ssr: false,
   loading: () => (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto px-4">
       {[...Array(4)].map((_, i) => <div key={i} className="aspect-[2/3] bg-slate-900 rounded-xl animate-pulse" />)}
@@ -58,24 +60,21 @@ const MovieSlider = dynamic(() => import('./components/MovieSlider'), {
 });
 
 const PartnerSlider = dynamic(() => import('./components/PartnerSlider'), {
+  ssr: false,
   loading: () => <div className="h-32 bg-transparent max-w-7xl mx-auto" />,
 });
 
 const GlobalServerMap = dynamic(() => import('./components/GlobalServerMap'), {
+  ssr: false,
   loading: () => <div className="h-[400px] bg-slate-900 rounded-2xl animate-pulse max-w-7xl mx-auto" />,
 });
 
 const FAQ = dynamic(() => import('./components/FAQ'), {
+  ssr: false,
   loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>,
 });
 
 export default function Home() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 overflow-hidden">
       
@@ -126,10 +125,10 @@ export default function Home() {
         </FadeIn>
       </section>
 
-      {/* Partner Slider Section Wrapper (Guards layout footprints to stop CLS shifts) */}
-      <div className="min-h-[128px]">
-        {isMounted ? <PartnerSlider /> : <div className="h-32 bg-transparent" />}
-      </div>
+      {/* Partner Slider Section Wrapper */}
+      <Suspense fallback={<div className="h-32 bg-transparent max-w-7xl mx-auto" />}>
+        <PartnerSlider />
+      </Suspense>
 
       {/* 3-Step Setup Section */}
       <section className="py-32 bg-gradient-to-b from-slate-900 to-slate-950 border-y border-white/5 relative overflow-hidden">
@@ -218,21 +217,21 @@ export default function Home() {
             <p className="text-white/60 text-lg">Explore thousands of live channels, blockbuster movies, hit series, and exclusive sports events included with your {CONSTANTS.FOCUS_KEYWORD} subscription.</p>
           </div>
         </FadeIn>
-        {isMounted ? (
-          <MovieSlider />
-        ) : (
+        <Suspense fallback={
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto px-4">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="aspect-[2/3] bg-slate-900 rounded-xl" />
             ))}
           </div>
-        )}
+        }>
+          <MovieSlider />
+        </Suspense>
       </section>
 
       {/* Pricing Section */}
-      <div className="min-h-[600px]">
-        {isMounted ? <PricingSection /> : <div className="h-[600px] bg-transparent" />}
-      </div>
+      <Suspense fallback={<div className="min-h-[600px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>}>
+        <PricingSection />
+      </Suspense>
 
       {/* Trust Badges */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -279,9 +278,9 @@ export default function Home() {
       </section>
 
       {/* Global Server Map */}
-      <div className="min-h-[400px]">
-        {isMounted ? <GlobalServerMap /> : <div className="h-[400px] bg-transparent" />}
-      </div>
+      <Suspense fallback={<div className="h-[400px] bg-slate-900 rounded-2xl animate-pulse max-w-7xl mx-auto" />}>
+        <GlobalServerMap />
+      </Suspense>
 
       {/* Benefits Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -591,9 +590,9 @@ export default function Home() {
       </section>
 
       {/* FAQ Wrapper */}
-      <div className="min-h-[400px]">
-        {isMounted ? <FAQ /> : <div className="h-[400px] bg-transparent" />}
-      </div>
+      <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>}>
+        <FAQ />
+      </Suspense>
 
       {/* Blog Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
