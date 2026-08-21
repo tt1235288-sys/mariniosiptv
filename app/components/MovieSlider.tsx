@@ -128,10 +128,6 @@ const InfiniteSlider = ({ items, direction = 'left', speed = 50, category }: {
                     </div>
                   </div>
                   
-                  {/* "Watch Now" text on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-white text-xs font-bold text-center">Click to Subscribe</p>
-                  </div>
                 </>
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-slate-800">
