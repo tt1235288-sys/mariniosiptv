@@ -604,7 +604,7 @@ export default function Home() {
         <FAQ />
       </div>
 
-      {/* Blog Section */}
+      {/* Blog Section (Single Consolidated Link per Card) */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
         
@@ -614,68 +614,67 @@ export default function Home() {
             <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group">
+            <Link 
+              href="/blog" 
+              aria-label="Browse all Marinios IPTV news and guides"
+              className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group"
+            >
               <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </FadeIn>
         
-{/* Blog preview section with ONE primary link or distinct anchors */}
-<FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-  {blogPosts.slice(0, 3).map((post) => {
-    const primaryKeyword = post.keywords?.[0] || 'IPTV';
+        {/* Blog preview section with ONE primary link per card */}
+        <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+          {blogPosts.slice(0, 3).map((post) => {
+            const primaryKeyword = post.keywords?.[0] || 'IPTV';
 
-    return (
-      <FadeInItem key={post.id} className="group">
-        <div className="flex flex-col">
-          {/* 1. Image Link with dedicated descriptive text */}
-          <Link 
-            href={`/blog/${post.slug}`} 
-            aria-label={`Thumbnail for ${post.title}`}
-            className="block relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300"
-          >
-            <Image 
-              src={post.image} 
-              alt={`Cover illustration for ${post.title}`} 
-              width={800} 
-              height={450} 
-              loading="lazy" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-              sizes="(max-width: 768px) 100vw, 33vw" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-            <div className="absolute bottom-6 left-6">
-              <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
-                {post.author}
-              </span>
-            </div>
-          </Link>
+            return (
+              <FadeInItem key={post.id} className="group">
+                <Link 
+                  href={`/blog/${post.slug}`} 
+                  aria-label={`Read guide: ${post.title}`}
+                  className="flex flex-col h-full rounded-3xl p-3 border border-transparent hover:border-white/10 hover:bg-white/[0.02] transition-all duration-300"
+                >
+                  {/* Cover Image */}
+                  <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300">
+                    <Image 
+                      src={post.image} 
+                      alt={post.title} 
+                      width={800} 
+                      height={450} 
+                      loading="lazy" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                      sizes="(max-width: 768px) 100vw, 33vw" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+                    <div className="absolute bottom-6 left-6">
+                      <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
+                        {post.author}
+                      </span>
+                    </div>
+                  </div>
 
-          {/* 2. Headline Link */}
-          <Link href={`/blog/${post.slug}`} className="block">
-            <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
-              {post.title}
-            </p>
-          </Link>
+                  {/* Headline */}
+                  <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
+                    {post.title}
+                  </p>
 
-          {/* 3. Plain Text Excerpt */}
-          <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">
-            {post.description || post.excerpt}
-          </p>
-          
-          {/* 4. Action Button with Unique Keyword Anchor */}
-          <Link 
-            href={`/blog/${post.slug}`} 
-            className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
-          >
-            <span>Read {primaryKeyword} Guide</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </FadeInItem>
-    );
-  })}
-</FadeInStagger>
+                  {/* Plain Text Excerpt */}
+                  <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed flex-grow">
+                    {post.description || post.excerpt}
+                  </p>
+                  
+                  {/* Visual CTA Indicator (inside the single card Link) */}
+                  <div className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all pt-2 mt-auto">
+                    <span>Read {primaryKeyword} Guide</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </FadeInItem>
+            );
+          })}
+        </FadeInStagger>
       </section>
         
       {/* Final CTA Section */}
@@ -705,7 +704,7 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-[0.22em] text-yellow-400">Premium IPTV Service</span>
               </div>
               <h2 className="mx-auto max-w-5xl text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                Upgrade Your <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">Entertainment Experience</span>
+                Upgrade Your <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Entertainment Experience</span>
               </h2>
               <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
                 Stream live TV channels, premium sports, movies, and series in HD and 4K with {CONSTANTS.FOCUS_KEYWORD}. Fast activation, smooth playback, and support for all popular devices.

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { CONSTANTS } from '@/lib/seo';
 import { useState, useMemo } from 'react';
 
-// Movies from /img/sliders/movies/mariniosiptv-movies-01 to 12 (REDUCED from 16 to 12 for DOM optimization)
+// Movies from /img/sliders/movies/mariniosiptv-movies-01 to 12
 const movies = Array.from({ length: 12 }).map((_, i) => {
   const number = String(i + 1).padStart(2, '0');
   return {
@@ -17,7 +17,7 @@ const movies = Array.from({ length: 12 }).map((_, i) => {
   };
 });
 
-// Series from /img/series/mariniosiptv-series-01 to 12 (REDUCED from 16 to 12)
+// Series from /img/series/mariniosiptv-series-01 to 12
 const series = Array.from({ length: 12 }).map((_, i) => {
   const number = String(i + 1).padStart(2, '0');
   return {
@@ -29,7 +29,7 @@ const series = Array.from({ length: 12 }).map((_, i) => {
   };
 });
 
-// Sports from /img/sliders/sports/mariniosiptv-sports-01 to 12 (REDUCED from 15 to 12)
+// Sports from /img/sliders/sports/mariniosiptv-sports-01 to 12
 const sports = Array.from({ length: 12 }).map((_, i) => {
   const number = String(i + 1).padStart(2, '0');
   return {
@@ -43,7 +43,7 @@ const sports = Array.from({ length: 12 }).map((_, i) => {
 
 // Smooth scroll to pricing section
 const scrollToPricing = () => {
-  const pricingSection = document.getElementById('pricing');
+  const pricingSection = document.getElementById('pricing-section') || document.getElementById('pricing');
   if (pricingSection) {
     pricingSection.scrollIntoView({
       behavior: 'smooth',
@@ -61,7 +61,7 @@ const InfiniteSlider = ({ items, direction = 'left', speed = 50, category }: {
 }) => {
   const [failedImages, setFailedImages] = useState<{ [key: string]: boolean }>({});
   
-  // REDUCED: Double the items instead of triple (3x → 2x) for fewer DOM nodes
+  // Double the items for seamless CSS looping
   const infiniteItems = useMemo(() => [...items, ...items], [items]);
   const duration = (items.length * speed) / 10;
   
@@ -95,50 +95,56 @@ const InfiniteSlider = ({ items, direction = 'left', speed = 50, category }: {
         }}
         style={{ willChange: 'transform' }}
       >
-        {infiniteItems.map((item, idx) => (
-          <button
-            key={`${item.id}-${idx}`}
-            onClick={scrollToPricing}
-            className="flex-shrink-0 w-28 sm:w-32 md:w-44 lg:w-48 block cursor-pointer group focus:outline-none"
-            aria-label={`Watch ${item.altText} - click to view pricing plans`}
-          >
-            <div className="relative aspect-[2/3] rounded-lg md:rounded-xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-              {!failedImages[`${item.id}-${idx}`] ? (
-                <>
-                  <Image
-                    src={`${item.imagePath}.webp`}
-                    alt={item.altText}
-                    width={item.width || 192}
-                    height={item.height || 288}
-                    sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 176px, 192px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    onError={(e) => handleImageError(`${item.id}-${idx}`, item.imagePath, e)}
-                  />
-                  
-                  {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Play icon on hover */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-yellow-400/20 backdrop-blur-sm flex items-center justify-center border border-yellow-400/50">
-                      <svg className="w-5 h-5 md:w-6 md:h-6 text-yellow-400 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+        {infiniteItems.map((item, idx) => {
+          const isLoopDuplicate = idx >= items.length;
+          const uniqueAriaLabel = `Watch ${item.altText} - click to view pricing plans${isLoopDuplicate ? ' (Replay Feed)' : ''}`;
+          const uniqueAltText = `${item.altText}${isLoopDuplicate ? ' - Replay' : ''}`;
+
+          return (
+            <button
+              key={`${item.id}-${idx}`}
+              onClick={scrollToPricing}
+              type="button"
+              className="flex-shrink-0 w-28 sm:w-32 md:w-44 lg:w-48 block cursor-pointer group focus:outline-none"
+              aria-label={uniqueAriaLabel}
+            >
+              <div className="relative aspect-[2/3] rounded-lg md:rounded-xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 shadow-lg transition-shadow duration-300 hover:shadow-2xl">
+                {!failedImages[`${item.id}-${idx}`] ? (
+                  <>
+                    <Image
+                      src={`${item.imagePath}.webp`}
+                      alt={uniqueAltText}
+                      width={item.width || 192}
+                      height={item.height || 288}
+                      sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 176px, 192px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      onError={(e) => handleImageError(`${item.id}-${idx}`, item.imagePath, e)}
+                    />
+                    
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Play icon on hover */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-yellow-400/20 backdrop-blur-sm flex items-center justify-center border border-yellow-400/50">
+                        <svg className="w-5 h-5 md:w-6 md:h-6 text-yellow-400 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
                     </div>
+                  </>
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-slate-800">
+                    <span className="text-slate-500 text-xs text-center px-2">
+                      {category}
+                    </span>
                   </div>
-                  
-                </>
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-slate-800">
-                  <span className="text-slate-500 text-xs text-center px-2">
-                    {category}
-                  </span>
-                </div>
-              )}
-            </div>
-          </button>
-        ))}
+                )}
+              </div>
+            </button>
+          );
+        })}
       </motion.div>
     </div>
   );
