@@ -89,7 +89,7 @@ export default function PricingSection() {
           
           <div className="relative z-10 flex flex-col h-full">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-white/50 uppercase tracking-[0.2em]">Starter</h3>
+              <p className="text-lg font-bold text-white/50 uppercase tracking-[0.2em]">Starter</p>
               <Star className="w-4 h-4 text-white/20" />
             </div>
             <div className="text-2xl font-black text-white mb-2 tracking-tight">3 Months</div>
@@ -143,7 +143,7 @@ export default function PricingSection() {
           
           <div className="relative z-10 flex flex-col h-full">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-yellow-400/80 uppercase tracking-[0.2em]">Ultimate</h3>
+              <p className="text-lg font-bold text-yellow-400/80 uppercase tracking-[0.2em]">Ultimate</p>
             </div>
             <div className="text-2xl font-black text-white mb-2 tracking-tight">12 Months</div>
             
@@ -189,7 +189,7 @@ export default function PricingSection() {
           
           <div className="relative z-10 flex flex-col h-full">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-white/50 uppercase tracking-[0.2em]">Value</h3>
+              <p className="text-lg font-bold text-white/50 uppercase tracking-[0.2em]">Value</p>
               <Star className="w-4 h-4 text-white/20" />
             </div>
             <div className="text-2xl font-black text-white mb-2 tracking-tight">6 Months</div>

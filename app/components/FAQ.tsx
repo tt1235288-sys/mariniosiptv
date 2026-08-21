@@ -47,7 +47,7 @@ export default function FAQ() {
           Frequently Asked <span className="text-yellow-400">Questions</span>
         </h2>
         <p className="text-white/60 text-lg max-w-2xl mx-auto">
-          Everything you need to know about our <strong className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</strong> service.
+          Everything you need to know about our <span className="text-yellow-400 font-bold">{CONSTANTS.FOCUS_KEYWORD}</span> service.
         </p>
       </FadeIn>
       
@@ -61,10 +61,10 @@ export default function FAQ() {
               aria-controls={`faq-answer-${i}`}
             >
               <div className="flex justify-between items-center gap-4">
-                <h3 className={`text-lg md:text-xl font-bold transition-colors ${openIndex === i ? 'text-yellow-400' : 'text-white group-hover:text-yellow-400/80'} flex items-center gap-3`}>
+                <p className={`text-lg md:text-xl font-bold transition-colors ${openIndex === i ? 'text-yellow-400' : 'text-white group-hover:text-yellow-400/80'} flex items-center gap-3`}>
                   <span className={`${openIndex === i ? 'text-yellow-400' : 'text-white/30'} font-black text-2xl`}>Q.</span> 
                   {faq.q}
-                </h3>
+                </p>
                 <ChevronDown className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180 text-yellow-400' : 'text-white/30 group-hover:text-yellow-400/50'}`} />
               </div>
               <div 

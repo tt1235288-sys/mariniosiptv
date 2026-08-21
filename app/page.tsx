@@ -41,6 +41,7 @@ import {
 import { FadeIn, FadeInStagger, FadeInItem } from './components/AnimatedSection';
 import AnimatedCounter from './components/AnimatedCounter';
 import Image from 'next/image';
+import SocialShareBar from './components/SocialShareBar';
 import { blogPosts } from '@/lib/blog';
 
 // SSR-compatible dynamic imports with stable layout wrappers
@@ -156,7 +157,7 @@ export default function Home() {
                 <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">1</span>
                 <CreditCard className="w-10 h-10 text-white/50 group-hover:text-yellow-400 transition-colors" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Choose Your Plan</h3>
+              <p className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Choose Your Plan</p>
               <p className="text-white/60 text-lg leading-relaxed max-w-xs">Select the package that fits your entertainment needs with {CONSTANTS.FOCUS_KEYWORD}. All plans include instant email activation.</p>
             </FadeInItem>
 
@@ -166,7 +167,7 @@ export default function Home() {
                 <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">2</span>
                 <Download className="w-12 h-12 text-yellow-400 relative z-10" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Install on Any Device</h3>
+              <p className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Install on Any Device</p>
               <p className="text-white/60 text-lg leading-relaxed max-w-xs">{CONSTANTS.FOCUS_KEYWORD} works on Smart TVs, Firestick, Android, iOS, and more. Follow our simple setup guides.</p>
             </FadeInItem>
 
@@ -175,7 +176,7 @@ export default function Home() {
                 <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">3</span>
                 <Tv2 className="w-10 h-10 text-white/50 group-hover:text-yellow-400 transition-colors" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Enjoy Premium Content</h3>
+              <p className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Enjoy Premium Content</p>
               <p className="text-white/60 text-lg leading-relaxed max-w-xs">Start watching 15,000+ live channels and 60,000+ VODs instantly with {CONSTANTS.FOCUS_KEYWORD}.</p>
             </FadeInItem>
           </FadeInStagger>
@@ -283,7 +284,7 @@ export default function Home() {
 
       {/* Benefits Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0z' fill='none'/%3E%3Ccircle cx='15' cy='15' r='1' fill='%23facc15' fill-opacity='0.3'/%3E%3C/svg%3E")` }} />
+        <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0p0v30H0z' fill='none'/%3E%3Ccircle cx='15' cy='15' r='1' fill='%23facc15' fill-opacity='0.3'/%3E%3C/svg%3E")` }} />
         <FadeIn className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Why <span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> Is The Best IPTV Choice</h2>
           <p className="text-white/60 text-lg max-w-3xl mx-auto">Thousands of customers have switched to our IPTV service. Here is why {CONSTANTS.FOCUS_KEYWORD} outperforms traditional cable and other providers.</p>
@@ -303,7 +304,7 @@ export default function Home() {
                 <div className="w-14 h-14 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-6 group-hover:bg-yellow-400/20 transition-colors">
                   <Icon className="w-7 h-7 text-yellow-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-xl font-bold text-white mb-3">{item.title}</p>
                 <p className="text-white/60 leading-relaxed">{item.desc}</p>
               </FadeInItem>
             );
@@ -311,7 +312,7 @@ export default function Home() {
         </FadeInStagger>
       </section>
 
-      {/* Channel Categories (Demoted from <h3> to <span> to satisfy Heading-to-Text Ratio) */}
+      {/* Channel Categories (Demoted from <p> to <span> to satisfy Heading-to-Text Ratio) */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Channel <span className="text-yellow-400">Categories</span></h2>
@@ -385,9 +386,9 @@ export default function Home() {
               <span className="mb-4 inline-flex rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-yellow-400">
                 Crystal Clear IPTV Streaming
               </span>
-              <h3 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              <p className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
                 Experience Premium <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">4K Streaming Quality</span>
-              </h3>
+              </p>
               <p className="mt-6 text-base leading-relaxed text-white/65 sm:text-lg">
                 With {CONSTANTS.FOCUS_KEYWORD}, you get a powerful IPTV experience designed for smooth live TV, movies, sports, and series. Watch your favorite entertainment in HD, Full HD, and 4K quality on supported channels and devices.
               </p>
@@ -415,9 +416,9 @@ export default function Home() {
               <span className="mb-4 inline-flex rounded-full border border-yellow-400/30 bg-yellow-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-yellow-400">
                 Live Sports & PPV Events
               </span>
-              <h3 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              <p className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
                 Never Miss The <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Biggest Live Events</span>
-              </h3>
+              </p>
               <p className="mt-6 text-base leading-relaxed text-white/65 sm:text-lg">
                 Sports fans can enjoy live football, basketball, boxing, UFC, Formula 1, tennis, and major international tournaments with {CONSTANTS.FOCUS_KEYWORD}. Get access to premium sports channels and live event coverage in one IPTV subscription.
               </p>
@@ -484,7 +485,7 @@ export default function Home() {
             <p className="text-white/60 text-lg max-w-3xl mx-auto">See why thousands are cutting the cord and switching to {CONSTANTS.FOCUS_KEYWORD}, the smarter, more affordable IPTV solution.</p>
           </FadeIn>
 
-          {/* Desktop Table (Converted Column Headers from <h3> to <span>) */}
+          {/* Desktop Table (Converted Column Headers from <p> to <span>) */}
           <div className="hidden md:block overflow-x-auto">
             <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
               <div className="grid grid-cols-3 gap-0">
@@ -542,6 +543,8 @@ export default function Home() {
           <FadeIn className="text-center mt-8"><p className="text-white/50 text-sm">* {CONSTANTS.FOCUS_KEYWORD} offers the best value in IPTV entertainment. No hidden fees, no surprises.</p></FadeIn>
         </div>
       </section>
+
+      <SocialShareBar/>
 
       {/* Testimonials */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -611,7 +614,7 @@ export default function Home() {
             <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            {/* Social Share Badges to resolve Social Media check */}
+            {/* Social Share Badges to resolve Social Media check
             <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2.5 rounded-full text-xs font-bold text-white/70">
               <Share2 className="w-3.5 h-3.5 text-yellow-400" />
               <span>Share:</span>
@@ -634,44 +637,64 @@ export default function Home() {
               >
                 Telegram
               </a>
-            </div>
+            </div> */}
             <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group">
               <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </FadeIn>
         
+        {/* Replace the Blog post item with this structure */}
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {blogPosts.slice(0, 3).map((post) => (
-            <FadeInItem key={post.id} className="group cursor-pointer">
-              <Link href={`/blog/${post.slug}`} className="block">
-                <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300">
+            <FadeInItem key={post.id} className="group">
+              <div className="flex flex-col">
+                {/* 1. Concise Image Link (Anchor is the Image ALT text) */}
+                <Link 
+                  href={`/blog/${post.slug}`} 
+                  className="block relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300"
+                >
                   <Image 
                     src={post.image} 
-                    alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD} Blog Article`} 
+                    alt={post.title} 
                     width={800} 
                     height={450} 
                     loading="lazy" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                     sizes="(max-width: 768px) 100vw, 33vw" 
-                    placeholder="blur" 
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-6 left-6">
-                    <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">{post.author}</span>
+                    <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
+                      {post.author}
+                    </span>
                   </div>
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">{post.title}</h3>
-                <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">{post.excerpt}</p>
-                <span className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all">
-                  Read Article<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
+                </Link>
+
+                {/* 2. Concise Title Link (Anchor is only the headline) */}
+                <Link href={`/blog/${post.slug}`} className="block">
+                  <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
+                    {post.title}
+                  </p>
+                </Link>
+
+                {/* Unlinked Excerpt (keeps long text outside of <a> tags) */}
+                <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">
+                  {post.excerpt}
+                </p>
+                
+                {/* 3. Concise Action Link */}
+                <Link 
+                  href={`/blog/${post.slug}`} 
+                  className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
+                >
+                  Read Article <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </FadeInItem>
           ))}
         </FadeInStagger>
-      </section>
+              </section>
         
       {/* Final CTA Section */}
       <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
