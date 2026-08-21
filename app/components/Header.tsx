@@ -48,6 +48,13 @@ export default function Header() {
     { name: 'Blog', href: '/blog' },
   ];
 
+  const mobileNavLinks = [
+    { name: 'Main Home', href: '/' },
+    { name: 'Pricing Plans', href: '/pricing' },
+    { name: 'Setup Tutorial', href: '/setup' },
+    { name: 'IPTV Blog', href: '/blog' },
+  ];
+
   const isActive = (href: string) => {
     if (href === '/') {
       return pathname === href;
@@ -60,7 +67,7 @@ export default function Header() {
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-950/80 backdrop-blur-xl border-b border-white/10 py-2 shadow-2xl shadow-black/50' : 'bg-transparent py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+            {/* Header Brand Logo */}
             <div className="flex items-center">
               <Link 
                 href="/" 
@@ -111,7 +118,7 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Mobile Menu Trigger */}
+            {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center">
               <button 
                 onClick={() => setIsOpen(!isOpen)} 
@@ -126,7 +133,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Fullscreen Mobile Menu */}
+      {/* Fullscreen Mobile Menu with Unique Anchor Texts */}
       <div 
         className={`fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-xl transition-all duration-300 md:hidden ${
           isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
@@ -138,11 +145,10 @@ export default function Header() {
       >
         <div className="flex flex-col items-center justify-center h-full w-full px-6">
           <div className="space-y-4 w-full max-w-sm mx-auto">
-            {navLinks.map((link) => (
+            {mobileNavLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                aria-label={`Mobile Navigation link for ${link.name}`}
                 onClick={() => setIsOpen(false)}
                 className={`block text-center px-6 py-5 rounded-2xl text-xl font-bold tracking-wider uppercase transition-all ${
                   isActive(link.href) 
@@ -157,7 +163,6 @@ export default function Header() {
             {/* Mobile Drawer CTA Button */}
             <Link 
               href="/pricing"
-              aria-label="Start Streaming Now via Mobile Navigation"
               onClick={() => setIsOpen(false)}
               className="block mt-8 text-center px-6 py-5 rounded-2xl bg-yellow-400 text-slate-950 font-black text-xl tracking-widest uppercase shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:shadow-[0_0_40px_rgba(250,204,21,0.6)] transition-shadow"
             >

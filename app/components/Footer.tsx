@@ -6,23 +6,23 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="relative bg-slate-950 text-white/70 py-16 px-6 lg:px-12 border-t border-white/10 overflow-hidden min-h-[380px]">
+      {/* Decorative gradient divider */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           
-          {/* Brand Section */}
+          {/* Brand Section with Distinct Logo Alt/Label */}
           <div className="md:col-span-2">
-            {/* Inside components/Footer.tsx */}
             <Link
               href="/"
               className="flex items-center gap-3 mb-5 group inline-flex"
-              aria-label="Marinios IPTV Return to Top"
+              aria-label={`${CONSTANTS.BRAND_NAME} Back to Top`}
             >
               <div className="w-auto h-12 flex items-center group-hover:scale-105 transition-transform">
                 <Image
                   src="/img/iptv-logo.webp"
-                  alt="Marinios IPTV Official Footer Logo"
+                  alt={`${CONSTANTS.BRAND_NAME} Footer Navigation Logo`}
                   width={180}
                   height={48}
                   className="object-contain h-full w-auto"
@@ -30,17 +30,18 @@ export default function Footer() {
                 />
               </div>
             </Link>
+
             <p className="text-sm text-white/50 max-w-md leading-relaxed mb-6">
               Experience the future of entertainment with{" "}
               <span className="font-bold text-yellow-400/80">{CONSTANTS.FOCUS_KEYWORD}</span>. 
               Delivering premium 4K streaming worldwide with 15,000+ channels and 60,000+ VODs.
             </p>
 
-            {/* Social Icons */}
+            {/* Social Icons with Distinct Labels */}
             <div className="flex items-center gap-3">
               <a
                 href="#"
-                aria-label={`Follow ${CONSTANTS.FOCUS_KEYWORD} on Twitter`}
+                aria-label={`Follow ${CONSTANTS.FOCUS_KEYWORD} on Twitter X`}
                 className="group w-10 h-10 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center hover:bg-yellow-400 hover:border-yellow-400 transition-all duration-300"
               >
                 <Twitter className="w-4 h-4 text-white/50 group-hover:text-slate-950 transition-colors" />
@@ -48,7 +49,7 @@ export default function Footer() {
 
               <a
                 href="#"
-                aria-label={`Follow ${CONSTANTS.FOCUS_KEYWORD} on Instagram`}
+                aria-label={`Follow ${CONSTANTS.FOCUS_KEYWORD} on Instagram Official`}
                 className="group w-10 h-10 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center hover:bg-yellow-400 hover:border-yellow-400 transition-all duration-300"
               >
                 <Instagram className="w-4 h-4 text-white/50 group-hover:text-slate-950 transition-colors" />
@@ -56,7 +57,7 @@ export default function Footer() {
 
               <a
                 href="#"
-                aria-label={`Follow ${CONSTANTS.FOCUS_KEYWORD} on Facebook`}
+                aria-label={`Follow ${CONSTANTS.FOCUS_KEYWORD} on Facebook Page`}
                 className="group w-10 h-10 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center hover:bg-yellow-400 hover:border-yellow-400 transition-all duration-300"
               >
                 <Facebook className="w-4 h-4 text-white/50 group-hover:text-slate-950 transition-colors" />
@@ -93,7 +94,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Bottom Bar with Stable Image Containers */}
       <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-xs text-white/40">
           © {new Date().getFullYear()} {CONSTANTS.BRAND_NAME}. All rights reserved.
@@ -101,10 +102,10 @@ export default function Footer() {
 
         <div className="flex items-center gap-3 flex-wrap">
           {[
-            { src: "/img/payment/1.png", alt: "PayPal", width: 45, height: 30 },
-            { src: "/img/payment/2.png", alt: "Bitcoin", width: 45, height: 30 },
-            { src: "/img/payment/3.png", alt: "Visa", width: 45, height: 30 },
-            { src: "/img/payment/4.png", alt: "Mastercard", width: 45, height: 30 },
+            { src: "/img/payment/1.png", alt: "PayPal Payment Method", width: 45, height: 30 },
+            { src: "/img/payment/2.png", alt: "Bitcoin Crypto Payment", width: 45, height: 30 },
+            { src: "/img/payment/3.png", alt: "Visa Card Processing", width: 45, height: 30 },
+            { src: "/img/payment/4.png", alt: "Mastercard Secure Payment", width: 45, height: 30 },
           ].map((item) => (
             <div
               key={item.alt}
