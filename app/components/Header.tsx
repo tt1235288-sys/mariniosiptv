@@ -20,7 +20,7 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ✅ Force state directly onto the body element to bypass JS event delays
+  // Force state directly onto the body element to bypass JS event delays
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -95,9 +95,13 @@ export default function Header() {
               </ul>
             </nav>
 
+            {/* Desktop CTA Button */}
             <div className="hidden md:flex">
-              <Link href="/pricing" className="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-white hover:bg-yellow-400 hover:border-yellow-400 hover:text-slate-950 font-bold tracking-widest uppercase text-sm transition-all shadow-lg">
-                Get Started
+              <Link 
+                href="/pricing" 
+                className="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-white hover:bg-yellow-400 hover:border-yellow-400 hover:text-slate-950 font-bold tracking-widest uppercase text-sm transition-all shadow-lg"
+              >
+                View Plans
               </Link>
             </div>
 
@@ -141,12 +145,14 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
+            
+            {/* Mobile Drawer CTA Button */}
             <Link 
               href="/pricing"
               onClick={() => setIsOpen(false)}
               className="block mt-8 text-center px-6 py-5 rounded-2xl bg-yellow-400 text-slate-950 font-black text-xl tracking-widest uppercase shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:shadow-[0_0_40px_rgba(250,204,21,0.6)] transition-shadow"
             >
-              Get Started
+              Start Streaming Now
             </Link>
           </div>
         </div>

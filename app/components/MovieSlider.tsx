@@ -157,9 +157,9 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full" />
-            <h5 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Latest Movies
-            </h5>
+            </p>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
             Enjoy thousands of movies from around the world with {CONSTANTS.FOCUS_KEYWORD}, available anytime on any device.
@@ -173,9 +173,9 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full" />
-            <h5 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Popular TV Series
-            </h5>
+            </p>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
             Never miss an episode with complete seasons, new releases, and fan-favorite shows on {CONSTANTS.FOCUS_KEYWORD}.
@@ -189,9 +189,9 @@ export default function MovieSlider() {
         <div className="w-[80%] mx-auto px-4 mb-5">
           <div className="flex items-center gap-3">
             <div className="w-1 h-7 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full" />
-            <h5 className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
+            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
               Live Sports Events
-            </h5>
+            </p>
           </div>
           <p className="text-white/40 text-sm mt-2 hidden md:block">
             Enjoy premium sports channels, live events, and PPV fights from anywhere with {CONSTANTS.FOCUS_KEYWORD}.

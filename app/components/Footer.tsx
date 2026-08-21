@@ -5,9 +5,7 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    // ✅ ADDED: min-height to prevent CLS
     <footer className="relative bg-slate-950 text-white/70 py-16 px-6 lg:px-12 border-t border-white/10 overflow-hidden min-h-[380px]">
-      {/* Decorative line - no CLS impact */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -66,42 +64,41 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Pages */}
+          {/* Pages Navigation (Unique Anchor Texts) */}
           <div>
-            <h4 className="text-white font-bold mb-5 tracking-wide uppercase text-sm">
+            <p className="text-white font-bold mb-5 tracking-wide uppercase text-sm">
               Pages
-            </h4>
+            </p>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/" className="text-white/50 hover:text-yellow-400 transition-colors">Home</Link></li>
-              <li><Link href="/pricing" className="text-white/50 hover:text-yellow-400 transition-colors">Pricing</Link></li>
-              <li><Link href="/setup" className="text-white/50 hover:text-yellow-400 transition-colors">Setup Guide</Link></li>
-              <li><Link href="/blog" className="text-white/50 hover:text-yellow-400 transition-colors">Blog</Link></li>
-              <li><Link href="/contact" className="text-white/50 hover:text-yellow-400 transition-colors">Contact</Link></li>
+              <li><Link href="/" className="text-white/50 hover:text-yellow-400 transition-colors">Home Page</Link></li>
+              <li><Link href="/pricing" className="text-white/50 hover:text-yellow-400 transition-colors">Subscription Plans</Link></li>
+              <li><Link href="/setup" className="text-white/50 hover:text-yellow-400 transition-colors">Installation Guide</Link></li>
+              <li><Link href="/blog" className="text-white/50 hover:text-yellow-400 transition-colors">Latest News & Articles</Link></li>
+              <li><Link href="/contact" className="text-white/50 hover:text-yellow-400 transition-colors">Contact Support</Link></li>
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal Navigation */}
           <div>
-            <h4 className="text-white font-bold mb-5 tracking-wide uppercase text-sm">
+            <p className="text-white font-bold mb-5 tracking-wide uppercase text-sm">
               Legal
-            </h4>
+            </p>
             <ul className="space-y-3 text-sm">
               <li><Link href="/terms" className="text-white/50 hover:text-yellow-400 transition-colors">Terms of Service</Link></li>
               <li><Link href="/privacy" className="text-white/50 hover:text-yellow-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/about" className="text-white/50 hover:text-yellow-400 transition-colors">About US</Link></li>
+              <li><Link href="/about" className="text-white/50 hover:text-yellow-400 transition-colors">About Us</Link></li>
               <li><Link href="/refund-policy" className="text-white/50 hover:text-yellow-400 transition-colors">Refund Policy</Link></li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar - ✅ FIXED: CLS issue with payment images */}
+      {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-xs text-white/40">
           © {new Date().getFullYear()} {CONSTANTS.BRAND_NAME}. All rights reserved.
         </p>
 
-        {/* ✅ FIXED: Payment methods with proper dimensions to prevent CLS */}
         <div className="flex items-center gap-3 flex-wrap">
           {[
             { src: "/img/payment/1.png", alt: "PayPal", width: 45, height: 30 },
@@ -111,7 +108,6 @@ export default function Footer() {
           ].map((item) => (
             <div
               key={item.alt}
-              // ✅ Fixed: Explicit dimensions to prevent CLS
               className="relative h-9 w-14 flex-shrink-0 rounded-lg border border-white/10 bg-white/[0.03] backdrop-blur-sm flex items-center justify-center hover:border-yellow-400/40 hover:bg-yellow-400/5 transition-all duration-300"
             >
               <Image
