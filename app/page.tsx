@@ -195,22 +195,22 @@ export default function Home() {
             <FadeInItem className="flex flex-col items-center">
               <span className="text-5xl md:text-7xl font-black text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"><AnimatedCounter value={20} suffix="K+" /></span>
               <span className="text-sm text-yellow-400 font-bold uppercase tracking-widest mt-2">Happy Subscribers</span>
-              <p className="text-white/40 text-xs mt-1">Trust {CONSTANTS.FOCUS_KEYWORD}</p>
+              <p className="text-white/40 text-xs mt-1">Verified Active Users</p>
             </FadeInItem>
             <FadeInItem className="flex flex-col items-center">
               <span className="text-5xl md:text-7xl font-black text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"><AnimatedCounter value={15} suffix="K+" /></span>
               <span className="text-sm text-yellow-400 font-bold uppercase tracking-widest mt-2">Live Channels</span>
-              <p className="text-white/40 text-xs mt-1">Global & Local</p>
+              <p className="text-white/40 text-xs mt-1">International & Local</p>
             </FadeInItem>
             <FadeInItem className="flex flex-col items-center">
               <span className="text-5xl md:text-7xl font-black text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"><AnimatedCounter value={60} suffix="K+" /></span>
               <span className="text-sm text-yellow-400 font-bold uppercase tracking-widest mt-2">Movies & Series</span>
-              <p className="text-white/40 text-xs mt-1">Updated Daily</p>
+              <p className="text-white/40 text-xs mt-1">Updated Daily Library</p>
             </FadeInItem>
             <FadeInItem className="flex flex-col items-center">
               <span className="text-5xl md:text-7xl font-black text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"><AnimatedCounter value={99.9} decimals={1} suffix="%" /></span>
               <span className="text-sm text-yellow-400 font-bold uppercase tracking-widest mt-2">Server Uptime</span>
-              <p className="text-white/40 text-xs mt-1">99.9% Guaranteed</p>
+              <p className="text-white/40 text-xs mt-1">SLA Guaranteed Uptime</p>
             </FadeInItem>
           </FadeInStagger>
         </div>
@@ -312,7 +312,7 @@ export default function Home() {
         </FadeInStagger>
       </section>
 
-      {/* Channel Categories (Demoted from <p> to <span> to satisfy Heading-to-Text Ratio) */}
+      {/* Channel Categories */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Channel <span className="text-yellow-400">Categories</span></h2>
@@ -402,10 +402,10 @@ export default function Home() {
               </div>
               <Link 
                 href="/pricing" 
-                aria-label="Start Your Marinios IPTV Trial"
+                aria-label="Start Your 4K Streaming Trial"
                 className="mt-8 inline-flex rounded-full bg-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-xl transition hover:scale-105 hover:bg-yellow-300"
               >
-                Start Your {CONSTANTS.FOCUS_KEYWORD} Trial
+                Start 4K Streaming Trial
               </Link>
             </FadeIn>
           </div>
@@ -435,7 +435,7 @@ export default function Home() {
                 aria-label="Explore Sports IPTV Packages"
                 className="mt-8 inline-flex rounded-full border-2 border-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-widest text-yellow-400 transition hover:scale-105 hover:bg-yellow-400 hover:text-slate-950"
               >
-                Explore Sports Packages
+                View Sports Packages
               </Link>
             </FadeIn>
             <div className="relative order-1 overflow-hidden rounded-3xl border border-yellow-400/20 bg-white/[0.03] p-3 shadow-[0_0_60px_rgba(250,204,21,0.08)] lg:order-2 lg:rounded-[2.5rem]">
@@ -485,7 +485,7 @@ export default function Home() {
             <p className="text-white/60 text-lg max-w-3xl mx-auto">See why thousands are cutting the cord and switching to {CONSTANTS.FOCUS_KEYWORD}, the smarter, more affordable IPTV solution.</p>
           </FadeIn>
 
-          {/* Desktop Table (Converted Column Headers from <p> to <span>) */}
+          {/* Desktop Table */}
           <div className="hidden md:block overflow-x-auto">
             <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
               <div className="grid grid-cols-3 gap-0">
@@ -604,7 +604,7 @@ export default function Home() {
         <FAQ />
       </div>
 
-      {/* Blog Section & Social Share */}
+      {/* Blog Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
         
@@ -614,87 +614,68 @@ export default function Home() {
             <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4">
-            {/* Social Share Badges to resolve Social Media check
-            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2.5 rounded-full text-xs font-bold text-white/70">
-              <Share2 className="w-3.5 h-3.5 text-yellow-400" />
-              <span>Share:</span>
-              <a 
-                href="https://wa.me/?text=Check%20out%20Marinios%20IPTV%20-%20Best%204K%20Live%20TV%20%26%20Sports%20Provider%202026%20https%3A%2F%2Fwww.mariniosiptv.vip" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Share Marinios IPTV on WhatsApp"
-                className="hover:text-yellow-400 transition-colors ml-1"
-              >
-                WhatsApp
-              </a>
-              <span className="text-white/30">•</span>
-              <a 
-                href="https://t.me/share/url?url=https%3A%2F%2Fwww.mariniosiptv.vip&text=Check%20out%20Marinios%20IPTV" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Share Marinios IPTV on Telegram"
-                className="hover:text-yellow-400 transition-colors"
-              >
-                Telegram
-              </a>
-            </div> */}
             <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group">
               <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </FadeIn>
         
-        {/* Replace the Blog post item with this structure */}
+        {/* Blog preview grid with unique keyword-based anchor text */}
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-          {blogPosts.slice(0, 3).map((post) => (
-            <FadeInItem key={post.id} className="group">
-              <div className="flex flex-col">
-                {/* 1. Concise Image Link (Anchor is the Image ALT text) */}
-                <Link 
-                  href={`/blog/${post.slug}`} 
-                  className="block relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300"
-                >
-                  <Image 
-                    src={post.image} 
-                    alt={post.title} 
-                    width={800} 
-                    height={450} 
-                    loading="lazy" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                    sizes="(max-width: 768px) 100vw, 33vw" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-6 left-6">
-                    <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
-                      {post.author}
-                    </span>
-                  </div>
-                </Link>
+          {blogPosts.slice(0, 3).map((post) => {
+            const primaryKeyword = post.keywords?.[0] || 'IPTV';
 
-                {/* 2. Concise Title Link (Anchor is only the headline) */}
-                <Link href={`/blog/${post.slug}`} className="block">
-                  <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
-                    {post.title}
+            return (
+              <FadeInItem key={post.id} className="group">
+                <div className="flex flex-col">
+                  {/* 1. Image Link */}
+                  <Link 
+                    href={`/blog/${post.slug}`} 
+                    className="block relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300"
+                  >
+                    <Image 
+                      src={post.image} 
+                      alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD}`} 
+                      width={800} 
+                      height={450} 
+                      loading="lazy" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                      sizes="(max-width: 768px) 100vw, 33vw" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+                    <div className="absolute bottom-6 left-6">
+                      <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
+                        {post.author}
+                      </span>
+                    </div>
+                  </Link>
+
+                  {/* 2. Headline Link */}
+                  <Link href={`/blog/${post.slug}`} className="block">
+                    <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
+                      {post.title}
+                    </p>
+                  </Link>
+
+                  {/* 3. Plain Text Excerpt */}
+                  <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">
+                    {post.description || post.excerpt}
                   </p>
-                </Link>
-
-                {/* Unlinked Excerpt (keeps long text outside of <a> tags) */}
-                <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">
-                  {post.excerpt}
-                </p>
-                
-                {/* 3. Concise Action Link */}
-                <Link 
-                  href={`/blog/${post.slug}`} 
-                  className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
-                >
-                  Read Article <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </FadeInItem>
-          ))}
+                  
+                  {/* 4. Unique Dynamic Action Link */}
+                  <Link 
+                    href={`/blog/${post.slug}`} 
+                    className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
+                  >
+                    <span>Read {primaryKeyword} Guide</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </FadeInItem>
+            );
+          })}
         </FadeInStagger>
-              </section>
+      </section>
         
       {/* Final CTA Section */}
       <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
@@ -747,14 +728,14 @@ export default function Home() {
                   aria-label="View All Marinios IPTV Subscription Plans"
                   className="inline-flex w-full items-center justify-center rounded-full bg-yellow-400 px-10 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-[0_0_30px_rgba(250,204,21,0.35)] transition-all hover:scale-105 hover:bg-yellow-300 sm:w-auto"
                 >
-                  View {CONSTANTS.FOCUS_KEYWORD} Plans
+                  Choose Subscription Plan
                 </Link>
                 <Link 
                   href="/setup" 
                   aria-label="Read Marinios IPTV Setup Guide"
                   className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/15 sm:w-auto"
                 >
-                  <Settings className="h-5 w-5" />Setup Guide
+                  <Settings className="h-5 w-5" />Installation Guide
                 </Link>
               </div>
               <p className="mt-8 text-sm font-medium text-white/50">Trusted worldwide • Secure payments • Fast activation</p>

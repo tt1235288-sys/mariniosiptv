@@ -34,7 +34,7 @@ export default function Footer() {
 
             <p className="text-sm text-white/50 max-w-md leading-relaxed mb-6">
               Experience the future of entertainment with{" "}
-              <strong className="text-yellow-400/80">{CONSTANTS.FOCUS_KEYWORD}</strong>. 
+              <span className="font-bold text-yellow-400/80">{CONSTANTS.FOCUS_KEYWORD}</span>. 
               Delivering premium 4K streaming worldwide with 15,000+ channels and 60,000+ VODs.
             </p>
 
