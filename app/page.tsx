@@ -620,61 +620,62 @@ export default function Home() {
           </div>
         </FadeIn>
         
-        {/* Blog preview grid with unique keyword-based anchor text */}
-        <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-          {blogPosts.slice(0, 3).map((post) => {
-            const primaryKeyword = post.keywords?.[0] || 'IPTV';
+{/* Blog preview section with ONE primary link or distinct anchors */}
+<FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+  {blogPosts.slice(0, 3).map((post) => {
+    const primaryKeyword = post.keywords?.[0] || 'IPTV';
 
-            return (
-              <FadeInItem key={post.id} className="group">
-                <div className="flex flex-col">
-                  {/* 1. Image Link */}
-                  <Link 
-                    href={`/blog/${post.slug}`} 
-                    className="block relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300"
-                  >
-                    <Image 
-                      src={post.image} 
-                      alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD}`} 
-                      width={800} 
-                      height={450} 
-                      loading="lazy" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                      sizes="(max-width: 768px) 100vw, 33vw" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-                    <div className="absolute bottom-6 left-6">
-                      <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
-                        {post.author}
-                      </span>
-                    </div>
-                  </Link>
+    return (
+      <FadeInItem key={post.id} className="group">
+        <div className="flex flex-col">
+          {/* 1. Image Link with dedicated descriptive text */}
+          <Link 
+            href={`/blog/${post.slug}`} 
+            aria-label={`Thumbnail for ${post.title}`}
+            className="block relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300"
+          >
+            <Image 
+              src={post.image} 
+              alt={`Cover illustration for ${post.title}`} 
+              width={800} 
+              height={450} 
+              loading="lazy" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              sizes="(max-width: 768px) 100vw, 33vw" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+            <div className="absolute bottom-6 left-6">
+              <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
+                {post.author}
+              </span>
+            </div>
+          </Link>
 
-                  {/* 2. Headline Link */}
-                  <Link href={`/blog/${post.slug}`} className="block">
-                    <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
-                      {post.title}
-                    </p>
-                  </Link>
+          {/* 2. Headline Link */}
+          <Link href={`/blog/${post.slug}`} className="block">
+            <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
+              {post.title}
+            </p>
+          </Link>
 
-                  {/* 3. Plain Text Excerpt */}
-                  <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">
-                    {post.description || post.excerpt}
-                  </p>
-                  
-                  {/* 4. Unique Dynamic Action Link */}
-                  <Link 
-                    href={`/blog/${post.slug}`} 
-                    className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
-                  >
-                    <span>Read {primaryKeyword} Guide</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </FadeInItem>
-            );
-          })}
-        </FadeInStagger>
+          {/* 3. Plain Text Excerpt */}
+          <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed">
+            {post.description || post.excerpt}
+          </p>
+          
+          {/* 4. Action Button with Unique Keyword Anchor */}
+          <Link 
+            href={`/blog/${post.slug}`} 
+            className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
+          >
+            <span>Read {primaryKeyword} Guide</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </FadeInItem>
+    );
+  })}
+</FadeInStagger>
       </section>
         
       {/* Final CTA Section */}

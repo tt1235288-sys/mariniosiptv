@@ -13,15 +13,16 @@ export default function Footer() {
           
           {/* Brand Section */}
           <div className="md:col-span-2">
+            {/* Inside components/Footer.tsx */}
             <Link
               href="/"
               className="flex items-center gap-3 mb-5 group inline-flex"
-              aria-label={`${CONSTANTS.BRAND_NAME} - Home`}
+              aria-label="Marinios IPTV Return to Top"
             >
               <div className="w-auto h-12 flex items-center group-hover:scale-105 transition-transform">
                 <Image
                   src="/img/iptv-logo.webp"
-                  alt={CONSTANTS.BRAND_NAME}
+                  alt="Marinios IPTV Official Footer Logo"
                   width={180}
                   height={48}
                   className="object-contain h-full w-auto"
@@ -29,7 +30,6 @@ export default function Footer() {
                 />
               </div>
             </Link>
-
             <p className="text-sm text-white/50 max-w-md leading-relaxed mb-6">
               Experience the future of entertainment with{" "}
               <span className="font-bold text-yellow-400/80">{CONSTANTS.FOCUS_KEYWORD}</span>. 
