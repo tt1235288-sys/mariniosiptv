@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next';
-import Script from 'next/script';
 import { Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
+import SplashLoader from './components/SplashLoader';
 import { CONSTANTS } from '@/lib/seo';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import NextTopLoader from 'nextjs-toploader';
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
@@ -23,8 +24,10 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
+const baseUrl = `https://${CONSTANTS.DOMAIN}`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${CONSTANTS.DOMAIN}`),
+  metadataBase: new URL(baseUrl),
   title: {
     default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | Official Website`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
@@ -50,18 +53,18 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: `https://${CONSTANTS.DOMAIN}/`,
+    canonical: `${baseUrl}/`,
   },
   openGraph: {
     title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | Official Website`,
     description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
-    url: `https://${CONSTANTS.DOMAIN}/`,
+    url: `${baseUrl}/`,
     siteName: CONSTANTS.BRAND_NAME,
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: `https://${CONSTANTS.DOMAIN}/img/structer.png`,
+        url: `${baseUrl}/img/structer.png`,
         width: 1200,
         height: 630,
         alt: `${CONSTANTS.FOCUS_KEYWORD} - Premium IPTV Service`,
@@ -72,11 +75,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026`,
     description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
-    images: [`https://${CONSTANTS.DOMAIN}/img/structer.png`],
+    images: [`${baseUrl}/img/structer.png`],
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
   },
-  // FIXED: Added icons property
   icons: {
     icon: [
       { url: '/img/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -136,7 +138,7 @@ export const metadata: Metadata = {
     'streaming service',
     'cord cutting',
     'live channels',
-    'movies on demand'
+    'movies on demand',
   ],
 };
 
@@ -155,27 +157,27 @@ const OrganizationSchema = () => (
     suppressHydrationWarning
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": CONSTANTS.BRAND_NAME,
-        "alternateName": CONSTANTS.FOCUS_KEYWORD,
-        "url": `https://${CONSTANTS.DOMAIN}`,
-        "logo": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
-        "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
-        "description": `PremiStream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "customer support",
-          "availableLanguage": ["English"],
-          "contactOption": "TollFree"
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: CONSTANTS.BRAND_NAME,
+        alternateName: CONSTANTS.FOCUS_KEYWORD,
+        url: baseUrl,
+        logo: `${baseUrl}/img/structer.png`,
+        image: `${baseUrl}/img/structer.png`,
+        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          availableLanguage: ['English'],
+          contactOption: 'TollFree',
         },
-        "sameAs": [
-          "https://twitter.com/mariniosiptv",
-          "https://facebook.com/mariniosiptv",
-          "https://instagram.com/mariniosiptv",
-          "https://t.me/mariniosiptv"
-        ]
-      })
+        sameAs: [
+          'https://twitter.com/mariniosiptv',
+          'https://facebook.com/mariniosiptv',
+          'https://instagram.com/mariniosiptv',
+          'https://t.me/mariniosiptv',
+        ],
+      }),
     }}
   />
 );
@@ -188,18 +190,18 @@ const WebsiteSchema = () => (
     suppressHydrationWarning
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": CONSTANTS.BRAND_NAME,
-        "alternateName": CONSTANTS.FOCUS_KEYWORD,
-        "url": `https://${CONSTANTS.DOMAIN}`,
-        "description": `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": `https://${CONSTANTS.DOMAIN}/search?q={search_term_string}`,
-          "query-input": "required name=search_term_string"
-        }
-      })
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: CONSTANTS.BRAND_NAME,
+        alternateName: CONSTANTS.FOCUS_KEYWORD,
+        url: baseUrl,
+        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${baseUrl}/search?q={search_term_string}`,
+          'query-input': 'required name=search_term_string',
+        },
+      }),
     }}
   />
 );
@@ -212,52 +214,52 @@ const ProductSchema = () => (
     suppressHydrationWarning
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Product",
-        "name": `${CONSTANTS.BRAND_NAME} Premium Subscription`,
-        "image": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
-        "description": `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
-        "brand": { 
-          "@type": "Brand", 
-          "name": CONSTANTS.BRAND_NAME 
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: `${CONSTANTS.BRAND_NAME} Premium Subscription`,
+        image: `${baseUrl}/img/structer.png`,
+        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        brand: {
+          '@type': 'Brand',
+          name: CONSTANTS.BRAND_NAME,
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "5000",
-          "bestRating": "5",
-          "worstRating": "1"
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          reviewCount: '5000',
+          bestRating: '5',
+          worstRating: '1',
         },
-        "offers": [
-          { 
-            "@type": "Offer", 
-            "name": "Starter Plan - 3 Months", 
-            "priceCurrency": "USD", 
-            "price": "30.00",
-            "priceValidUntil": "2027-12-31",
-            "availability": "https://schema.org/OnlineOnly",
-            "url": `https://${CONSTANTS.DOMAIN}/pricing`
+        offers: [
+          {
+            '@type': 'Offer',
+            name: 'Starter Plan - 3 Months',
+            priceCurrency: 'USD',
+            price: '30.00',
+            priceValidUntil: '2027-12-31',
+            availability: 'https://schema.org/OnlineOnly',
+            url: `${baseUrl}/pricing`,
           },
-          { 
-            "@type": "Offer", 
-            "name": "Value Plan - 6 Months", 
-            "priceCurrency": "USD", 
-            "price": "50.00",
-            "priceValidUntil": "2027-12-31",
-            "availability": "https://schema.org/OnlineOnly",
-            "url": `https://${CONSTANTS.DOMAIN}/pricing`
+          {
+            '@type': 'Offer',
+            name: 'Value Plan - 6 Months',
+            priceCurrency: 'USD',
+            price: '50.00',
+            priceValidUntil: '2027-12-31',
+            availability: 'https://schema.org/OnlineOnly',
+            url: `${baseUrl}/pricing`,
           },
-          { 
-            "@type": "Offer", 
-            "name": "Ultimate Plan - 12 Months", 
-            "priceCurrency": "USD", 
-            "price": "80.00",
-            "priceValidUntil": "2027-12-31",
-            "availability": "https://schema.org/OnlineOnly",
-            "url": `https://${CONSTANTS.DOMAIN}/pricing`
-          }
-        ]
-      })
+          {
+            '@type': 'Offer',
+            name: 'Ultimate Plan - 12 Months',
+            priceCurrency: 'USD',
+            price: '80.00',
+            priceValidUntil: '2027-12-31',
+            availability: 'https://schema.org/OnlineOnly',
+            url: `${baseUrl}/pricing`,
+          },
+        ],
+      }),
     }}
   />
 );
@@ -270,51 +272,51 @@ const ServiceSchema = () => (
     suppressHydrationWarning
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": `${CONSTANTS.BRAND_NAME} IPTV Subscription`,
-        "alternateName": CONSTANTS.FOCUS_KEYWORD,
-        "serviceType": "IPTV Subscription",
-        "provider": {
-          "@type": "Organization",
-          "name": CONSTANTS.BRAND_NAME
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: `${CONSTANTS.BRAND_NAME} IPTV Subscription`,
+        alternateName: CONSTANTS.FOCUS_KEYWORD,
+        serviceType: 'IPTV Subscription',
+        provider: {
+          '@type': 'Organization',
+          name: CONSTANTS.BRAND_NAME,
         },
-        "description": `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Subscription Plans",
-          "itemListElement": [
+        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        areaServed: 'Worldwide',
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Subscription Plans',
+          itemListElement: [
             {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Starter Plan"
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Starter Plan',
               },
-              "price": "30",
-              "priceCurrency": "USD"
+              price: '30',
+              priceCurrency: 'USD',
             },
             {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Value Plan"
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Value Plan',
               },
-              "price": "50",
-              "priceCurrency": "USD"
+              price: '50',
+              priceCurrency: 'USD',
             },
             {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Ultimate Plan"
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Ultimate Plan',
               },
-              "price": "80",
-              "priceCurrency": "USD"
-            }
-          ]
-        }
-      })
+              price: '80',
+              priceCurrency: 'USD',
+            },
+          ],
+        },
+      }),
     }}
   />
 );
@@ -327,48 +329,48 @@ const FAQSchema = () => (
     suppressHydrationWarning
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
           {
-            "@type": "Question",
-            "name": "What is Marinios IPTV?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Marinios IPTV is a premium IPTV subscription service offering 15,000+ live channels and 60,000+ VODs in 4K quality with anti-freeze technology."
-            }
+            '@type': 'Question',
+            name: 'What is Marinios IPTV?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Marinios IPTV is a premium IPTV subscription service offering 15,000+ live channels and 60,000+ VODs in 4K quality with anti-freeze technology.',
+            },
           },
           {
-            "@type": "Question",
-            "name": "Is Marinios IPTV the best IPTV service?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Based on Marinios IPTV reviews, it's one of the highest-rated IPTV providers with 4.9/5 stars from 5000+ reviews."
-            }
+            '@type': 'Question',
+            name: 'Is Marinios IPTV the best IPTV service?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: "Based on Marinios IPTV reviews, it's one of the highest-rated IPTV providers with 4.9/5 stars from 5000+ reviews.",
+            },
           },
           {
-            "@type": "Question",
-            "name": "What devices support Marinios IPTV?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Marinios IPTV works on all major devices including Smart TVs, Android, iOS, Firestick, MAG boxes, and PC/Mac."
-            }
+            '@type': 'Question',
+            name: 'What devices support Marinios IPTV?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Marinios IPTV works on all major devices including Smart TVs, Android, iOS, Firestick, MAG boxes, and PC/Mac.',
+            },
           },
           {
-            "@type": "Question",
-            "name": "Does Marinios IPTV offer a free trial?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Marinios IPTV offers a 7-day money-back guarantee, allowing you to test the service risk-free."
-            }
-          }
-        ]
-      })
+            '@type': 'Question',
+            name: 'Does Marinios IPTV offer a free trial?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Marinios IPTV offers a 7-day money-back guarantee, allowing you to test the service risk-free.',
+            },
+          },
+        ],
+      }),
     }}
   />
 );
 
-// WebPage Schema with primaryImageOfPage for better image display in search results
+// WebPage Schema
 const WebPageSchema = () => (
   <script
     type="application/ld+json"
@@ -376,23 +378,23 @@ const WebPageSchema = () => (
     suppressHydrationWarning
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026`,
-        "description": `Stream 15,000+ Live Channels & 60,000+ VODs in 4K. Fast activation, anti-freeze tech, 24/7 support.`,
-        "url": `https://${CONSTANTS.DOMAIN}/`,
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": `https://${CONSTANTS.DOMAIN}/img/structer.png`,
-          "width": "1200",
-          "height": "630"
-        }
-      })
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026`,
+        description: `Stream 15,000+ Live Channels & 60,000+ VODs in 4K. Fast activation, anti-freeze tech, 24/7 support.`,
+        url: `${baseUrl}/`,
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: `${baseUrl}/img/structer.png`,
+          width: 1200,
+          height: 630,
+        },
+      }),
     }}
   />
 );
 
-// Article Schema for better image display in search
+// Article Schema
 const ArticleSchema = () => (
   <script
     type="application/ld+json"
@@ -400,32 +402,34 @@ const ArticleSchema = () => (
     suppressHydrationWarning
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | 4K Streaming`,
-        "image": [
-          `https://${CONSTANTS.DOMAIN}/img/structer.png`
-        ],
-        "datePublished": "2026-01-01T00:00:00+00:00",
-        "dateModified": new Date().toISOString(),
-        "author": {
-          "@type": "Person",
-          "name": `${CONSTANTS.BRAND_NAME} Team`
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | 4K Streaming`,
+        image: [`${baseUrl}/img/structer.png`],
+        datePublished: '2026-01-01T00:00:00+00:00',
+        dateModified: '2026-08-19T00:00:00+00:00',
+        author: {
+          '@type': 'Person',
+          name: `${CONSTANTS.BRAND_NAME} Team`,
         },
-        "publisher": {
-          "@type": "Organization",
-          "name": CONSTANTS.BRAND_NAME,
-          "logo": {
-            "@type": "ImageObject",
-            "url": `https://${CONSTANTS.DOMAIN}/img/structer.png`
-          }
-        }
-      })
+        publisher: {
+          '@type': 'Organization',
+          name: CONSTANTS.BRAND_NAME,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${baseUrl}/img/structer.png`,
+          },
+        },
+      }),
     }}
   />
 );
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
@@ -434,12 +438,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" content="#0f172a" />
-        <meta name="thumbnail" content={`https://${CONSTANTS.DOMAIN}/img/structer.png`} />
+        <meta name="thumbnail" content={`${baseUrl}/img/structer.png`} />
       </head>
-      <body 
-        className={`${poppins.className} ${montserrat.variable} antialiased min-h-screen bg-slate-950 text-white`} 
+      <body
+        className={`${poppins.className} ${montserrat.variable} antialiased min-h-screen bg-slate-950 text-white`}
         suppressHydrationWarning
       >
+        {/* NextTopLoader: Non-blocking branded progress bar */}
+        <NextTopLoader
+          color="#facc15"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #facc15,0 0 5px #facc15"
+        />
+
+        {/* Brand Splash Animation (Fades out quickly on client, doesn't block SSR) */}
+        <SplashLoader />
+
         {/* JSON-LD Schemas */}
         <OrganizationSchema />
         <WebsiteSchema />
@@ -453,9 +473,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
 
-        {/* Google Analytics - Using @next/third-parties/google */}
+        {/* Google Analytics */}
         <GoogleAnalytics gaId="G-6NR51QZXKL" />
-        
+
         <FloatingWhatsApp />
       </body>
     </html>

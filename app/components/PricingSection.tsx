@@ -9,31 +9,30 @@ export default function PricingSection() {
 
   const pricing = {
     1: {
-      3: { total: 30, mo: (30/3).toFixed(2) },
-      6: { total: 50, mo: (50/6).toFixed(2) },
-      12: { total: 80, mo: (80/12).toFixed(2) },
+      3: { total: 30, mo: (30 / 3).toFixed(2) },
+      6: { total: 50, mo: (50 / 6).toFixed(2) },
+      12: { total: 80, mo: (80 / 12).toFixed(2) },
     },
     2: {
-      3: { total: 50, mo: (50/3).toFixed(2) },
-      6: { total: 80, mo: (80/6).toFixed(2) },
-      12: { total: 120, mo: (120/12).toFixed(2) },
+      3: { total: 50, mo: (50 / 3).toFixed(2) },
+      6: { total: 80, mo: (80 / 6).toFixed(2) },
+      12: { total: 120, mo: (120 / 12).toFixed(2) },
     },
     3: {
-      3: { total: 70, mo: (70/3).toFixed(2) },
-      6: { total: 105, mo: (105/6).toFixed(2) },
-      12: { total: 150, mo: (150/12).toFixed(2) },
+      3: { total: 70, mo: (70 / 3).toFixed(2) },
+      6: { total: 105, mo: (105 / 6).toFixed(2) },
+      12: { total: 150, mo: (150 / 12).toFixed(2) },
     }
   };
 
   const currentPricing = pricing[devices];
 
-  // WhatsApp number (replace with your actual WhatsApp number)
-  const WHATSAPP_NUMBER = '+447549589503'; // Replace with your number
+  const WHATSAPP_NUMBER = '+447549589503';
 
   const handleWhatsAppRedirect = (months: number) => {
     const message = `Hello, I am interested in your service to get a subscription for ${months} months.`;
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -64,6 +63,8 @@ export default function PricingSection() {
             {[1, 2, 3].map((d) => (
               <button 
                 key={d}
+                type="button"
+                aria-label={`Select ${d} Device${d > 1 ? 's' : ''}`}
                 onClick={() => setDevices(d as 1|2|3)}
                 className={`px-6 md:px-8 py-2 md:py-3 rounded-full text-sm md:text-base font-black tracking-wider uppercase transition-all duration-300 ${
                   devices === d 
@@ -119,10 +120,12 @@ export default function PricingSection() {
               ))}
             </ul>
             <button 
+              type="button"
+              aria-label="Get 3 Months Starter IPTV Plan"
               onClick={() => handleWhatsAppRedirect(3)}
               className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 font-bold hover:bg-white/10 hover:text-white transition-all text-center uppercase tracking-widest text-xs cursor-pointer"
             >
-              Select 3 Months
+              Get 3-Month Plan
             </button>
           </div>
         </FadeInItem>
@@ -170,10 +173,12 @@ export default function PricingSection() {
               ))}
             </ul>
             <button 
+              type="button"
+              aria-label="Get 12 Months Ultimate IPTV Plan"
               onClick={() => handleWhatsAppRedirect(12)}
               className="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 text-slate-950 font-black hover:from-yellow-400 hover:to-yellow-500 hover:scale-[1.02] transition-all text-center uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(250,204,21,0.3)] cursor-pointer"
             >
-              Get 12 Months
+              Get 12-Month Plan
             </button>
           </div>
         </FadeInItem>
@@ -215,10 +220,12 @@ export default function PricingSection() {
               ))}
             </ul>
             <button 
+              type="button"
+              aria-label="Get 6 Months Value IPTV Plan"
               onClick={() => handleWhatsAppRedirect(6)}
               className="w-full py-3 rounded-xl bg-white/5 border border-white/10 text-white/80 font-bold hover:bg-white/10 hover:text-white transition-all text-center uppercase tracking-widest text-xs cursor-pointer"
             >
-              Select 6 Months
+              Get 6-Month Plan
             </button>
           </div>
         </FadeInItem>

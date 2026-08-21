@@ -26,9 +26,7 @@ import {
   Film, 
   Trophy, 
   Calendar, 
-  Wifi, 
   Database, 
-  TrendingUp, 
   Tv, 
   Volume2, 
   Activity, 
@@ -41,10 +39,9 @@ import {
 import { FadeIn, FadeInStagger, FadeInItem } from './components/AnimatedSection';
 import AnimatedCounter from './components/AnimatedCounter';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
 import { blogPosts } from '@/lib/blog';
 
-// ✅ Lazy load heavy components with matching aspect ratio/height wrappers to stop layout shifts (CLS)
+// SSR-compatible dynamic imports with stable layout wrappers
 const PricingSection = dynamic(() => import('./components/PricingSection'), {
   loading: () => <div className="min-h-[600px] flex items-center justify-center"><div className="h-12 w-12 animate-spin rounded-full border-4 border-yellow-400 border-t-transparent" /></div>,
 });
@@ -70,12 +67,6 @@ const FAQ = dynamic(() => import('./components/FAQ'), {
 });
 
 export default function Home() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 overflow-hidden">
       
@@ -87,7 +78,7 @@ export default function Home() {
             alt={`${CONSTANTS.FOCUS_KEYWORD} Premium Streaming Background`}
             fill
             priority
-            fetchPriority="high" // ✅ Critical performance fix for LCP
+            fetchPriority="high"
             className="object-cover"
             sizes="100vw"
             quality={85}
@@ -126,9 +117,9 @@ export default function Home() {
         </FadeIn>
       </section>
 
-      {/* Partner Slider Section Wrapper (Guards layout footprints to stop CLS shifts) */}
+      {/* Partner Slider Section */}
       <div className="min-h-[128px]">
-        {isMounted ? <PartnerSlider /> : <div className="h-32 bg-transparent" />}
+        <PartnerSlider />
       </div>
 
       {/* 3-Step Setup Section */}
@@ -137,9 +128,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn>
             <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-20">
-               <span className="text-yellow-400 font-bold uppercase tracking-widest text-sm mb-4">Quick Start Guide</span>
-               <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">START STREAMING IN <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">3 EASY STEPS</span></h2>
-               <p className="text-white/60 text-lg mt-6 max-w-2xl mx-auto">Getting started with {CONSTANTS.FOCUS_KEYWORD} takes just minutes. Follow our simple three-step process and begin watching immediately.</p>
+              <span className="text-yellow-400 font-bold uppercase tracking-widest text-sm mb-4">Quick Start Guide</span>
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">START STREAMING IN <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">3 EASY STEPS</span></h2>
+              <p className="text-white/60 text-lg mt-6 max-w-2xl mx-auto">Getting started with {CONSTANTS.FOCUS_KEYWORD} takes just minutes. Follow our simple three-step process and begin watching immediately.</p>
             </div>
           </FadeIn>
           <FadeInStagger className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -176,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Animated Statistics Trust Section */}
+      {/* Statistics Section */}
       <section className="py-24 bg-slate-900 rounded-[3rem] mx-4 sm:mx-8 mb-24 border border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-400/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -209,7 +200,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Media Grid Section - ✅ Syntax error fixed completely */}
+      {/* Media Grid Section */}
       <section id="channels" className="py-24 max-w-[100vw] overflow-hidden relative min-h-[400px]">
         <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none" />
         <FadeIn className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col justify-between items-start mb-12 gap-6 relative z-10 w-full">
@@ -218,20 +209,12 @@ export default function Home() {
             <p className="text-white/60 text-lg">Explore thousands of live channels, blockbuster movies, hit series, and exclusive sports events included with your {CONSTANTS.FOCUS_KEYWORD} subscription.</p>
           </div>
         </FadeIn>
-        {isMounted ? (
-          <MovieSlider />
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-7xl mx-auto px-4">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="aspect-[2/3] bg-slate-900 rounded-xl" />
-            ))}
-          </div>
-        )}
+        <MovieSlider />
       </section>
 
       {/* Pricing Section */}
       <div className="min-h-[600px]">
-        {isMounted ? <PricingSection /> : <div className="h-[600px] bg-transparent" />}
+        <PricingSection />
       </div>
 
       {/* Trust Badges */}
@@ -280,7 +263,7 @@ export default function Home() {
 
       {/* Global Server Map */}
       <div className="min-h-[400px]">
-        {isMounted ? <GlobalServerMap /> : <div className="h-[400px] bg-transparent" />}
+        <GlobalServerMap />
       </div>
 
       {/* Benefits Section */}
@@ -293,7 +276,7 @@ export default function Home() {
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {[
             { icon: Database, title: "Massive Content Library", desc: `${CONSTANTS.FOCUS_KEYWORD} offers 15,000+ live channels including sports, news, entertainment, kids, and international programming plus 60,000+ movies and series on demand.` },
-            { icon: Activity, title: "Anti-Freeze Technology", desc: "Our proprietary streaming technology eliminates buffering and freezing with {CONSTANTS.FOCUS_KEYWORD}. Watch your favorite content without interruptions, even during peak hours." },
+            { icon: Activity, title: "Anti-Freeze Technology", desc: `Our proprietary streaming technology eliminates buffering and freezing with ${CONSTANTS.FOCUS_KEYWORD}. Watch your favorite content without interruptions, even during peak hours.` },
             { icon: Server, title: "Global Server Network", desc: `With servers across 100+ countries, ${CONSTANTS.FOCUS_KEYWORD} delivers low-latency streaming no matter where you are.` },
             { icon: Trophy, title: "Premium Sports Coverage", desc: `Get all PPV events, football leagues, UFC, boxing, NBA, NFL, NHL, and more with ${CONSTANTS.FOCUS_KEYWORD}. Never miss a game.` },
             { icon: Calendar, title: "24/7 EPG Guide", desc: `Our Electronic Program Guide keeps you informed about what's playing now and next across all ${CONSTANTS.FOCUS_KEYWORD} channels.` },
@@ -362,7 +345,7 @@ export default function Home() {
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oAGAMBAAIRAxEAPwCwAA//Z"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black via-black/35 to-transparent" />
                 <div className="absolute left-4 top-4 rounded-full border border-yellow-400/30 bg-black/60 px-4 py-2 text-xs font-black uppercase tracking-widest text-yellow-400 backdrop-blur-md">
@@ -465,7 +448,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Modern Comparison Table */}
+      {/* Comparison Table */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 via-transparent to-yellow-400/5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -478,7 +461,7 @@ export default function Home() {
             <p className="text-white/60 text-lg max-w-3xl mx-auto">See why thousands are cutting the cord and switching to {CONSTANTS.FOCUS_KEYWORD}, the smarter, more affordable IPTV solution.</p>
           </FadeIn>
 
-          {/* Desktop Table View */}
+          {/* Desktop Table */}
           <div className="hidden md:block overflow-x-auto">
             <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
               <div className="grid grid-cols-3 gap-0">
@@ -512,7 +495,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile Card View (Fully Restored Layout Strings) */}
+          {/* Mobile Cards */}
           <div className="md:hidden space-y-6">
             {[
               { feature: "Monthly Cost", us: "Starting at $15/month", cable: "$80-$150/month" },
@@ -527,7 +510,7 @@ export default function Home() {
               <div key={idx} className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-sm rounded-2xl border border-white/10 p-6">
                 <div className="text-center mb-4"><span className="text-white/60 text-sm uppercase tracking-wider">{row.feature}</span></div>
                 <div className="flex justify-between items-center">
-                  <div className="text-left"><div className="text-yellow-400 font-bold text-lg">{row.us}</div><div className="text-yellow-400/60 text-xs">Marinios IPTV</div></div>
+                  <div className="text-left"><div className="text-yellow-400 font-bold text-lg">{row.us}</div><div className="text-yellow-400/60 text-xs">{CONSTANTS.FOCUS_KEYWORD}</div></div>
                   <div className="text-right"><div className="text-white/40 line-through text-lg">{row.cable}</div><div className="text-white/40 text-xs">Cable</div></div>
                 </div>
               </div>
@@ -592,7 +575,7 @@ export default function Home() {
 
       {/* FAQ Wrapper */}
       <div className="min-h-[400px]">
-        {isMounted ? <FAQ /> : <div className="h-[400px] bg-transparent" />}
+        <FAQ />
       </div>
 
       {/* Blog Section */}
@@ -617,13 +600,13 @@ export default function Home() {
                   <Image 
                     src={post.image} 
                     alt={`${post.title} - ${CONSTANTS.FOCUS_KEYWORD} Blog Article`} 
-                    width={800}
-                    height={450}
-                    loading="lazy"
+                    width={800} 
+                    height={450} 
+                    loading="lazy" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oAGAMBAAIRAxEAPwCwAA//Z"
+                    sizes="(max-width: 768px) 100vw, 33vw" 
+                    placeholder="blur" 
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-6 left-6">
@@ -655,7 +638,7 @@ export default function Home() {
               className="absolute inset-0 h-full w-full object-cover opacity-90"
               sizes="100vw"
               placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oAGAMBAAIRAxEAPwCwAA//Z"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA//Z"
             />
             <div className="absolute inset-0 bg-black/25" />
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/90" />

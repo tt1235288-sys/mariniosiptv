@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-const DOMAIN = 'mariniosiptv.vip';
+const DOMAIN = 'www.mariniosiptv.vip';
 const FOCUS_KEYWORD = 'Marinios IPTV';
 const BRAND_NAME = 'Marinios IPTV';
 
