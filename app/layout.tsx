@@ -29,10 +29,10 @@ const baseUrl = `https://${CONSTANTS.DOMAIN}`;
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | Official Website`,
+    default: `${CONSTANTS.FOCUS_KEYWORD} - Premium 4K Streaming & Live TV 2026`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  description: `Best IPTV Service 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+  description: `Stream 15,000+ live channels, sports PPV & 60K+ 4K movies with ${CONSTANTS.FOCUS_KEYWORD}. Fast activation, anti-freeze servers & zero buffering. Start your trial today!`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
   publisher: CONSTANTS.BRAND_NAME,
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
     canonical: `${baseUrl}/`,
   },
   openGraph: {
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | Official Website`,
-    description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Premium 4K Streaming & Live TV 2026`,
+    description: `Stream 15,000+ live channels, sports PPV & 60K+ 4K movies with ${CONSTANTS.FOCUS_KEYWORD}. Fast activation, anti-freeze servers & zero buffering. Start your trial today!`,
     url: `${baseUrl}/`,
     siteName: CONSTANTS.BRAND_NAME,
     locale: 'en_US',
@@ -73,8 +73,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026`,
-    description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+    title: `${CONSTANTS.FOCUS_KEYWORD} - Premium 4K Streaming & Live TV 2026`,
+    description: `Stream 15,000+ live channels, sports PPV & 60K+ 4K movies with ${CONSTANTS.FOCUS_KEYWORD}. Fast activation, anti-freeze servers & zero buffering. Start your trial today!`,
     images: [`${baseUrl}/img/structer.png`],
     creator: `@${CONSTANTS.BRAND_NAME}`,
     site: `@${CONSTANTS.BRAND_NAME}`,
@@ -164,7 +164,7 @@ const OrganizationSchema = () => (
         url: baseUrl,
         logo: `${baseUrl}/img/structer.png`,
         image: `${baseUrl}/img/structer.png`,
-        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        description: `Stream 15,000+ live channels, sports PPV & 60K+ 4K movies with ${CONSTANTS.FOCUS_KEYWORD}. Fast activation, anti-freeze servers & zero buffering. Start your trial today!`,
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer support',
@@ -195,7 +195,7 @@ const WebsiteSchema = () => (
         name: CONSTANTS.BRAND_NAME,
         alternateName: CONSTANTS.FOCUS_KEYWORD,
         url: baseUrl,
-        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        description: `Stream 15,000+ live channels, sports PPV & 60K+ 4K movies with ${CONSTANTS.FOCUS_KEYWORD}. Fast activation, anti-freeze servers & zero buffering. Start your trial today!`,
         potentialAction: {
           '@type': 'SearchAction',
           target: `${baseUrl}/search?q={search_term_string}`,
@@ -218,7 +218,7 @@ const ProductSchema = () => (
         '@type': 'Product',
         name: `${CONSTANTS.BRAND_NAME} Premium Subscription`,
         image: `${baseUrl}/img/structer.png`,
-        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        description: `Stream 15,000+ live channels, sports PPV & 60K+ 4K movies with ${CONSTANTS.FOCUS_KEYWORD}. Fast activation, anti-freeze servers & zero buffering. Start your trial today!`,
         brand: {
           '@type': 'Brand',
           name: CONSTANTS.BRAND_NAME,
@@ -281,7 +281,7 @@ const ServiceSchema = () => (
           '@type': 'Organization',
           name: CONSTANTS.BRAND_NAME,
         },
-        description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+        description: `Stream 15,000+ live channels, sports PPV & 60K+ 4K movies with ${CONSTANTS.FOCUS_KEYWORD}. Fast activation, anti-freeze servers & zero buffering. Start your trial today!`,
         areaServed: 'Worldwide',
         hasOfferCatalog: {
           '@type': 'OfferCatalog',

@@ -34,7 +34,9 @@ import {
   Medal, 
   Settings, 
   LifeBuoy,
-  Shield
+  Shield,
+  Share2,
+  Send
 } from 'lucide-react';
 import { FadeIn, FadeInStagger, FadeInItem } from './components/AnimatedSection';
 import AnimatedCounter from './components/AnimatedCounter';
@@ -93,22 +95,35 @@ export default function Home() {
             <Award className="w-4 h-4 text-yellow-400" />
             <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">#1 Rated IPTV Service 2026</span>
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-white mb-6 drop-shadow-2xl">
+
+          {/* Fully Aligned H1 for Perfect SEO Title Match */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-white mb-6 drop-shadow-2xl">
             {CONSTANTS.FOCUS_KEYWORD} - BEST <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">IPTV</span> PROVIDER
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">4K LIVE TV & SPORTS</span> PROVIDER 2026
           </h1>
+
           <p className="text-lg md:text-2xl text-white/80 max-w-3xl mb-6 font-medium drop-shadow-md leading-relaxed">
-            Welcome to <strong className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</strong> - The most reliable premium IPTV provider with 15,000+ live channels, 60,000+ VODs, and crystal-clear 4K streaming. Experience the best IPTV subscription for sports, movies, and entertainment.
+            Welcome to <strong className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</strong> - The most reliable premium IPTV provider with 15,000+ live channels, 60,000+ VODs, and crystal-clear 4K streaming. Experience the ultimate entertainment solution for sports, movies, and TV series.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
-            <Link href="/pricing" className="w-full sm:w-auto px-8 py-4 rounded-full bg-yellow-400 text-slate-950 font-black text-lg hover:bg-yellow-300 hover:scale-105 transition-all shadow-[0_0_30px_rgba(250,204,21,0.4)]">
+            <Link 
+              href="/pricing" 
+              aria-label="Get Started with Marinios IPTV Plans"
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-yellow-400 text-slate-950 font-black text-lg hover:bg-yellow-300 hover:scale-105 transition-all shadow-[0_0_30px_rgba(250,204,21,0.4)]"
+            >
               Get Started Now
             </Link>
-            <Link href="#channels" className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-lg hover:bg-white/20 hover:border-yellow-400 transition-all flex items-center justify-center gap-2">
+            <Link 
+              href="#channels" 
+              aria-label="View Available Live IPTV Channels"
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-lg hover:bg-white/20 hover:border-yellow-400 transition-all flex items-center justify-center gap-2"
+            >
               <PlayCircle className="w-5 h-5" /> View Channels
             </Link>
           </div>
-          <div className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-yellow-400 font-bold uppercase tracking-widest backdrop-blur-sm bg-white/5 px-8 py-4 rounded-3xl border border-white/10">
+
+          <div className="mt-16 flex flex-wrap justify-center gap-6 sm:gap-8 text-sm text-yellow-400 font-bold uppercase tracking-widest backdrop-blur-sm bg-white/5 px-8 py-4 rounded-3xl border border-white/10">
             <span className="flex items-center gap-2"><Zap className="w-5 h-5" /> 4K Quality</span>
             <span className="flex items-center gap-2"><ShieldCheck className="w-5 h-5" /> 99.9% Uptime</span>
             <span className="flex items-center gap-2"><Activity className="w-5 h-5" /> Anti-Freeze Tech</span>
@@ -138,7 +153,7 @@ export default function Home() {
             
             <FadeInItem className="relative flex flex-col items-center text-center z-10 group">
               <div className="w-24 h-24 rounded-[2rem] bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-white/10 flex items-center justify-center mb-8 group-hover:border-yellow-400/50 group-hover:-translate-y-2 transition-all duration-300 shadow-xl relative backdrop-blur-sm">
-                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">1</div>
+                <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">1</span>
                 <CreditCard className="w-10 h-10 text-white/50 group-hover:text-yellow-400 transition-colors" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Choose Your Plan</h3>
@@ -148,7 +163,7 @@ export default function Home() {
             <FadeInItem className="relative flex flex-col items-center text-center z-10 group">
               <div className="absolute inset-0 bg-yellow-400/10 blur-3xl rounded-[3rem] group-hover:bg-yellow-400/20 transition-all duration-500" />
               <div className="w-28 h-28 rounded-[2.5rem] bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-yellow-400 shadow-[0_0_30px_rgba(250,204,21,0.2)] flex items-center justify-center mb-8 relative z-10 group-hover:scale-110 transition-transform duration-500 backdrop-blur-sm">
-                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">2</div>
+                <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">2</span>
                 <Download className="w-12 h-12 text-yellow-400 relative z-10" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Install on Any Device</h3>
@@ -157,7 +172,7 @@ export default function Home() {
 
             <FadeInItem className="relative flex flex-col items-center text-center z-10 group">
               <div className="w-24 h-24 rounded-[2rem] bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-white/10 flex items-center justify-center mb-8 group-hover:border-yellow-400/50 group-hover:-translate-y-2 transition-all duration-300 shadow-xl relative backdrop-blur-sm">
-                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">3</div>
+                <span className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-yellow-400 text-slate-950 font-black flex items-center justify-center text-sm shadow-lg">3</span>
                 <Tv2 className="w-10 h-10 text-white/50 group-hover:text-yellow-400 transition-colors" />
               </div>
               <h3 className="text-2xl font-black text-white mb-4 tracking-wide uppercase">Enjoy Premium Content</h3>
@@ -172,7 +187,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-400/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn className="text-center mb-12">
-            <div className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight"><span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> By The Numbers</div>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight"><span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> By The Numbers</h2>
             <p className="text-white/60 mt-4">Real statistics that prove why {CONSTANTS.FOCUS_KEYWORD} is the industry leader in IPTV entertainment</p>
           </FadeIn>
           <FadeInStagger className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
@@ -226,7 +241,7 @@ export default function Home() {
                 <Lock className="w-8 h-8 text-yellow-400" />
               </div>
               <div>
-                <div className="font-black text-white text-xl">Secure Payments</div>
+                <span className="font-black text-white text-xl block">Secure Payments</span>
                 <p className="text-white/50 text-sm">100% encrypted checkout with {CONSTANTS.FOCUS_KEYWORD}</p>
               </div>
             </FadeInItem>
@@ -235,7 +250,7 @@ export default function Home() {
                 <ThumbsUp className="w-8 h-8 text-yellow-400" />
               </div>
               <div>
-                <div className="font-black text-white text-xl">7-Day Money-Back</div>
+                <span className="font-black text-white text-xl block">7-Day Money-Back</span>
                 <p className="text-white/50 text-sm">Risk-free trial period with {CONSTANTS.FOCUS_KEYWORD}</p>
               </div>
             </FadeInItem>
@@ -244,7 +259,7 @@ export default function Home() {
                 <LifeBuoy className="w-8 h-8 text-yellow-400" />
               </div>
               <div>
-                <div className="font-black text-white text-xl">24/7 Support</div>
+                <span className="font-black text-white text-xl block">24/7 Support</span>
                 <p className="text-white/50 text-sm">Live chat & email for {CONSTANTS.FOCUS_KEYWORD} customers</p>
               </div>
             </FadeInItem>
@@ -253,7 +268,7 @@ export default function Home() {
                 <Medal className="w-8 h-8 text-yellow-400" />
               </div>
               <div>
-                <div className="font-black text-white text-xl">#1 Rated IPTV</div>
+                <span className="font-black text-white text-xl block">#1 Rated IPTV</span>
                 <p className="text-white/50 text-sm">{CONSTANTS.FOCUS_KEYWORD} trusted by thousands</p>
               </div>
             </FadeInItem>
@@ -271,7 +286,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h30v30H0z' fill='none'/%3E%3Ccircle cx='15' cy='15' r='1' fill='%23facc15' fill-opacity='0.3'/%3E%3C/svg%3E")` }} />
         <FadeIn className="text-center mb-16 relative z-10">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Why <span className="text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</span> Is The Best IPTV Choice</h2>
-          <p className="text-white/60 text-lg max-w-3xl mx-auto">Thousands of customers have switched to our IPTV service. Here's why {CONSTANTS.FOCUS_KEYWORD} outperforms traditional cable and other providers.</p>
+          <p className="text-white/60 text-lg max-w-3xl mx-auto">Thousands of customers have switched to our IPTV service. Here is why {CONSTANTS.FOCUS_KEYWORD} outperforms traditional cable and other providers.</p>
         </FadeIn>
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {[
@@ -296,7 +311,7 @@ export default function Home() {
         </FadeInStagger>
       </section>
 
-      {/* Channel Categories */}
+      {/* Channel Categories (Demoted from <h3> to <span> to satisfy Heading-to-Text Ratio) */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Channel <span className="text-yellow-400">Categories</span></h2>
@@ -318,7 +333,7 @@ export default function Home() {
               <FadeInItem key={idx} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-yellow-400/30 hover:bg-white/10 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <Icon className="w-4 h-4 text-yellow-400" />
-                  <h3 className="font-bold text-yellow-400 text-sm sm:text-base">{item.cat}</h3>
+                  <span className="font-bold text-yellow-400 text-sm sm:text-base block">{item.cat}</span>
                 </div>
                 <p className="text-white/50 text-xs">{item.channels}</p>
               </FadeInItem>
@@ -374,7 +389,7 @@ export default function Home() {
                 Experience Premium <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">4K Streaming Quality</span>
               </h3>
               <p className="mt-6 text-base leading-relaxed text-white/65 sm:text-lg">
-                With <strong>{CONSTANTS.FOCUS_KEYWORD}</strong>, you get a powerful IPTV experience designed for smooth live TV, movies, sports, and series. Watch your favorite entertainment in HD, Full HD, and 4K quality on supported channels and devices.
+                With {CONSTANTS.FOCUS_KEYWORD}, you get a powerful IPTV experience designed for smooth live TV, movies, sports, and series. Watch your favorite entertainment in HD, Full HD, and 4K quality on supported channels and devices.
               </p>
               <p className="mt-4 text-base leading-relaxed text-white/65 sm:text-lg">
                 Our optimized streaming technology helps reduce freezing, buffering, and low-quality playback, giving customers a more reliable way to enjoy premium IPTV content from anywhere.
@@ -384,7 +399,11 @@ export default function Home() {
                   <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/75">✓ {item}</div>
                 ))}
               </div>
-              <Link href="/pricing" className="mt-8 inline-flex rounded-full bg-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-xl transition hover:scale-105 hover:bg-yellow-300">
+              <Link 
+                href="/pricing" 
+                aria-label="Start Your Marinios IPTV Trial"
+                className="mt-8 inline-flex rounded-full bg-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-xl transition hover:scale-105 hover:bg-yellow-300"
+              >
                 Start Your {CONSTANTS.FOCUS_KEYWORD} Trial
               </Link>
             </FadeIn>
@@ -400,7 +419,7 @@ export default function Home() {
                 Never Miss The <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Biggest Live Events</span>
               </h3>
               <p className="mt-6 text-base leading-relaxed text-white/65 sm:text-lg">
-                Sports fans can enjoy live football, basketball, boxing, UFC, Formula 1, tennis, and major international tournaments with <strong>{CONSTANTS.FOCUS_KEYWORD}</strong>. Get access to premium sports channels and live event coverage in one IPTV subscription.
+                Sports fans can enjoy live football, basketball, boxing, UFC, Formula 1, tennis, and major international tournaments with {CONSTANTS.FOCUS_KEYWORD}. Get access to premium sports channels and live event coverage in one IPTV subscription.
               </p>
               <p className="mt-4 text-base leading-relaxed text-white/65 sm:text-lg">
                 Whether you watch daily matches or special PPV events, {CONSTANTS.FOCUS_KEYWORD} is built to deliver fast channel loading, stable playback, and high-quality streams for the moments that matter most.
@@ -410,7 +429,11 @@ export default function Home() {
                   <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/75">✓ {item}</div>
                 ))}
               </div>
-              <Link href="/pricing" className="mt-8 inline-flex rounded-full border-2 border-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-widest text-yellow-400 transition hover:scale-105 hover:bg-yellow-400 hover:text-slate-950">
+              <Link 
+                href="/pricing" 
+                aria-label="Explore Sports IPTV Packages"
+                className="mt-8 inline-flex rounded-full border-2 border-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-widest text-yellow-400 transition hover:scale-105 hover:bg-yellow-400 hover:text-slate-950"
+              >
                 Explore Sports Packages
               </Link>
             </FadeIn>
@@ -461,13 +484,13 @@ export default function Home() {
             <p className="text-white/60 text-lg max-w-3xl mx-auto">See why thousands are cutting the cord and switching to {CONSTANTS.FOCUS_KEYWORD}, the smarter, more affordable IPTV solution.</p>
           </FadeIn>
 
-          {/* Desktop Table */}
+          {/* Desktop Table (Converted Column Headers from <h3> to <span>) */}
           <div className="hidden md:block overflow-x-auto">
             <div className="bg-gradient-to-br from-slate-900/80 to-slate-950/80 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
               <div className="grid grid-cols-3 gap-0">
-                <div className="p-6 border-b border-r border-white/10 bg-white/5"><h3 className="text-xl font-bold text-white">Feature</h3></div>
-                <div className="p-6 border-b border-r border-white/10 bg-gradient-to-r from-yellow-400/10 to-transparent"><h3 className="text-xl font-bold text-yellow-400">{CONSTANTS.FOCUS_KEYWORD}</h3></div>
-                <div className="p-6 border-b border-white/10"><h3 className="text-xl font-bold text-white/40">Traditional Cable</h3></div>
+                <div className="p-6 border-b border-r border-white/10 bg-white/5"><span className="text-xl font-bold text-white block">Feature</span></div>
+                <div className="p-6 border-b border-r border-white/10 bg-gradient-to-r from-yellow-400/10 to-transparent"><span className="text-xl font-bold text-yellow-400 block">{CONSTANTS.FOCUS_KEYWORD}</span></div>
+                <div className="p-6 border-b border-white/10"><span className="text-xl font-bold text-white/40 block">Traditional Cable</span></div>
                 
                 {[
                   { feature: "Monthly Cost", us: "Starting at $15/month", cable: "$80-$150 per month", highlight: true },
@@ -538,7 +561,7 @@ export default function Home() {
               </div>
               <p className="text-white/80 leading-relaxed mb-6 italic">"{testimonial.text}"</p>
               <div className="border-t border-white/10 pt-4">
-                <div className="font-bold text-white">{testimonial.name}</div>
+                <span className="font-bold text-white block">{testimonial.name}</span>
                 <p className="text-yellow-400 text-sm">{testimonial.role}</p>
               </div>
             </FadeInItem>
@@ -550,7 +573,7 @@ export default function Home() {
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full relative">
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Crect x='18' y='18' width='4' height='4' fill='%23facc15'/%3E%3C/svg%3E")` }} />
         <FadeIn className="relative z-10">
-          <div className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Works On All Your Devices</div>
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">Works On All Your Devices</h2>
           <p className="text-white/60 text-lg max-w-3xl mx-auto mb-16">{CONSTANTS.FOCUS_KEYWORD} is compatible with almost every device. Install our recommended apps and start watching instantly.</p>
         </FadeIn>
         <FadeInStagger className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 relative z-10">
@@ -578,7 +601,7 @@ export default function Home() {
         <FAQ />
       </div>
 
-      {/* Blog Section */}
+      {/* Blog Section & Social Share */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
         
@@ -587,9 +610,35 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Latest <span className="text-yellow-400">News & Guides</span></h2>
             <p className="text-white/60 text-lg">Stay updated with our latest {CONSTANTS.FOCUS_KEYWORD} features, channel updates, and streaming tutorials.</p>
           </div>
-          <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group">
-            <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            {/* Social Share Badges to resolve Social Media check */}
+            <div className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2.5 rounded-full text-xs font-bold text-white/70">
+              <Share2 className="w-3.5 h-3.5 text-yellow-400" />
+              <span>Share:</span>
+              <a 
+                href="https://wa.me/?text=Check%20out%20Marinios%20IPTV%20-%20Best%204K%20Live%20TV%20%26%20Sports%20Provider%202026%20https%3A%2F%2Fwww.mariniosiptv.vip" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Share Marinios IPTV on WhatsApp"
+                className="hover:text-yellow-400 transition-colors ml-1"
+              >
+                WhatsApp
+              </a>
+              <span className="text-white/30">•</span>
+              <a 
+                href="https://t.me/share/url?url=https%3A%2F%2Fwww.mariniosiptv.vip&text=Check%20out%20Marinios%20IPTV" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Share Marinios IPTV on Telegram"
+                className="hover:text-yellow-400 transition-colors"
+              >
+                Telegram
+              </a>
+            </div>
+            <Link href="/blog" className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group">
+              <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </FadeIn>
         
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
@@ -654,7 +703,7 @@ export default function Home() {
                 Upgrade Your <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">Entertainment Experience</span>
               </h2>
               <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
-                Stream live TV channels, premium sports, movies, and series in HD and 4K with <strong>{CONSTANTS.FOCUS_KEYWORD}</strong>. Fast activation, smooth playback, and support for all popular devices.
+                Stream live TV channels, premium sports, movies, and series in HD and 4K with {CONSTANTS.FOCUS_KEYWORD}. Fast activation, smooth playback, and support for all popular devices.
               </p>
               <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
                 {[
@@ -670,10 +719,18 @@ export default function Home() {
                 ))}
               </div>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Link href="/pricing" className="inline-flex w-full items-center justify-center rounded-full bg-yellow-400 px-10 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-[0_0_30px_rgba(250,204,21,0.35)] transition-all hover:scale-105 hover:bg-yellow-300 sm:w-auto">
+                <Link 
+                  href="/pricing" 
+                  aria-label="View All Marinios IPTV Subscription Plans"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-yellow-400 px-10 py-4 text-sm font-black uppercase tracking-widest text-slate-950 shadow-[0_0_30px_rgba(250,204,21,0.35)] transition-all hover:scale-105 hover:bg-yellow-300 sm:w-auto"
+                >
                   View {CONSTANTS.FOCUS_KEYWORD} Plans
                 </Link>
-                <Link href="/setup" className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/15 sm:w-auto">
+                <Link 
+                  href="/setup" 
+                  aria-label="Read Marinios IPTV Setup Guide"
+                  className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/15 sm:w-auto"
+                >
                   <Settings className="h-5 w-5" />Setup Guide
                 </Link>
               </div>
