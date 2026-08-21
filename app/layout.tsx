@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     default: `${CONSTANTS.FOCUS_KEYWORD} - Best IPTV Service 2026 | Official Website`,
     template: `%s | ${CONSTANTS.BRAND_NAME}`,
   },
-  description: `Stream 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
+  description: `Best IPTV Service 15K+ Live Channels & 60K+ VODs in 4K | ${CONSTANTS.FOCUS_KEYWORD}. No buffering with our Anti-Freeze Tech. Fast activation & 24/7 support. Start your trial!.`,
   authors: [{ name: `${CONSTANTS.BRAND_NAME} Team` }],
   creator: CONSTANTS.BRAND_NAME,
   publisher: CONSTANTS.BRAND_NAME,
