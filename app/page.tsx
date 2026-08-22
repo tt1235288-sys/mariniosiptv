@@ -601,7 +601,7 @@ export default function Home() {
         <FAQ />
       </div>
 
-      {/* Blog Section */}
+{/* Blog Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
         
@@ -613,6 +613,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Link 
               href="/blog" 
+              aria-label="Browse All Articles"
               className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group"
             >
               <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -626,11 +627,11 @@ export default function Home() {
 
             return (
               <FadeInItem key={post.id} className="group flex flex-col">
-                {/* 1. Cover Image (Plain Div, NOT an <a> tag) */}
+                {/* 1. Thumbnail container (NOT an <a> tag) */}
                 <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300">
                   <Image 
                     src={post.image} 
-                    alt={post.title} 
+                    alt={`Illustration for ${primaryKeyword}`} 
                     width={800} 
                     height={450} 
                     loading="lazy" 
@@ -645,30 +646,24 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* 2. Headline Link (Shortened Anchor Text < 50 chars via aria-label) */}
-                <h3 className="mb-3">
-                  <Link 
-                    href={`/blog/${post.slug}`} 
-                    aria-label={`Read: ${primaryKeyword} Guide`}
-                    className="text-xl md:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2"
-                  >
-                    {post.title}
-                  </Link>
+                {/* 2. Article Title as plain text (NOT an <a> tag) */}
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
+                  {post.title}
                 </h3>
 
-                {/* 3. Plain Text Excerpt (Regular Paragraph, NOT inside <a>) */}
+                {/* 3. Plain Text Excerpt */}
                 <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed flex-grow">
                   {post.description || post.excerpt}
                 </p>
                 
-                {/* 4. Action Button with Unique, Short Anchor Text */}
+                {/* 4. The ONLY link on the card: Short anchor (< 25 characters) */}
                 <div className="pt-2 mt-auto">
                   <Link 
                     href={`/blog/${post.slug}`} 
-                    aria-label={`Explore ${primaryKeyword} Article`}
+                    aria-label={`Read ${primaryKeyword} Guide`}
                     className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
                   >
-                    <span>Explore Guide</span>
+                    <span>Read {primaryKeyword} Guide</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -677,7 +672,6 @@ export default function Home() {
           })}
         </FadeInStagger>
       </section>
-
 
       {/* Final CTA Section */}
       <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
