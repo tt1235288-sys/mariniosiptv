@@ -16,7 +16,7 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -42,17 +42,17 @@ export default function Header() {
   }, [pathname]);
 
   const navLinks = [
-    { name: 'Home', href: '/', aria: 'Marinios IPTV Home' },
-    { name: 'Pricing', href: '/pricing', aria: 'Marinios IPTV Pricing' },
-    { name: 'Setup', href: '/setup', aria: 'Marinios IPTV Setup' },
-    { name: 'Blog', href: '/blog', aria: 'Marinios IPTV Blog' },
+    { name: 'Home', href: '/' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Setup', href: '/setup' },
+    { name: 'Blog', href: '/blog' },
   ];
 
   const mobileNavLinks = [
-    { name: 'Main Home', href: '/', aria: 'Mobile Main Home' },
-    { name: 'Pricing Plans', href: '/pricing', aria: 'Mobile Pricing Plans' },
-    { name: 'Setup Tutorial', href: '/setup', aria: 'Mobile Setup Tutorial' },
-    { name: 'IPTV Blog', href: '/blog', aria: 'Mobile IPTV Blog' },
+    { name: 'Main Home', href: '/' },
+    { name: 'Pricing Plans', href: '/pricing' },
+    { name: 'Setup Tutorial', href: '/setup' },
+    { name: 'IPTV Blog', href: '/blog' },
   ];
 
   const isActive = (href: string) => {
@@ -93,8 +93,7 @@ export default function Header() {
                 {navLinks.map((link) => (
                   <li key={link.name}>
                     <Link 
-                      href={link.href}
-                      aria-label={link.aria}
+                      href={link.href} 
                       className={`font-bold uppercase tracking-widest text-sm transition-colors ${
                         isActive(link.href) 
                           ? 'text-yellow-400' 
@@ -112,7 +111,7 @@ export default function Header() {
             <div className="hidden md:flex">
               <Link 
                 href="/pricing" 
-                aria-label="Explore Marinios IPTV Pricing Packages"
+                aria-label="View Marinios IPTV Subscription Plans"
                 className="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-white hover:bg-yellow-400 hover:border-yellow-400 hover:text-slate-950 font-bold tracking-widest uppercase text-sm transition-all shadow-lg"
               >
                 View Plans
@@ -124,7 +123,7 @@ export default function Header() {
               <button 
                 onClick={() => setIsOpen(!isOpen)} 
                 className="text-white p-2 focus:outline-none z-50 relative"
-                aria-label={isOpen ? 'Close navigation drawer' : 'Open navigation drawer'}
+                aria-label={isOpen ? 'Close mobile menu' : 'Open mobile menu'}
                 aria-expanded={isOpen}
               >
                 {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
@@ -134,7 +133,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Fullscreen Mobile Menu */}
+      {/* Fullscreen Mobile Menu with Unique Anchor Texts */}
       <div 
         className={`fixed inset-0 z-40 bg-slate-950/98 backdrop-blur-xl transition-all duration-300 md:hidden ${
           isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
@@ -150,7 +149,6 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                aria-label={link.aria}
                 onClick={() => setIsOpen(false)}
                 className={`block text-center px-6 py-5 rounded-2xl text-xl font-bold tracking-wider uppercase transition-all ${
                   isActive(link.href) 
@@ -165,7 +163,6 @@ export default function Header() {
             {/* Mobile Drawer CTA Button */}
             <Link 
               href="/pricing"
-              aria-label="Start Streaming Subscription From Mobile Drawer"
               onClick={() => setIsOpen(false)}
               className="block mt-8 text-center px-6 py-5 rounded-2xl bg-yellow-400 text-slate-950 font-black text-xl tracking-widest uppercase shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:shadow-[0_0_40px_rgba(250,204,21,0.6)] transition-shadow"
             >

@@ -37,7 +37,7 @@ export default function FAQ() {
 
   return (
     <section className="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full border-t border-white/5 mt-16 relative" aria-label="Frequently Asked Questions about MARINIOS IPTV">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none" />
       
       <FadeIn className="text-center mb-16 relative z-10">
         <div className="inline-flex items-center gap-2 bg-yellow-400/10 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-400/20 mb-6">
@@ -52,34 +52,41 @@ export default function FAQ() {
       </FadeIn>
       
       <FadeInStagger className="space-y-4 relative z-10">
-        {faqs.map((faq, i) => (
-          <FadeInItem key={i}>
-            <button
-              onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className={`w-full text-left bg-slate-900 border ${openIndex === i ? 'border-yellow-400/50' : 'border-white/10'} rounded-2xl p-6 hover:border-yellow-400/30 transition-all duration-300 group`}
-              aria-expanded={openIndex === i}
-              aria-controls={`faq-answer-${i}`}
-            >
-              <div className="flex justify-between items-center gap-4">
-                <p className={`text-lg md:text-xl font-bold transition-colors ${openIndex === i ? 'text-yellow-400' : 'text-white group-hover:text-yellow-400/80'} flex items-center gap-3`}>
-                  <span className={`${openIndex === i ? 'text-yellow-400' : 'text-white/30'} font-black text-2xl`}>Q.</span> 
-                  {faq.q}
-                </p>
-                <ChevronDown className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180 text-yellow-400' : 'text-white/30 group-hover:text-yellow-400/50'}`} />
+        {faqs.map((faq, i) => {
+          const isOpen = openIndex === i;
+
+          return (
+            <FadeInItem key={i}>
+              <div className={`w-full bg-slate-900 border ${isOpen ? 'border-yellow-400/50' : 'border-white/10'} rounded-2xl p-6 transition-all duration-300`}>
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className="w-full text-left flex justify-between items-center gap-4 group focus:outline-none cursor-pointer"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${i}`}
+                  id={`faq-question-${i}`}
+                >
+                  <p className={`text-lg md:text-xl font-bold transition-colors ${isOpen ? 'text-yellow-400' : 'text-white group-hover:text-yellow-400/80'} flex items-center gap-3`}>
+                    <span className={`${isOpen ? 'text-yellow-400' : 'text-white/30'} font-black text-2xl`}>Q.</span> 
+                    {faq.q}
+                  </p>
+                  <ChevronDown className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-yellow-400' : 'text-white/30 group-hover:text-yellow-400/50'}`} />
+                </button>
+
+                <div 
+                  id={`faq-answer-${i}`}
+                  className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${i}`}
+                >
+                  <p className="text-white/70 leading-relaxed pl-10 md:pl-12 border-l-2 border-yellow-400/30 ml-2 py-2">
+                    {faq.a}
+                  </p>
+                </div>
               </div>
-              <div 
-                id={`faq-answer-${i}`}
-                className={`overflow-hidden transition-all duration-300 ${openIndex === i ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
-                role="region"
-                aria-labelledby={`faq-question-${i}`}
-              >
-                <p className="text-white/70 leading-relaxed pl-10 md:pl-12 border-l-2 border-yellow-400/30 ml-2 py-2">
-                  {faq.a}
-                </p>
-              </div>
-            </button>
-          </FadeInItem>
-        ))}
+            </FadeInItem>
+          );
+        })}
       </FadeInStagger>
     </section>
   );

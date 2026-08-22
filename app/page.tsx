@@ -34,9 +34,7 @@ import {
   Medal, 
   Settings, 
   LifeBuoy,
-  Shield,
-  Share2,
-  Send
+  Shield
 } from 'lucide-react';
 import { FadeIn, FadeInStagger, FadeInItem } from './components/AnimatedSection';
 import AnimatedCounter from './components/AnimatedCounter';
@@ -97,7 +95,6 @@ export default function Home() {
             <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">#1 Rated IPTV Service 2026</span>
           </div>
 
-          {/* Fully Aligned H1 for Perfect SEO Title Match */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-white mb-6 drop-shadow-2xl">
             {CONSTANTS.FOCUS_KEYWORD} - BEST <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600">4K LIVE TV & SPORTS</span> PROVIDER 2026
@@ -604,7 +601,7 @@ export default function Home() {
         <FAQ />
       </div>
 
-      {/* Blog Section (Single Consolidated Link per Card) */}
+      {/* Blog Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23facc15' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E")` }} />
         
@@ -616,7 +613,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Link 
               href="/blog" 
-              aria-label="Browse all Marinios IPTV news and guides"
+              aria-label="Browse All Articles"
               className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group"
             >
               <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -624,7 +621,7 @@ export default function Home() {
           </div>
         </FadeIn>
         
-        {/* Blog preview section with ONE primary link per card */}
+        {/* Consolidated Blog Cards: ONE clean link per post */}
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {blogPosts.slice(0, 3).map((post) => {
             const primaryKeyword = post.keywords?.[0] || 'IPTV';
@@ -633,14 +630,14 @@ export default function Home() {
               <FadeInItem key={post.id} className="group">
                 <Link 
                   href={`/blog/${post.slug}`} 
-                  aria-label={`Read guide: ${post.title}`}
+                  aria-label={`Read ${primaryKeyword} Guide`}
                   className="flex flex-col h-full rounded-3xl p-3 border border-transparent hover:border-white/10 hover:bg-white/[0.02] transition-all duration-300"
                 >
-                  {/* Cover Image */}
+                  {/* 1. Cover Image (Inside Link, but NOT a nested anchor) */}
                   <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300">
                     <Image 
                       src={post.image} 
-                      alt={post.title} 
+                      alt={`Illustration for ${primaryKeyword}`} 
                       width={800} 
                       height={450} 
                       loading="lazy" 
@@ -655,17 +652,17 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Headline */}
+                  {/* 2. Headline (Plain <p>) */}
                   <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
                     {post.title}
                   </p>
 
-                  {/* Plain Text Excerpt */}
+                  {/* 3. Plain Text Excerpt */}
                   <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed flex-grow">
                     {post.description || post.excerpt}
                   </p>
                   
-                  {/* Visual CTA Indicator (inside the single card Link) */}
+                  {/* 4. Action Indicator (Plain <div>) */}
                   <div className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all pt-2 mt-auto">
                     <span>Read {primaryKeyword} Guide</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -704,7 +701,7 @@ export default function Home() {
                 <span className="text-xs font-black uppercase tracking-[0.22em] text-yellow-400">Premium IPTV Service</span>
               </div>
               <h2 className="mx-auto max-w-5xl text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                Upgrade Your <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-amber-600 bg-clip-text text-transparent">Entertainment Experience</span>
+                Upgrade Your <span className="block bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">Entertainment Experience</span>
               </h2>
               <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
                 Stream live TV channels, premium sports, movies, and series in HD and 4K with {CONSTANTS.FOCUS_KEYWORD}. Fast activation, smooth playback, and support for all popular devices.
@@ -732,10 +729,10 @@ export default function Home() {
                 </Link>
                 <Link 
                   href="/setup" 
-                  aria-label="Read Marinios IPTV Setup Guide"
+                  aria-label="Device Setup Guide"
                   className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/10 px-8 py-4 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/15 sm:w-auto"
                 >
-                  <Settings className="h-5 w-5" />Installation Guide
+                  <Settings className="h-5 w-5" />Device Setup Guide
                 </Link>
               </div>
               <p className="mt-8 text-sm font-medium text-white/50">Trusted worldwide • Secure payments • Fast activation</p>
