@@ -3,6 +3,7 @@ import { CONSTANTS, generateSEOMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import SocialShareBar from '@/app/components/SocialShareBar';
 import { 
   ArrowLeft, 
   Calendar, 
@@ -14,8 +15,7 @@ import {
   Zap, 
   ShieldCheck, 
   Headphones,
-  CheckCircle2,
-  HelpCircle
+  CheckCircle2
 } from 'lucide-react';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -31,14 +31,17 @@ export async function generateMetadata({ params }: Props) {
   const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
   if (!post) return generateSEOMetadata('Article Not Found');
   
-  const shortTitle = post.title.length > 45 ? post.title.substring(0, 42) + '...' : post.title;
+  // Clean short title (< 42 chars). Next.js layout template will append the brand once.
+  const shortTitle = post.title.length > 40 ? post.title.substring(0, 38) + '...' : post.title;
+  
   const rawDesc = post.description || post.excerpt || `Read the complete guide about ${post.title}.`;
-  const cleanDescription = rawDesc.length > 140 ? rawDesc.substring(0, 137) + '...' : rawDesc;
+  const cleanDescription = rawDesc.length > 135 ? rawDesc.substring(0, 132) + '...' : rawDesc;
   const canonicalUrl = `https://${CONSTANTS.DOMAIN}/blog/${post.slug}`;
   const articleImage = post.image.startsWith('http') ? post.image : `https://${CONSTANTS.DOMAIN}${post.image}`;
   
   return {
-    title: `${shortTitle} | ${CONSTANTS.BRAND_NAME}`,
+    // Only return the article title - DO NOT append brand name here to prevent double brand stacking
+    title: shortTitle,
     description: cleanDescription,
     keywords: post.keywords?.join(', '),
     alternates: {
@@ -176,17 +179,17 @@ export default async function BlogPostPage({ params }: Props) {
         </Link>
       </div>
 
-      {/* Article Content Container */}
+      {/* Content Container */}
       <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
 
-        {/* SEO Key Takeaways Box (Adds High Search Semantic Density) */}
+        {/* Shortened Strong Tags in Takeaways Box */}
         <div className="mb-10 p-6 rounded-2xl border border-yellow-400/30 bg-yellow-400/5 backdrop-blur-sm">
           <div className="flex items-center gap-2 mb-3">
             <Sparkles className="w-5 h-5 text-yellow-400" />
             <span className="text-white font-black text-lg tracking-wide uppercase">Key Takeaways & Summary</span>
           </div>
           <p className="text-white/70 text-sm md:text-base leading-relaxed mb-4">
-            In this guide, our technical team breaks down essential insights regarding <strong>{post.title}</strong>, exploring how to optimize your network, eliminate buffering, and ensure crystal-clear 4K streaming performance.
+            In this guide, our technical team breaks down essential insights regarding <strong>streaming optimization</strong>, exploring how to fix network bottlenecks and maintain stable 4K playback.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs md:text-sm text-white/80">
             <div className="flex items-center gap-2">
@@ -226,6 +229,11 @@ export default async function BlogPostPage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
+        {/* Social Share Bar */}
+        <div className="my-10">
+          <SocialShareBar />
+        </div>
+
         {/* Tags Section */}
         <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10">
           <div className="flex items-center gap-2 mb-3 md:mb-4">
@@ -256,7 +264,7 @@ export default async function BlogPostPage({ params }: Props) {
                 Streaming Technology Specialist
               </p>
               <p className="text-white/60 text-sm md:text-base leading-relaxed">
-                Dedicated to bringing you the best tutorials, setup guides, and performance optimization tips for high-quality live streaming and entertainment setup.
+                Dedicated to bringing you tutorials, setup guides, and optimization tips for high-quality live streaming.
               </p>
             </div>
           </div>
