@@ -613,7 +613,6 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Link 
               href="/blog" 
-              aria-label="Browse All Articles"
               className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2 group"
             >
               <span>View All Posts</span><ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -621,59 +620,65 @@ export default function Home() {
           </div>
         </FadeIn>
         
-        {/* Consolidated Blog Cards: ONE clean link per post */}
         <FadeInStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {blogPosts.slice(0, 3).map((post) => {
             const primaryKeyword = post.keywords?.[0] || 'IPTV';
 
             return (
-              <FadeInItem key={post.id} className="group">
-                <Link 
-                  href={`/blog/${post.slug}`} 
-                  aria-label={`Read ${primaryKeyword} Guide`}
-                  className="flex flex-col h-full rounded-3xl p-3 border border-transparent hover:border-white/10 hover:bg-white/[0.02] transition-all duration-300"
-                >
-                  {/* 1. Cover Image (Inside Link, but NOT a nested anchor) */}
-                  <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300">
-                    <Image 
-                      src={post.image} 
-                      alt={`Illustration for ${primaryKeyword}`} 
-                      width={800} 
-                      height={450} 
-                      loading="lazy" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                      sizes="(max-width: 768px) 100vw, 33vw" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-                    <div className="absolute bottom-6 left-6">
-                      <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
-                        {post.author}
-                      </span>
-                    </div>
+              <FadeInItem key={post.id} className="group flex flex-col">
+                {/* 1. Cover Image (Plain Div, NOT an <a> tag) */}
+                <div className="relative aspect-video rounded-3xl overflow-hidden mb-6 bg-slate-900 border border-white/10 shadow-lg group-hover:border-yellow-400/30 transition-colors duration-300">
+                  <Image 
+                    src={post.image} 
+                    alt={post.title} 
+                    width={800} 
+                    height={450} 
+                    loading="lazy" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    sizes="(max-width: 768px) 100vw, 33vw" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+                  <div className="absolute bottom-6 left-6">
+                    <span className="px-3 py-1 bg-yellow-400 text-slate-950 text-[10px] font-black uppercase tracking-widest rounded-lg inline-block">
+                      {post.author}
+                    </span>
                   </div>
+                </div>
 
-                  {/* 2. Headline (Plain <p>) */}
-                  <p className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
+                {/* 2. Headline Link (Shortened Anchor Text < 50 chars via aria-label) */}
+                <h3 className="mb-3">
+                  <Link 
+                    href={`/blog/${post.slug}`} 
+                    aria-label={`Read: ${primaryKeyword} Guide`}
+                    className="text-xl md:text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2"
+                  >
                     {post.title}
-                  </p>
+                  </Link>
+                </h3>
 
-                  {/* 3. Plain Text Excerpt */}
-                  <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed flex-grow">
-                    {post.description || post.excerpt}
-                  </p>
-                  
-                  {/* 4. Action Indicator (Plain <div>) */}
-                  <div className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all pt-2 mt-auto">
-                    <span>Read {primaryKeyword} Guide</span>
+                {/* 3. Plain Text Excerpt (Regular Paragraph, NOT inside <a>) */}
+                <p className="text-white/60 text-sm md:text-base mb-4 line-clamp-2 leading-relaxed flex-grow">
+                  {post.description || post.excerpt}
+                </p>
+                
+                {/* 4. Action Button with Unique, Short Anchor Text */}
+                <div className="pt-2 mt-auto">
+                  <Link 
+                    href={`/blog/${post.slug}`} 
+                    aria-label={`Explore ${primaryKeyword} Article`}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-yellow-400 uppercase tracking-widest group-hover:gap-3 transition-all"
+                  >
+                    <span>Explore Guide</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </FadeInItem>
             );
           })}
         </FadeInStagger>
       </section>
-        
+
+
       {/* Final CTA Section */}
       <section className="relative overflow-hidden py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(250,204,21,0.08),_transparent_45%)]" />
