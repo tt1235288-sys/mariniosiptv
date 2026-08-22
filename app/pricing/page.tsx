@@ -3,36 +3,63 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import PricingSection from '../components/PricingSection';
-import { ShieldCheck, Zap, ChevronDown, CreditCard, ArrowRight, Award, Globe, Server, Trophy, Tv, Film, MonitorPlay, Wifi, Calendar, Lock, ThumbsUp, Users, LifeBuoy, Sparkles, Headphones } from 'lucide-react';
+import SocialShareBar from '../components/SocialShareBar';
+import { 
+  ShieldCheck, 
+  Zap, 
+  ChevronDown, 
+  CreditCard, 
+  Award, 
+  Globe, 
+  Server, 
+  Trophy, 
+  Tv, 
+  Film, 
+  MonitorPlay, 
+  Wifi, 
+  Calendar, 
+  Lock, 
+  ThumbsUp, 
+  Headphones, 
+  Sparkles, 
+  LifeBuoy 
+} from 'lucide-react';
 import { FadeIn, FadeInStagger, FadeInItem } from '../components/AnimatedSection';
 import Link from 'next/link';
 import { CONSTANTS } from '@/lib/seo';
 
-// FAQ Item Component
-function FAQItem({ question, answer }: { question: string; answer: string }) {
+// FAQ Item Component (Semantic Button + Region)
+function FAQItem({ question, answer, id }: { question: string; answer: string; id: number }) {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <button
-      onClick={() => setIsOpen(!isOpen)}
-      className={`w-full text-left bg-slate-900 border ${isOpen ? 'border-yellow-400/50' : 'border-white/10'} rounded-2xl p-6 hover:border-yellow-400/30 transition-all duration-300 group`}
-      aria-expanded={isOpen}
-    >
-      <div className="flex justify-between items-center gap-4">
-        <h3 className={`text-lg md:text-xl font-bold transition-colors ${isOpen ? 'text-yellow-400' : 'text-white group-hover:text-yellow-400/80'} flex items-center gap-3`}>
+    <div className={`w-full bg-slate-900 border ${isOpen ? 'border-yellow-400/50' : 'border-white/10'} rounded-2xl p-6 transition-all duration-300`}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full text-left flex justify-between items-center gap-4 group focus:outline-none cursor-pointer"
+        aria-expanded={isOpen}
+        aria-controls={`faq-answer-${id}`}
+        id={`faq-question-${id}`}
+      >
+        <p className={`text-lg md:text-xl font-bold transition-colors ${isOpen ? 'text-yellow-400' : 'text-white group-hover:text-yellow-400/80'} flex items-center gap-3`}>
           <span className={`${isOpen ? 'text-yellow-400' : 'text-white/30'} font-black text-2xl`}>Q.</span> 
           {question}
-        </h3>
+        </p>
         <ChevronDown className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-yellow-400' : 'text-white/30 group-hover:text-yellow-400/50'}`} />
-      </div>
+      </button>
+
       <div 
+        id={`faq-answer-${id}`}
         className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
+        role="region"
+        aria-labelledby={`faq-question-${id}`}
       >
         <p className="text-white/70 leading-relaxed pl-10 md:pl-12 border-l-2 border-yellow-400/30 ml-2 py-2">
           {answer}
         </p>
       </div>
-    </button>
+    </div>
   );
 }
 
@@ -40,14 +67,12 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col">
       
-      {/* Hero Section - Full Screen Only */}
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
-        
-        {/* Background Image - FIXED: Using Next.js Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/img/bg-2.webp"
-            alt={`${CONSTANTS.FOCUS_KEYWORD} premium IPTV pricing plans - Best ${CONSTANTS.FOCUS_KEYWORD} Subscription Deals`}
+            alt={`${CONSTANTS.FOCUS_KEYWORD} premium subscription pricing`}
             width={1920}
             height={1080}
             priority
@@ -59,7 +84,7 @@ export default function PricingPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent" />
         </div>
         
-        {/* Square Pattern Overlay - ONLY IN HERO */}
+        {/* Square Pattern Overlay */}
         <div 
           className="absolute inset-0 z-0 opacity-10"
           style={{ 
@@ -78,17 +103,22 @@ export default function PricingPage() {
           <FadeIn>
             <div className="inline-flex items-center gap-2 bg-yellow-400/10 backdrop-blur-sm px-4 py-2 rounded-full border border-yellow-400/20 mb-6">
               <Sparkles className="w-4 h-4 text-yellow-400" />
-              <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">Best Value Plans 2025</span>
+              <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">Best Value Plans 2026</span>
             </div>
+
+            {/* H1 Heading */}
             <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight uppercase mb-6">
               {CONSTANTS.FOCUS_KEYWORD} Pricing Plans{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">
                 Best Deals
               </span>
             </h1>
+
+            {/* Exact Keyword Matched Intro Paragraph */}
             <p className="text-xl text-white/70 font-medium max-w-2xl mx-auto leading-relaxed">
-              Enjoy live TV, movies, and sports from anywhere with a fast, reliable {CONSTANTS.FOCUS_KEYWORD} streaming experience.
+              Explore our verified <strong>{CONSTANTS.FOCUS_KEYWORD} pricing plans</strong> and get the <strong>best deals</strong> for ultra HD 4K live TV, sports, and movies with fast instant activation.
             </p>
+
             <div className="flex flex-wrap justify-center gap-6 mt-8 text-white/40 text-sm">
               <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5 text-yellow-400/60" /> Cancel Anytime</span>
               <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-yellow-400/60" /> Instant Activation</span>
@@ -99,11 +129,11 @@ export default function PricingPage() {
       </section>
 
       {/* Main Pricing Cards Component */}
-      <div className="-mt-16 w-full relative z-20">
+      <div id="pricing-section" className="-mt-16 w-full relative z-20">
         <PricingSection />
       </div>
 
-      {/* Features Section - Boxed Design like Homepage */}
+      {/* Features Section */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">
@@ -113,7 +143,7 @@ export default function PricingPage() {
             </span>
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            All {CONSTANTS.FOCUS_KEYWORD} subscriptions come with these premium features
+            All {CONSTANTS.FOCUS_KEYWORD} subscriptions come standard with these premium features
           </p>
         </FadeIn>
         
@@ -134,7 +164,7 @@ export default function PricingPage() {
                 <div className="w-12 h-12 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-4 group-hover:bg-yellow-400/20 transition-colors">
                   <Icon className="w-6 h-6 text-yellow-400" />
                 </div>
-                <h3 className="font-bold text-white text-lg mb-2">{feature.title}</h3>
+                <p className="font-bold text-white text-lg mb-2">{feature.title}</p>
                 <p className="text-white/50 text-sm leading-relaxed">{feature.desc}</p>
               </FadeInItem>
             );
@@ -142,7 +172,7 @@ export default function PricingPage() {
         </FadeInStagger>
       </section>
 
-      {/* Comparison Table - Boxed Design */}
+      {/* Comparison Table */}
       <section className="py-24 bg-slate-900/50 border-y border-white/5">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-12">
@@ -153,7 +183,7 @@ export default function PricingPage() {
               </span>
             </h2>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Find the perfect {CONSTANTS.FOCUS_KEYWORD} plan for your streaming needs
+              Find the perfect plan for your personal entertainment needs
             </p>
           </FadeIn>
 
@@ -192,7 +222,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Trust Badges - Boxed Design */}
+      {/* Trust Badges */}
       <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">
@@ -202,7 +232,7 @@ export default function PricingPage() {
             </span>
           </h2>
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Trusted by over 20,000 satisfied customers worldwide - Read our {CONSTANTS.FOCUS_KEYWORD} Review
+            Trusted by over 20,000 satisfied customers worldwide
           </p>
         </FadeIn>
         
@@ -211,7 +241,7 @@ export default function PricingPage() {
             <div className="w-16 h-16 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-4">
               <ShieldCheck className="w-8 h-8 text-yellow-400" />
             </div>
-            <h4 className="text-xl font-black text-white mb-2">Secure Payments</h4>
+            <span className="text-xl font-black text-white mb-2 block">Secure Payments</span>
             <p className="text-white/50 text-sm">Encrypted transactions with top-tier gateways for {CONSTANTS.FOCUS_KEYWORD}.</p>
           </FadeInItem>
           
@@ -219,45 +249,48 @@ export default function PricingPage() {
             <div className="w-16 h-16 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-4">
               <Zap className="w-8 h-8 text-yellow-400" />
             </div>
-            <h4 className="text-xl font-black text-white mb-2">Instant Setup</h4>
-            <p className="text-white/50 text-sm">Get {CONSTANTS.FOCUS_KEYWORD} credentials instantly after payment.</p>
+            <span className="text-xl font-black text-white mb-2 block">Instant Setup</span>
+            <p className="text-white/50 text-sm">Get {CONSTANTS.FOCUS_KEYWORD} credentials instantly after payment confirmation.</p>
           </FadeInItem>
           
           <FadeInItem className="flex flex-col items-center text-center p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all hover:-translate-y-1">
             <div className="w-16 h-16 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-4">
               <CreditCard className="w-8 h-8 text-yellow-400" />
             </div>
-            <h4 className="text-xl font-black text-white mb-2">Money Back</h4>
-            <p className="text-white/50 text-sm">7-day money-back guarantee on all {CONSTANTS.FOCUS_KEYWORD} plans.</p>
+            <span className="text-xl font-black text-white mb-2 block">Money Back</span>
+            <p className="text-white/50 text-sm">7-day money-back guarantee on all {CONSTANTS.FOCUS_KEYWORD} subscription plans.</p>
           </FadeInItem>
           
           <FadeInItem className="flex flex-col items-center text-center p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-yellow-400/30 transition-all hover:-translate-y-1">
             <div className="w-16 h-16 rounded-xl bg-yellow-400/10 flex items-center justify-center mb-4">
               <Headphones className="w-8 h-8 text-yellow-400" />
             </div>
-            <h4 className="text-xl font-black text-white mb-2">24/7 Support</h4>
-            <p className="text-white/50 text-sm">Expert support team always ready for {CONSTANTS.FOCUS_KEYWORD} customers.</p>
+            <span className="text-xl font-black text-white mb-2 block">24/7 Support</span>
+            <p className="text-white/50 text-sm">Dedicated support team always ready to help you with any questions.</p>
           </FadeInItem>
         </FadeInStagger>
       </section>
 
-      {/* Money Back Guarantee Banner - Boxed Design */}
+      {/* Social Sharing Bar */}
+      <SocialShareBar />
+
+      {/* Money Back Guarantee Banner */}
       <section className="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-yellow-400/10 via-transparent to-yellow-400/10 border border-yellow-400/20 rounded-2xl p-8 md:p-10 text-center">
           <div className="inline-flex items-center gap-2 bg-yellow-400/20 px-4 py-2 rounded-full border border-yellow-400/30 mb-4">
             <Award className="w-4 h-4 text-yellow-400" />
-            <span className="text-yellow-400 font-bold text-xs uppercase tracking-wider">Risk-Free</span>
+            <span className="text-yellow-400 font-bold text-xs uppercase tracking-wider">Risk-Free Guarantee</span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-black text-white mb-3">7-Day Money-Back Guarantee</h3>
+          <p className="text-2xl md:text-3xl font-black text-white mb-3">7-Day Money-Back Guarantee</p>
           <p className="text-white/60 max-w-2xl mx-auto text-sm leading-relaxed">
-            Try {CONSTANTS.FOCUS_KEYWORD} risk-free for 7 days. Not satisfied? Get a full refund. No questions asked.
+            Try {CONSTANTS.FOCUS_KEYWORD} risk-free for 7 days. If you are not completely satisfied with our service, receive a full refund with no questions asked.
           </p>
         </div>
       </section>
 
-      {/* FAQ Section - Using FAQItem component */}
+      {/* FAQ Section */}
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-96 bg-yellow-400/5 blur-[120px] rounded-full pointer-events-none" />
         
         <FadeIn className="text-center mb-16 relative z-10">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
@@ -266,37 +299,34 @@ export default function PricingPage() {
               Questions
             </span>
           </h2>
-          <p className="text-white/60 text-lg">Everything you need to know about {CONSTANTS.FOCUS_KEYWORD} pricing and plans.</p>
+          <p className="text-white/60 text-lg">Everything you need to know about our packages and billing.</p>
         </FadeIn>
         
         <FadeInStagger className="space-y-4 relative z-10">
           <FAQItem 
-            question={`What payment methods does ${CONSTANTS.FOCUS_KEYWORD} accept?`} 
-            answer={`${CONSTANTS.FOCUS_KEYWORD} accepts all major credit cards including Visa, Mastercard, American Express, and Discover. We also accept PayPal, cryptocurrencies (Bitcoin, Ethereum, USDT), and various regional payment methods. All payments are processed through secure, encrypted gateways with SSL technology.`}
+            id={1}
+            question={`What payment methods does ${CONSTANTS.BRAND_NAME} accept?`} 
+            answer={`${CONSTANTS.BRAND_NAME} accepts all major credit cards including Visa, Mastercard, American Express, and Discover. We also accept PayPal and cryptocurrencies through secure, encrypted checkout gateways.`}
           />
           <FAQItem 
-            question={`Can I upgrade or downgrade my ${CONSTANTS.FOCUS_KEYWORD} plan?`} 
-            answer={`Yes, you can upgrade or downgrade your ${CONSTANTS.FOCUS_KEYWORD} plan at any time. If you upgrade, you'll only pay the price difference. If you downgrade, the credit will be applied to your next billing cycle. Simply contact our support team and they will assist you with the plan change immediately.`}
+            id={2}
+            question="Can I upgrade or downgrade my plan later?" 
+            answer="Yes, you can easily upgrade or downgrade your active plan at any time. Simply contact our support team and we will apply the prorated difference directly to your account."
           />
           <FAQItem 
-            question={`Is there a contract with ${CONSTANTS.FOCUS_KEYWORD}?`} 
-            answer={`No, there are no contracts or long-term commitments with ${CONSTANTS.FOCUS_KEYWORD}. All plans are prepaid and you can cancel at any time without penalties or hidden fees. You only pay for the duration you choose.`}
+            id={3}
+            question="Is there any contract or cancellation fee?" 
+            answer="No, all packages are 100% prepaid. There are no contracts, hidden recurring fees, or cancellation charges."
           />
           <FAQItem 
-            question={`What happens after my ${CONSTANTS.FOCUS_KEYWORD} subscription expires?`} 
-            answer={`Before your ${CONSTANTS.FOCUS_KEYWORD} subscription expires, you'll receive email reminders. You can easily renew through your account dashboard or by contacting support. If you don't renew, your access will be suspended but your account data will be preserved for 30 days.`}
+            id={4}
+            question="What happens after my subscription expires?" 
+            answer="You will receive renewal reminders before your subscription period ends. You can choose to renew anytime or let the service expire without penalty."
           />
           <FAQItem 
-            question={`Does ${CONSTANTS.FOCUS_KEYWORD} offer refunds?`} 
-            answer={`Yes, ${CONSTANTS.FOCUS_KEYWORD} offers a 7-day money-back guarantee on all plans. If you're not completely satisfied with our streaming quality, channel selection, or customer service, simply contact our support team within 7 days of your purchase for a full refund. No questions asked.`}
-          />
-          <FAQItem 
-            question={`Can I use ${CONSTANTS.FOCUS_KEYWORD} on multiple devices?`} 
-            answer={`Yes, depending on your ${CONSTANTS.FOCUS_KEYWORD} plan. The Starter plan supports 1 device simultaneously, the Value plan supports 2 devices, and the Ultimate plan supports 3 devices simultaneously. You can install the app on unlimited devices but simultaneous streams are limited to your plan's allowance.`}
-          />
-          <FAQItem 
-            question={`Does ${CONSTANTS.FOCUS_KEYWORD} offer yearly discounts?`} 
-            answer={`Yes, ${CONSTANTS.FOCUS_KEYWORD}'s 12-month Ultimate plan offers the best value with savings of up to 40% compared to monthly plans. We also run seasonal promotions and special discounts for long-term subscribers. Follow our social media channels for current offers.`}
+            id={5}
+            question="How does the 7-day money-back guarantee work?" 
+            answer="If you experience any issues or are not satisfied with streaming performance within your first 7 days, reach out to our 24/7 support team for an immediate full refund."
           />
         </FadeInStagger>
       </div>
@@ -309,25 +339,27 @@ export default function PricingPage() {
               Ready to Start Streaming with {CONSTANTS.FOCUS_KEYWORD}?
             </h2>
             <p className="text-white/60 text-lg mb-8 max-w-2xl mx-auto">
-              Join over 20,000 satisfied customers enjoying premium {CONSTANTS.FOCUS_KEYWORD} entertainment.
+              Join over 20,000 satisfied customers enjoying premium entertainment today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="#pricing-section"
+                aria-label="Select Your Subscription Plan"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-yellow-400 text-slate-950 font-black uppercase tracking-widest text-sm hover:bg-yellow-300 hover:scale-105 transition-all shadow-[0_0_30px_rgba(250,204,21,0.3)]"
               >
-                Choose Your {CONSTANTS.FOCUS_KEYWORD} Plan
+                Choose Subscription Plan
               </Link>
               <Link
                 href="/setup"
+                aria-label="Device Setup Tutorial"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-all"
               >
                 <LifeBuoy className="w-4 h-4" />
-                {CONSTANTS.FOCUS_KEYWORD} Setup Guide
+                Setup Guide
               </Link>
             </div>
             <div className="flex flex-wrap justify-center gap-6 mt-8 text-white/40 text-xs">
-              <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-yellow-400/60" /> Instant {CONSTANTS.FOCUS_KEYWORD} Activation</span>
+              <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-yellow-400/60" /> Instant Activation</span>
               <span className="flex items-center gap-2"><Lock className="w-3.5 h-3.5 text-yellow-400/60" /> Secure Checkout</span>
               <span className="flex items-center gap-2"><CreditCard className="w-3.5 h-3.5 text-yellow-400/60" /> All Major Cards</span>
             </div>
