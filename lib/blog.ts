@@ -43,7 +43,7 @@ export const blogPosts = [
 
     <p>This comprehensive guide will walk you through <strong>7 common causes of IPTV buffering and freezing</strong>, along with proven fixes for each issue. Whether you're using Firestick, Android TV, Smart TV, or any other device, these troubleshooting tips will help you achieve buffer-free, smooth streaming in 4K quality.</p>
 
-    <p>If you're experiencing persistent issues, you might also want to check our <a href="/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">complete IPTV setup guide</a> to ensure your configuration is optimized. For a broader understanding of IPTV technology and best practices, our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a> provides additional context that can help prevent buffering issues.</p>
+    <p>If you're experiencing persistent issues, you might also want to check our <a href="/blog/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">complete IPTV setup guide</a> to ensure your configuration is optimized. For a broader understanding of IPTV technology and best practices, our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a> provides additional context that can help prevent buffering issues.</p>
 
     <!-- Quick Navigation -->
     <div class="nav-links">
@@ -125,7 +125,7 @@ export const blogPosts = [
 
     <div class="info-box">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" style="display: inline-block; margin-right: 0.75rem; vertical-align: middle;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <strong>Pro Tip:</strong> For the best streaming experience, always choose a provider with <strong>anti-freeze technology</strong> that automatically adapts stream quality to your connection speed. <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Learn how Marinios IPTV's anti-freeze technology works</a> to deliver buffer-free streaming.
+      <strong>Pro Tip:</strong> For the best streaming experience, always choose a provider with <strong>anti-freeze technology</strong> that automatically adapts stream quality to your connection speed. <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Learn how Marinios IPTV's anti-freeze technology works</a> to deliver buffer-free streaming.
     </div>
 
     <h2 id="wifi">Cause #2: Poor Wi-Fi Connection</h2>
@@ -171,7 +171,7 @@ export const blogPosts = [
     <h3>How to Fix Server-Side Issues</h3>
 
     <div class="fix-step">
-      <p><strong>Fix 1: Use a VPN</strong><br />A VPN can help bypass ISP throttling and improve streaming performance. By encrypting your traffic, a VPN prevents your ISP from seeing that you're streaming IPTV and applying speed restrictions. Additionally, a VPN can connect you to servers in different locations, potentially improving routing and reducing latency. Read our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality and privacy guide</a> for VPN recommendations.</p>
+      <p><strong>Fix 1: Use a VPN</strong><br />A VPN can help bypass ISP throttling and improve streaming performance. By encrypting your traffic, a VPN prevents your ISP from seeing that you're streaming IPTV and applying speed restrictions. Additionally, a VPN can connect you to servers in different locations, potentially improving routing and reducing latency. Read our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality and privacy guide</a> for VPN recommendations.</p>
     </div>
 
     <div class="fix-step">
@@ -183,7 +183,7 @@ export const blogPosts = [
     </div>
 
     <div class="fix-step">
-      <p><strong>Fix 4: Consider Switching Providers</strong><br />If server-side buffering is a persistent issue with your current provider, it might be time to switch to a more reliable service. The <strong class="highlight">best IPTV provider</strong> maintains multiple servers with 99.9% uptime guarantees. <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">See why Marinios IPTV is trusted by thousands</a> for reliable, buffer-free streaming.</p>
+      <p><strong>Fix 4: Consider Switching Providers</strong><br />If server-side buffering is a persistent issue with your current provider, it might be time to switch to a more reliable service. The <strong class="highlight">best IPTV provider</strong> maintains multiple servers with 99.9% uptime guarantees. <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">See why Marinios IPTV is trusted by thousands</a> for reliable, buffer-free streaming.</p>
     </div>
 
     <h2 id="device">Cause #4: Outdated or Underpowered Streaming Device</h2>
@@ -212,7 +212,7 @@ export const blogPosts = [
       <p><strong>Fix 4: Restart Your Device Regularly</strong><br />A simple restart can resolve many performance issues. Restarting clears memory, closes background processes, and can significantly improve streaming performance. Consider restarting your device before watching important events.</p>
     </div>
 
-    <p>For a complete guide on optimizing your setup, check our <a href="/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">step-by-step IPTV setup guide for all devices</a>.</p>
+    <p>For a complete guide on optimizing your setup, check our <a href="/blog/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">step-by-step IPTV setup guide for all devices</a>.</p>
 
     <h2>Cause #5: Outdated IPTV Player App</h2>
 
@@ -257,7 +257,7 @@ export const blogPosts = [
     <h3>How to Fix ISP Throttling</h3>
 
     <div class="fix-step">
-      <p><strong>Fix 1: Use a VPN</strong><br />A VPN encrypts your internet traffic, making it impossible for your ISP to determine what you're streaming. This effectively bypasses throttling and can dramatically improve streaming performance. Choose a VPN with fast servers and unlimited bandwidth. Learn more in our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality and VPN guide</a>.</p>
+      <p><strong>Fix 1: Use a VPN</strong><br />A VPN encrypts your internet traffic, making it impossible for your ISP to determine what you're streaming. This effectively bypasses throttling and can dramatically improve streaming performance. Choose a VPN with fast servers and unlimited bandwidth. Learn more in our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality and VPN guide</a>.</p>
     </div>
 
     <div class="fix-step">
@@ -288,7 +288,7 @@ export const blogPosts = [
     <h2>Frequently Asked Questions About IPTV Buffering</h2>
 
     <h3>Why does my IPTV keep buffering every few seconds?</h3>
-    <p>Constant buffering every few seconds typically indicates insufficient internet speed, network congestion, or Wi-Fi interference. Run a speed test and check if other devices are consuming bandwidth. If the issue persists, try reducing streaming quality or using a wired Ethernet connection. The <strong class="highlight">best IPTV provider</strong> also helps by offering anti-freeze technology. <a href="/marinios-iptv-vs-traditional-cable-complete-comparison-2026" class="internal-link">Compare providers' performance</a> before subscribing.</p>
+    <p>Constant buffering every few seconds typically indicates insufficient internet speed, network congestion, or Wi-Fi interference. Run a speed test and check if other devices are consuming bandwidth. If the issue persists, try reducing streaming quality or using a wired Ethernet connection. The <strong class="highlight">best IPTV provider</strong> also helps by offering anti-freeze technology. <a href="/blog/marinios-iptv-vs-traditional-cable-complete-comparison-2026" class="internal-link">Compare providers' performance</a> before subscribing.</p>
 
     <h3>Does a VPN reduce IPTV buffering?</h3>
     <p>Yes, in many cases. A VPN can help by bypassing ISP throttling and improving routing. However, a VPN itself can slow down your connection if you choose a server that's far away or if the VPN provider has limited bandwidth. Choose a VPN with optimized servers for streaming.</p>
@@ -297,7 +297,7 @@ export const blogPosts = [
     <p>For HD streaming, 15 Mbps minimum is recommended. For 4K streaming, 30 Mbps minimum with 50 Mbps+ recommended. However, stability matters as much as speed. A consistent 20 Mbps connection is better than an inconsistent 50 Mbps connection.</p>
 
     <h3>Can my IPTV provider cause buffering?</h3>
-    <p>Yes. Server overload, inadequate infrastructure, and poor maintenance can all cause buffering. The <strong class="highlight">best IPTV provider</strong> invests in robust server networks and anti-freeze technology. <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Read our complete review</a> of a provider that guarantees buffer-free streaming.</p>
+    <p>Yes. Server overload, inadequate infrastructure, and poor maintenance can all cause buffering. The <strong class="highlight">best IPTV provider</strong> invests in robust server networks and anti-freeze technology. <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Read our complete review</a> of a provider that guarantees buffer-free streaming.</p>
 
     <h3>Why does IPTV buffer more during sports events?</h3>
     <p>Major sports events cause massive spikes in viewership, which can overload servers. Providers with limited infrastructure struggle to handle these demand spikes. Additionally, ISPs may throttle traffic during high-demand events. Using a VPN and choosing a provider with strong server capacity can help.</p>
@@ -313,7 +313,7 @@ export const blogPosts = [
 
     <p>Remember that the most effective solution often combines multiple fixes. Using a wired Ethernet connection, upgrading your internet plan, switching to a VPN, and choosing the <strong class="highlight">best IPTV provider</strong> with robust infrastructure and anti-freeze technology will provide the most reliable buffer-free streaming experience.</p>
 
-    <p>If you've tried all these solutions and still experience buffering, consider evaluating your IPTV provider's reputation and infrastructure. The <strong class="highlight">best IPTV provider</strong> maintains multiple servers, uses advanced streaming technology, and offers 24/7 support to ensure you have the best possible experience. <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">See why thousands choose Marinios IPTV</a> for buffer-free entertainment in 4K quality.</p>
+    <p>If you've tried all these solutions and still experience buffering, consider evaluating your IPTV provider's reputation and infrastructure. The <strong class="highlight">best IPTV provider</strong> maintains multiple servers, uses advanced streaming technology, and offers 24/7 support to ensure you have the best possible experience. <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">See why thousands choose Marinios IPTV</a> for buffer-free entertainment in 4K quality.</p>
 
     <!-- Final Call to Action -->
     <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(250,204,21,0.06) 0%, rgba(250,204,21,0.02) 100%); border-radius: 1.5rem; border: 1px solid rgba(250,204,21,0.15);">
@@ -370,7 +370,7 @@ export const blogPosts = [
 
     <p>This comprehensive guide will walk you through <strong>10 essential factors</strong> that every smart consumer must consider before subscribing to any IPTV service. Whether you're a sports enthusiast, movie lover, or someone who wants international content from your home country, these criteria will help you make an informed decision. We'll cover everything from channel selection and streaming quality to pricing, customer support, and legal considerations.</p>
 
-    <p>If you're already considering cutting the cord, you might want to read our detailed <a href="/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions comparison</a> to understand the financial benefits. You can also explore our comprehensive <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Marinios IPTV review</a> to see how we stack up against the competition.</p>
+    <p>If you're already considering cutting the cord, you might want to read our detailed <a href="/blog/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions comparison</a> to understand the financial benefits. You can also explore our comprehensive <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Marinios IPTV review</a> to see how we stack up against the competition.</p>
 
     <!-- Quick Navigation -->
     <div class="nav-links">
@@ -430,7 +430,7 @@ export const blogPosts = [
 
     <div class="info-box">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" style="display: inline-block; margin-right: 0.75rem; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      <strong>Pro Tip:</strong> The <strong class="highlight">best IPTV provider</strong> offers at least 15,000-20,000 live channels and 40,000+ VOD titles. Anything less might indicate a limited selection. <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Check our complete channel guide</a> to see what a premium provider offers.
+      <strong>Pro Tip:</strong> The <strong class="highlight">best IPTV provider</strong> offers at least 15,000-20,000 live channels and 40,000+ VOD titles. Anything less might indicate a limited selection. <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Check our complete channel guide</a> to see what a premium provider offers.
     </div>
 
     <p>Finally, consider the channel organization and Electronic Program Guide (EPG). A well-organized channel list with categories (sports, news, entertainment, kids, international, etc.) makes navigation much easier. The EPG should provide accurate program information for at least 7-14 days ahead, allowing you to plan your viewing schedule. Providers that use Xtream Codes API typically offer superior EPG functionality compared to those relying solely on M3U links.</p>
@@ -447,7 +447,7 @@ export const blogPosts = [
 
     <p>Another critical aspect is the type of streaming protocols supported. Modern providers use HLS (HTTP Live Streaming) or MPEG-DASH, which are adaptive streaming protocols that automatically adjust quality based on your network conditions. This ensures you get the best possible quality without constant buffering. Providers that still rely on older protocols like RTSP or UDP often deliver inferior performance and are more prone to issues.</p>
 
-    <p>For a detailed comparison of streaming quality between providers, read our <a href="/marinios-iptv-2026-review-best-iptv-provider-usa" class="internal-link">complete Marinios IPTV review</a> where we test and analyze performance metrics in depth.</p>
+    <p>For a detailed comparison of streaming quality between providers, read our <a href="/blog/marinios-iptv-2026-review-best-iptv-provider-usa" class="internal-link">complete Marinios IPTV review</a> where we test and analyze performance metrics in depth.</p>
 
     <div class="comparison-table">
       <table>
@@ -479,7 +479,7 @@ export const blogPosts = [
 
     <div class="info-box">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" style="display: inline-block; margin-right: 0.75rem; vertical-align: middle;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <strong>Value Assessment:</strong> Compare the annual cost of an IPTV subscription with what you're currently paying for cable and streaming services. Most families save $600-$1,200 annually by switching. <a href="/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">Calculate your potential savings here</a>.
+      <strong>Value Assessment:</strong> Compare the annual cost of an IPTV subscription with what you're currently paying for cable and streaming services. Most families save $600-$1,200 annually by switching. <a href="/blog/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">Calculate your potential savings here</a>.
     </div>
 
     <p>Additionally, consider the payment options available. Reputable providers offer multiple payment methods, including credit cards, PayPal, and sometimes cryptocurrency. The absence of straightforward credit card payments can indicate a provider operating in a legal gray area. Also, check if the provider offers a free trial or money-back guarantee. A 24-48 hour free trial is standard for legitimate providers, allowing you to test the service before committing. A 7-day money-back guarantee is even better, giving you time to thoroughly evaluate the service.</p>
@@ -521,7 +521,7 @@ export const blogPosts = [
 
     <p>Some providers offer their own proprietary apps, which can provide a more integrated experience. However, dedicated IPTV players often offer more features and better performance than proprietary apps. Consider whether you prefer a custom-tailored experience or the flexibility of using your preferred player.</p>
 
-    <p>For detailed setup instructions, check out our <a href="/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">complete IPTV setup guide for Firestick, Android, and Smart TVs</a>.</p>
+    <p>For detailed setup instructions, check out our <a href="/blog/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">complete IPTV setup guide for Firestick, Android, and Smart TVs</a>.</p>
 
     <h2>6. EPG (Electronic Program Guide) Functionality</h2>
 
@@ -539,12 +539,12 @@ export const blogPosts = [
 
     <p>While IPTV technology itself is legal, the content distribution may not always be. The <strong class="highlight">best IPTV provider</strong> is transparent about their operations and content licensing. Be cautious of providers that are vague about their content sources or operate from offshore jurisdictions.</p>
 
-    <p>For a detailed understanding of IPTV legality, read our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">comprehensive guide on IPTV legality in the USA</a>.</p>
+    <p>For a detailed understanding of IPTV legality, read our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">comprehensive guide on IPTV legality in the USA</a>.</p>
 
     <h2>Frequently Asked Questions About Choosing an IPTV Provider</h2>
 
     <h3>What should I look for in an IPTV provider?</h3>
-    <p>Look for channel selection (15,000+ channels), streaming quality (4K support), reliable server infrastructure (99.9% uptime), transparent pricing, 24/7 customer support, and a free trial. The <strong class="highlight">best IPTV provider</strong> excels in all these areas. <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">See what a top provider offers</a>.</p>
+    <p>Look for channel selection (15,000+ channels), streaming quality (4K support), reliable server infrastructure (99.9% uptime), transparent pricing, 24/7 customer support, and a free trial. The <strong class="highlight">best IPTV provider</strong> excels in all these areas. <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">See what a top provider offers</a>.</p>
 
     <h3>How do I know if an IPTV provider is reliable?</h3>
     <p>Check customer reviews, test the service during the trial period, evaluate streaming quality during peak hours, and assess support responsiveness. Reliable providers maintain high uptime, respond quickly to issues, and have thousands of satisfied customers.</p>
@@ -556,7 +556,7 @@ export const blogPosts = [
     <p>For HD streaming, you need at least 15 Mbps. For 4K streaming, you need 30+ Mbps. A wired Ethernet connection is recommended for the most stable experience.</p>
 
     <h3>Can I use IPTV on multiple devices?</h3>
-    <p>Yes, depending on your plan. Most providers support 1-3 simultaneous connections. Check our <a href="/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">setup guide</a> for device compatibility details.</p>
+    <p>Yes, depending on your plan. Most providers support 1-3 simultaneous connections. Check our <a href="/blog/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">setup guide</a> for device compatibility details.</p>
 
     <div class="info-box">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" style="display: inline-block; margin-right: 0.75rem; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -625,7 +625,7 @@ export const blogPosts = [
 
     <p>The average American household spent over <strong>$2,100 on cable television</strong> in 2025. That's over $175 per month for limited channels, outdated technology, and hidden fees. <strong class="highlight">Marinios IPTV</strong> changes everything, offering <strong>20,000+ channels and 40,000+ VODs</strong> for as little as <strong>$15 per month</strong>.</p>
 
-    <p>For a detailed breakdown of savings, check out our <a href="/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions comparison</a>. You can also read our <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">complete Marinios IPTV review</a> for more details on why we're the best IPTV provider.</p>
+    <p>For a detailed breakdown of savings, check out our <a href="/blog/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions comparison</a>. You can also read our <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">complete Marinios IPTV review</a> for more details on why we're the best IPTV provider.</p>
 
     <!-- Quick Navigation -->
     <div class="nav-links">
@@ -825,7 +825,7 @@ export const blogPosts = [
     <p>Yes! The average cable bill is $115-$160 per month with hidden fees. <strong class="highlight">Marinios IPTV</strong> starts at just $15/month on the annual Ultimate plan. You save over $1,200 per year while getting 200x more channels. <a href="/pricing" class="internal-link">View our pricing plans</a> for more details.</p>
 
     <h3>Can Marinios IPTV replace my cable TV?</h3>
-    <p>Absolutely! <strong class="highlight">Marinios IPTV</strong> provides 20,000+ live channels, 40,000+ VODs, all sports PPV events, and 4K streaming. It offers everything cable provides and much more, at a fraction of the cost. <a href="/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Read our complete review</a>.</p>
+    <p>Absolutely! <strong class="highlight">Marinios IPTV</strong> provides 20,000+ live channels, 40,000+ VODs, all sports PPV events, and 4K streaming. It offers everything cable provides and much more, at a fraction of the cost. <a href="/blog/why-marinios-iptv-best-provider-2026-review-channels-guide" class="internal-link">Read our complete review</a>.</p>
 
     <h3>Does Marinios IPTV have local channels?</h3>
     <p>Yes! <strong class="highlight">Marinios IPTV</strong> includes ABC, CBS, NBC, Fox, and CW affiliates nationwide, along with local news and weather channels for major cities.</p>
@@ -914,7 +914,7 @@ export const blogPosts = [
 
     <p>Whether you're a sports enthusiast wanting access to every NFL, NBA, UFC, and Premier League match, a movie lover seeking the latest blockbusters, or someone who wants international content from over 100 countries, <strong class="highlight">Marinios IPTV</strong> delivers everything you need. Visit our <a href="/" class="internal-link">homepage</a> to learn more about why thousands of customers have made the switch.</p>
 
-    <p>For a deeper understanding of how <strong class="highlight">Marinios IPTV</strong> compares to traditional subscriptions, check out our detailed analysis in <a href="/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions: Which Saves You More Money in 2026?</a> You can also read our <a href="/marinios-iptv-2026-review-best-iptv-provider-usa" class="internal-link">complete Marinios IPTV review</a> for more details.</p>
+    <p>For a deeper understanding of how <strong class="highlight">Marinios IPTV</strong> compares to traditional subscriptions, check out our detailed analysis in <a href="/blog/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions: Which Saves You More Money in 2026?</a> You can also read our <a href="/blog/marinios-iptv-2026-review-best-iptv-provider-usa" class="internal-link">complete Marinios IPTV review</a> for more details.</p>
 
     <!-- Quick Navigation -->
     <div class="nav-links">
@@ -971,19 +971,19 @@ export const blogPosts = [
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         <h3>Massive Channel Selection</h3>
         <p>Access to 20,000+ live channels from over 100 countries including USA, UK, Canada, Germany, France, Spain, Italy, India, and Arabic regions. Premium sports networks include ESPN, Sky Sports, BT Sport, BeIN Sports, DAZN, NFL Network, NBA TV, and all major PPV events at no extra cost.</p>
-        <a href="/channels" class="internal-link">View full channel list →</a>
+        <a href="/setup" class="internal-link">View full channel list →</a>
       </div>
       <div class="feature-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><path d="M2 12 L5 9 L8 12 L11 9 L14 12 L17 9 L20 12 L22 10 L22 20 L2 20 Z"/><path d="M2 20 L22 20"/></svg>
         <h3>Extensive VOD Library</h3>
         <p>Over 40,000 movies and TV series updated daily with the latest releases from Hollywood, Bollywood, and international cinema. Includes content from Netflix, Amazon Prime, Disney+, HBO Max, and exclusive originals. New titles added every week.</p>
-        <a href="/vod" class="internal-link">Browse VOD library →</a>
+        <a href="/pricing" class="internal-link">Browse VOD library →</a>
       </div>
       <div class="feature-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         <h3>Anti-Freeze Technology</h3>
         <p>Our proprietary streaming optimization ensures buffer-free playback even during peak hours. Intelligent routing selects the fastest server for your location, delivering smooth 4K, FHD, and HD streaming with zero interruptions.</p>
-        <a href="/technology" class="internal-link">Learn about our tech →</a>
+        <a href="/pricing" class="internal-link">Learn about our tech →</a>
       </div>
       <div class="feature-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1044,7 +1044,7 @@ export const blogPosts = [
       </div>
     </div>
 
-    <p>For the complete list of channels, visit our <a href="/channels" class="internal-link">full channel list page</a>. We update our channel lineup regularly to ensure you always have access to the best content.</p>
+    <p>For the complete list of channels, visit our <a href="/setup" class="internal-link">full channel list page</a>. We update our channel lineup regularly to ensure you always have access to the best content.</p>
 
     <h2 id="sports">Marinios IPTV Sports Coverage: All PPV Included</h2>
 
@@ -1207,7 +1207,7 @@ export const blogPosts = [
     <p>Based on customer reviews, channel selection, pricing, and reliability, <strong class="highlight">Marinios IPTV</strong> is widely considered one of the <strong class="highlight">best IPTV providers</strong> in 2026. With 20,000+ channels, 40,000+ VODs, 4K streaming, and 99.9% uptime, we deliver exceptional value. <a href="/" class="internal-link">Visit our homepage</a> to learn more.</p>
 
     <h3>What internet speed do I need?</h3>
-    <p>For optimal streaming, we recommend minimum 15 Mbps for HD content and 30 Mbps for 4K streaming. A wired Ethernet connection provides the most stable experience. Check our <a href="/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">setup guide</a> for more details.</p>
+    <p>For optimal streaming, we recommend minimum 15 Mbps for HD content and 30 Mbps for 4K streaming. A wired Ethernet connection provides the most stable experience. Check our <a href="/blog/marinios-iptv-setup-guide-firestick-android-smart-tv-2026" class="internal-link">setup guide</a> for more details.</p>
 
     <h3>Can I use Marinios IPTV on multiple devices?</h3>
     <p>Yes, depending on your plan. The Starter plan supports 1 device simultaneously, Premium supports 2 devices, and Ultimate supports 3 devices simultaneously. You can install the app on unlimited devices.</p>
@@ -1227,7 +1227,7 @@ export const blogPosts = [
 
     <p>After thoroughly reviewing the features, channel lineup, pricing, and performance of <strong class="highlight">Marinios IPTV</strong>, it's clear why this service has earned its reputation as the <strong class="highlight">best IPTV provider in 2026</strong>. With an unmatched selection of 20,000+ live channels, a massive 40,000+ VOD library, crystal-clear 4K streaming with anti-freeze technology, and 99.9% uptime guaranteed, <a href="/" class="internal-link">Marinios IPTV</a> delivers exceptional value at a fraction of traditional cable costs.</p>
 
-    <p>Thousands of satisfied customers have already made the switch and are enjoying premium entertainment on all their devices. Whether you're a sports fanatic wanting every PPV event included at no extra cost, a movie lover seeking the latest releases, or someone who wants international content from your home country, <strong class="highlight">Marinios IPTV</strong> has you covered. Visit our <a href="/channels" class="internal-link">channel list</a> to see what's available.</p>
+    <p>Thousands of satisfied customers have already made the switch and are enjoying premium entertainment on all their devices. Whether you're a sports fanatic wanting every PPV event included at no extra cost, a movie lover seeking the latest releases, or someone who wants international content from your home country, <strong class="highlight">Marinios IPTV</strong> has you covered. Visit our <a href="/pricing" class="internal-link">channel list</a> to see what's available.</p>
 
     <p>Don't settle for expensive cable contracts with limited channels and hidden fees. Join the revolution and experience why <strong class="highlight">Marinios IPTV</strong> is the top choice for entertainment enthusiasts worldwide. <a href="/pricing" class="internal-link">Subscribe today</a> and start streaming in minutes!</p>
 
@@ -1290,7 +1290,7 @@ export const blogPosts = [
 
     <p>Unlike traditional cable, <strong class="highlight">Marinios IPTV</strong> works across multiple platforms, giving you the freedom to watch your favorite content on any device. This guide covers the most popular IPTV players including IPTV Smarters Pro, TiviMate, GSE Smart IPTV, and VLC Media Player.</p>
 
-    <p>Before you begin, make sure you have your <strong class="highlight">Marinios IPTV</strong> login credentials ready. If you haven't subscribed yet, visit our <a href="/pricing" class="internal-link">pricing page</a> to choose a plan. For a broader understanding of IPTV technology, check out our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a>.</p>
+    <p>Before you begin, make sure you have your <strong class="highlight">Marinios IPTV</strong> login credentials ready. If you haven't subscribed yet, visit our <a href="/pricing" class="internal-link">pricing page</a> to choose a plan. For a broader understanding of IPTV technology, check out our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a>.</p>
 
     <!-- Quick Navigation -->
     <div class="nav-links">
@@ -1645,7 +1645,7 @@ export const blogPosts = [
     </div>
 
     <div class="setup-step" style="border-color: rgba(250,204,21,0.6);">
-      <p><strong>Issue: Buffering or Freezing</strong><br />Check your internet speed (minimum 15 Mbps for HD, 30 Mbps for 4K). Try switching to a lower resolution or using a <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">VPN</a> to improve stability. A wired Ethernet connection is recommended over Wi-Fi.</p>
+      <p><strong>Issue: Buffering or Freezing</strong><br />Check your internet speed (minimum 15 Mbps for HD, 30 Mbps for 4K). Try switching to a lower resolution or using a <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">VPN</a> to improve stability. A wired Ethernet connection is recommended over Wi-Fi.</p>
     </div>
 
     <div class="setup-step" style="border-color: rgba(250,204,21,0.6);">
@@ -1662,7 +1662,7 @@ export const blogPosts = [
     <p>IPTV Smarters Pro is the most recommended player for <strong class="highlight">Marinios IPTV</strong> due to its user-friendly interface, Xtream Codes API support, and cross-platform compatibility. For advanced users, TiviMate offers more features.</p>
 
     <h3>Do I need a VPN for Marinios IPTV?</h3>
-    <p>While not required, using a VPN is recommended for privacy protection and to prevent ISP throttling. A VPN encrypts your internet traffic and can improve streaming performance. Visit our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality guide</a> for more information.</p>
+    <p>While not required, using a VPN is recommended for privacy protection and to prevent ISP throttling. A VPN encrypts your internet traffic and can improve streaming performance. Visit our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality guide</a> for more information.</p>
 
     <h3>Can I use Marinios IPTV on multiple devices?</h3>
     <p>Yes, depending on your plan. The Starter plan supports 1 device simultaneously, Premium supports 2 devices, and Ultimate supports 3 devices simultaneously. You can install the app on unlimited devices. <a href="/pricing" class="internal-link">View pricing plans</a> for more details.</p>
@@ -1744,7 +1744,7 @@ export const blogPosts = [
 
     <p>With over 20,000+ live channels, 40,000+ VOD titles, and 4K streaming capabilities, <strong class="highlight">Marinios IPTV</strong> promises to deliver a comprehensive entertainment experience at a fraction of traditional cable costs. But does it live up to the hype? This complete <strong class="highlight">Marinios IPTV review</strong> examines the service's features, pricing, performance, and setup process to help you decide if it's the right choice for your streaming needs.</p>
 
-    <p>If you're considering cutting the cord, you may also want to explore our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a> for a broader understanding of IPTV technology and best practices. For pricing options, visit our <a href="/pricing" class="internal-link">pricing page</a>.</p>
+    <p>If you're considering cutting the cord, you may also want to explore our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a> for a broader understanding of IPTV technology and best practices. For pricing options, visit our <a href="/pricing" class="internal-link">pricing page</a>.</p>
 
     <!-- Quick Navigation -->
     <div class="nav-links">
@@ -1803,13 +1803,13 @@ export const blogPosts = [
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><line x1="16" y1="21" x2="8" y2="21"/></svg>
         <h3>Massive Channel Selection</h3>
         <p>With over 20,000+ live channels, <strong class="highlight">Marinios IPTV</strong> offers one of the most comprehensive channel lineups available. The selection covers virtually every content category, from sports and news to entertainment and documentaries, across dozens of countries. Whether you want obscure international channels or mainstream American networks, the selection likely includes it.</p>
-        <a href="/channels" class="internal-link">View full channel list →</a>
+        <a href="/pricing" class="internal-link">View full channel list →</a>
       </div>
       <div class="feature-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M9 8h6M9 12h6"/></svg>
         <h3>Extensive VOD Library</h3>
         <p>The on-demand section of <strong class="highlight">Marinios IPTV</strong> features 40,000+ movies and TV series, including Hollywood blockbusters, classic films, international shows, and the latest trending entertainment. The content is regularly updated to keep the library fresh and engaging, making it a genuine alternative to standalone streaming services like Netflix or Amazon Prime.</p>
-        <a href="/vod" class="internal-link">Browse VOD library →</a>
+        <a href="/setup" class="internal-link">Browse VOD library →</a>
       </div>
       <div class="feature-card">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1870,7 +1870,7 @@ export const blogPosts = [
 
     <p>Annual plans reduce costs to approximately $7-10 monthly when amortized, making <strong class="highlight">Marinios IPTV</strong> competitive even with single-purpose streaming services. The value proposition becomes even more apparent when you consider that the service includes all sports PPV events, saving sports fans hundreds of dollars annually.</p>
 
-    <p>For a deeper comparison of IPTV costs versus traditional subscriptions, check out our detailed analysis in <a href="/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions: Which Saves You More Money in 2026?</a> You can also <a href="/pricing" class="internal-link">view all our pricing plans here</a>.</p>
+    <p>For a deeper comparison of IPTV costs versus traditional subscriptions, check out our detailed analysis in <a href="/blog/iptv-vs-traditional-subscriptions-which-saves-you-more" class="internal-link">IPTV vs Traditional Subscriptions: Which Saves You More Money in 2026?</a> You can also <a href="/pricing" class="internal-link">view all our pricing plans here</a>.</p>
 
     <div class="info-box">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" style="display: inline-block; margin-right: 0.75rem; vertical-align: middle;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1896,7 +1896,7 @@ export const blogPosts = [
 
     <p>For the best <strong class="highlight">Marinios IPTV</strong> experience, consider investing in a dedicated streaming device like NVIDIA Shield TV, Amazon Fire TV Stick 4K Max, or Apple TV. These devices are optimized for streaming and often offer superior processing power and connectivity compared to smart TV integrated apps.</p>
 
-    <p>If you need a comprehensive guide on the best streaming devices for IPTV, check out our article on <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#devices" class="internal-link">the best streaming devices for TV</a>.</p>
+    <p>If you need a comprehensive guide on the best streaming devices for IPTV, check out our article on <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#devices" class="internal-link">the best streaming devices for TV</a>.</p>
 
     <h3>Step-by-Step Setup Guide</h3>
 
@@ -1972,7 +1972,7 @@ export const blogPosts = [
 
     <p><strong class="highlight">Marinios IPTV</strong> has a strong server setup with servers in multiple locations to keep things running smoothly and cut down on downtime. This infrastructure allows the service to maintain its 99.9% uptime guarantee, making it a reliable choice for viewers who depend on consistent access to their favorite content.</p>
 
-    <p>For a more detailed look at IPTV performance metrics and what to look for in a provider, read our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a>.</p>
+    <p>For a more detailed look at IPTV performance metrics and what to look for in a provider, read our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices" class="internal-link">Ultimate IPTV Guide 2026</a>.</p>
 
     <h2>Pros and Cons of Marinios IPTV</h2>
 
@@ -2056,7 +2056,7 @@ export const blogPosts = [
     <h2>Frequently Asked Questions</h2>
 
     <h3>Is Marinios IPTV legal?</h3>
-    <p>The legality of IPTV services depends on whether the provider holds proper licensing for the content they distribute. <strong class="highlight">Marinios IPTV</strong> operates in a gray area without clear licensing information. For completely legal alternatives, you may want to explore legitimate American IPTV providers like YouTube TV, Hulu + Live TV, or Sling TV. Visit our <a href="/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality guide</a> for more information.</p>
+    <p>The legality of IPTV services depends on whether the provider holds proper licensing for the content they distribute. <strong class="highlight">Marinios IPTV</strong> operates in a gray area without clear licensing information. For completely legal alternatives, you may want to explore legitimate American IPTV providers like YouTube TV, Hulu + Live TV, or Sling TV. Visit our <a href="/blog/ultimate-iptv-guide-2026-hardware-setup-legality-best-practices#legality" class="internal-link">IPTV legality guide</a> for more information.</p>
 
     <h3>What internet speed do I need for Marinios IPTV?</h3>
     <p>For optimal streaming, we recommend a minimum of 15 Mbps for HD content and 30 Mbps for 4K streaming. A wired Ethernet connection provides the most stable experience.</p>
@@ -2540,17 +2540,17 @@ export const blogPosts = [
         <div class="feature-card">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
           <h3>Massive Channel Selection</h3>
-          <p>Access to 15,000+ live channels from over 100 countries including USA, UK, Canada, Germany, France, Spain, Italy, India, and Arabic regions. Premium sports networks include ESPN, Sky Sports, BT Sport, BeIN Sports, DAZN, NFL Network, NBA TV, and all major PPV events at no extra cost. View our full <a href="/channels" class="internal-link">channel list</a> for complete details.</p>
+          <p>Access to 15,000+ live channels from over 100 countries including USA, UK, Canada, Germany, France, Spain, Italy, India, and Arabic regions. Premium sports networks include ESPN, Sky Sports, BT Sport, BeIN Sports, DAZN, NFL Network, NBA TV, and all major PPV events at no extra cost. View our full <a href="/pricing" class="internal-link">channel list</a> for complete details.</p>
         </div>
         <div class="feature-card">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><path d="M2 12 L5 9 L8 12 L11 9 L14 12 L17 9 L20 12 L22 10 L22 20 L2 20 Z"/><path d="M2 20 L22 20"/></svg>
           <h3>Extensive VOD Library</h3>
-          <p>Over 60,000 movies and TV series updated daily with the latest releases from Hollywood, Bollywood, and international cinema. Includes content from Netflix, Amazon Prime, Disney+, HBO Max, and exclusive originals. New titles added every week. Browse our <a href="/vod" class="internal-link">VOD collection</a> to see what's available.</p>
+          <p>Over 60,000 movies and TV series updated daily with the latest releases from Hollywood, Bollywood, and international cinema. Includes content from Netflix, Amazon Prime, Disney+, HBO Max, and exclusive originals. New titles added every week. Browse our <a href="/pricing" class="internal-link">VOD collection</a> to see what's available.</p>
         </div>
         <div class="feature-card">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
           <h3>Anti-Freeze Technology</h3>
-          <p>Our proprietary streaming optimization ensures buffer-free playback even during peak hours. Intelligent routing selects the fastest server for your location, delivering smooth 4K, FHD, and HD streaming with zero interruptions. Learn more on our <a href="/technology" class="internal-link">technology page</a>.</p>
+          <p>Our proprietary streaming optimization ensures buffer-free playback even during peak hours. Intelligent routing selects the fastest server for your location, delivering smooth 4K, FHD, and HD streaming with zero interruptions. Learn more on our <a href="/pricing" class="internal-link">technology page</a>.</p>
         </div>
         <div class="feature-card">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="1.5" style="margin-bottom: 0.75rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -2686,7 +2686,7 @@ export const blogPosts = [
       
       <p>After thoroughly reviewing the features, channel lineup, pricing, and performance of <strong class="highlight">Marinios IPTV</strong>, it's clear why this service has earned its reputation as the <strong class="highlight">best IPTV provider in 2026</strong>. With an unmatched selection of 15,000+ live channels, a massive 60,000+ VOD library, crystal-clear 4K streaming with anti-freeze technology, and 99.9% uptime guaranteed, <a href="/" class="internal-link">Marinios IPTV</a> delivers exceptional value at a fraction of traditional cable costs.</p>
       
-      <p>Thousands of satisfied customers have already made the switch and are enjoying premium entertainment on all their devices. Whether you're a sports fanatic wanting every PPV event included at no extra cost, a movie lover seeking the latest releases, or someone who wants international content from your home country, Marinios IPTV has you covered. Visit our <a href="/channels" class="internal-link">channel list</a> to see what's available.</p>
+      <p>Thousands of satisfied customers have already made the switch and are enjoying premium entertainment on all their devices. Whether you're a sports fanatic wanting every PPV event included at no extra cost, a movie lover seeking the latest releases, or someone who wants international content from your home country, Marinios IPTV has you covered. Visit our <a href="/pricing" class="internal-link">channel list</a> to see what's available.</p>
       
       <p>Don't settle for expensive cable contracts with limited channels and hidden fees. Join the revolution and experience why <strong class="highlight">Marinios IPTV</strong> is the top choice for entertainment enthusiasts worldwide. <a href="/pricing" class="internal-link">Subscribe today</a> and start streaming in minutes!</p>
       
@@ -2859,7 +2859,7 @@ export const blogPosts = [
       <!-- IMAGE 3 OF 4 -->
       <img src="/img/blog/article-2/image-2.webp" alt="Streaming Services vs Marinios IPTV Cost Comparison" class="article-image" />
       
-      <p>With <strong class="highlight">Marinios IPTV</strong>, you get access to <strong>60,000+ movies and TV series</strong> from Netflix, Amazon Prime, Disney+, HBO Max, and more - all in <strong>one platform</strong>. No more switching between apps or paying multiple subscriptions. Check our <a href="/channels" class="internal-link">channel list</a> to see everything included.</p>
+      <p>With <strong class="highlight">Marinios IPTV</strong>, you get access to <strong>60,000+ movies and TV series</strong> from Netflix, Amazon Prime, Disney+, HBO Max, and more - all in <strong>one platform</strong>. No more switching between apps or paying multiple subscriptions. Check our <a href="/pricing" class="internal-link">channel list</a> to see everything included.</p>
       
       <h2 id="sports">Sports Fans: Stop Overpaying for PPV and Sports Packages</h2>
       
@@ -2941,7 +2941,7 @@ export const blogPosts = [
       <p>Yes! The average cable bill is $105-$155 per month. Marinios IPTV starts at just $7.08/month on the annual Ultimate plan. You save over $1,000 per year while getting 50x more channels. Check our <a href="/pricing" class="internal-link">pricing page</a> for details.</p>
       
       <h3>Do I still need Netflix or Disney+ with Marinios IPTV?</h3>
-      <p>No! Our VOD library includes content from Netflix, Amazon Prime, Disney+, HBO Max, Hulu, and more. You get access to thousands of movies and series without paying for multiple subscriptions. See our <a href="/channels" class="internal-link">channel list</a> for the full catalog.</p>
+      <p>No! Our VOD library includes content from Netflix, Amazon Prime, Disney+, HBO Max, Hulu, and more. You get access to thousands of movies and series without paying for multiple subscriptions. See our <a href="/pricing" class="internal-link">channel list</a> for the full catalog.</p>
       
       <h3>Are sports PPV events really included?</h3>
       <p>Yes! All major sports PPV events are included at no additional cost. UFC, boxing, WWE, and premium sports packages are part of your subscription. No hidden fees.</p>
