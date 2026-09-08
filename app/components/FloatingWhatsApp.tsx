@@ -16,8 +16,6 @@ export default function FloatingWhatsApp() {
   const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const phoneNumber = '447549589503';
-
   function getCurrentTime() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -78,7 +76,7 @@ export default function FloatingWhatsApp() {
     setChatHistory([...chatHistory, { sender: 'user', text: message, time: getCurrentTime() }]);
 
     const text = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
+    window.open(`https://live-support.netlify.app/?text=${text}`, '_blank');
 
     setMessage('');
   };

@@ -27,11 +27,9 @@ export default function PricingSection() {
 
   const currentPricing = pricing[devices];
 
-  const WHATSAPP_NUMBER = '+447549589503';
-
   const handleWhatsAppRedirect = (months: number) => {
     const message = `Hello, I am interested in your service to get a subscription for ${months} months.`;
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://live-support.netlify.app/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 

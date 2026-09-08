@@ -572,14 +572,16 @@ export default function SetupPage() {
             </div>
             <p className="text-xl font-bold text-white mb-2">24/7 Live Support</p>
             <p className="text-white/50 text-sm mb-4">Get instant setup assistance from our technical support team</p>
+
             <a 
-              href="https://wa.me/212600000000?text=Hello%2C%20I%20need%20help%20with%20setup"
+              href="https://live-support.netlify.app/?text=Hello%2C%20I%20need%20help%20with%20setup"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-green-500 font-medium text-sm hover:gap-3 transition-all cursor-pointer"
             >
               Chat on WhatsApp <ArrowRight className="w-4 h-4" />
             </a>
+
           </div>
         </div>
       </section>
