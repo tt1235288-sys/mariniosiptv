@@ -29,7 +29,7 @@ export default function PricingSection() {
 
   const handleWhatsAppRedirect = (months: number) => {
     const message = `Hello, I am interested in your service to get a subscription for ${months} months.`;
-    const whatsappUrl = `https://live-support.netlify.app/?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `http://support-tv.online/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
